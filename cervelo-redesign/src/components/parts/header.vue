@@ -2,8 +2,8 @@
 
 <template>
 	<header class="header">
-		<a class="header__logo-wrp" href="../../../html/index.html">
-			<img src="../../assets/logo.svg" alt="Cervelo" />
+		<a class="header__logo-wrp" href="../../index.html">
+			<img src="../../assets/imgs/logo.svg" alt="Cervelo" />
 		</a>
 	</header>
 </template>
