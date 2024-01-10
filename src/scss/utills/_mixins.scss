@@ -1,15 +1,23 @@
 @charset "utf-8";
+@use 'sass:math';
 
 /*------------------------------------------------
 mixins
 ------------------------------------------------*/
 @mixin fz($font-size) {
-	font-size: $font-size / var(--fz) * 1rem;
+	font-size: math.div($font-size, 10) * 1rem;
 }
 
 /*------------------------------------------------
 font
 ------------------------------------------------*/
+@mixin font-family {
+	font-family: 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', '游ゴシック', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+}
+@mixin font-en{
+	font-family: 'Montserrat', sans-serif;
+}
+
 @mixin txt-basic {
 	@include fz(14);
 	font-weight: 400;
@@ -52,13 +60,6 @@ $c-gray: #7c7c7c;
 $c-darkgray: #1e1e1e;
 $c-black: #000000;
 $c-red: #dc1405;
-
-/*---------------------------------------------
-font
----------------------------------------------*/
-// $f-disp: 'Beatrice-Headline', serif;
-// $f-basic: 'Arial', sans-serif;
-// $f-jp: 'Noto Sans JP', sans-serif;
 
 /*---------------------------------------------
 ease

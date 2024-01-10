@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+@use './utills/utills' as *;
+
+:root {
+	--fz: 10px;
+	font-size: var(--fz);
+}
+
+body {
+	color: $c-black;
+	@include font-family;
+	@include fz(14);
+}
+li {
+	list-style: none;
+}
+a {
+	color: $c-black;
+	text-decoration: none;
+}
