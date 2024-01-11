@@ -8,15 +8,17 @@ import 'swiper/css/effect-fade';
 import 'swiper/css/pagination';
 import { ref } from 'vue';
 
-const heroSlide = ref();
+const heroSlide = ref(null);
 const currentIndex = ref(1);
 const onSwiper = (_swiper) => {
 	heroSlide.swiper = _swiper;
-	console.log(heroSlide.swiper);
+	currentIndex.value = heroSlide.swiper.activeIndex;
+	console.log(currentIndex.value);
 };
+
 const changeSwiperIndex = () => {
 	// currentIndex.value = heroSlide.swiper.activeIndex;
-	console.log(heroSlide.swiper);
+	console.log(currentIndex.value);
 };
 
 const slides = ref([
@@ -77,7 +79,7 @@ const slides = ref([
 				</div>
 			</SwiperSlide>
 			<div class="lcl-hero-slides__progress">
-				<span class="lcl-hero-slides__index">{{ currentIndex }}</span>
+				<span class="lcl-hero-slides__index">{{ currentIndex.value }}</span>
 			</div>
 		</Swiper>
 	</div>
