@@ -12,13 +12,15 @@ const heroSlide = ref(null);
 const currentIndex = ref(1);
 const onSwiper = (_swiper) => {
 	heroSlide.swiper = _swiper;
-	currentIndex.value = heroSlide.swiper.activeIndex;
-	console.log(currentIndex.value);
+	// currentIndex.value = heroSlide.swiper.activeIndex;
+	// console.log(currentIndex.value);
+	// console.log(heroSlide.swiper);
 };
 
 const changeSwiperIndex = () => {
-	// currentIndex.value = heroSlide.swiper.activeIndex;
-	console.log(currentIndex.value);
+	if (heroSlide.swiper !== undefined) {
+		currentIndex.value = heroSlide.swiper.activeIndex;
+	}
 };
 
 const slides = ref([
@@ -79,7 +81,7 @@ const slides = ref([
 				</div>
 			</SwiperSlide>
 			<div class="lcl-hero-slides__progress">
-				<span class="lcl-hero-slides__index">{{ currentIndex.value }}</span>
+				<span class="lcl-hero-slides__index">{{ currentIndex }}</span>
 			</div>
 		</Swiper>
 	</div>
