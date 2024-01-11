@@ -1,6 +1,5 @@
 <script setup>
-import 'normalize.css';
-import Header from '@/components/parts/header.vue';
+
 </script>
 
 <template>

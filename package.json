@@ -11,7 +11,7 @@
   "dependencies": {
     "destyle.css": "^4.0.0",
     "swiper": "^11.0.5",
-    "vite-plugin-webfont-dl": "^3.9.1",
+    "unplugin-fonts": "^1.1.1",
     "vue": "^3.3.11",
     "vue-router": "^4.2.5"
   },

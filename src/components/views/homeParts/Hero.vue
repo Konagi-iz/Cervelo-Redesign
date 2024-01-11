@@ -1,7 +1,23 @@
 <script setup>
 import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Autoplay, EffectFade, Mousewheel, Pagination } from 'swiper/modules';
+const modules = [Autoplay, EffectFade, Mousewheel, Pagination];
 import 'swiper/css';
+import 'swiper/css/autoplay';
+import 'swiper/css/effect-fade';
+import 'swiper/css/pagination';
 import { ref } from 'vue';
+
+const heroSlide = ref();
+const currentIndex = ref(1);
+const onSwiper = (_swiper) => {
+	heroSlide.swiper = _swiper;
+	console.log(heroSlide.swiper);
+};
+const changeSwiperIndex = () => {
+	// currentIndex.value = heroSlide.swiper.activeIndex;
+	console.log(heroSlide.swiper);
+};
 
 const slides = ref([
 	{
@@ -33,10 +49,22 @@ const slides = ref([
 
 <template>
 	<div class="lcl-hero">
-		<Swiper class="lcl-hero-slides">
+		<Swiper
+			class="lcl-hero-slides"
+			@swiper="onSwiper"
+			@slideChange="changeSwiperIndex"
+			ref="heroSlide"
+			:modules="modules"
+			:autoplay="{ delay: 6000 }"
+			effect="fade"
+			:loop="true"
+			:loop-additional-slides="1"
+			:mousewheel="{ forceToAxis: true }"
+			:pagination="{ clickable: true }"
+		>
 			<SwiperSlide class="lcl-hero-slides__slide" v-for="(slide, index) in slides" :key="`slide-${index}`">
 				<div class="lcl-hero-slides__in">
-					<img :src="`/assets/img/home/fv/bg_txt_${slide}`" alt="" />
+					<img class="lcl-hero-slides__bgtxt" :src="`/assets/img/home/fv/bg_txt_${slide.type}.png`" alt="" />
 					<img class="lcl-hero-slides__img" :src="`/assets/img/home/fv/img_bike_0${index + 1}.png`" :alt="`${slide.model}の画像`" />
 					<div class="lcl-hero-slides__model-wrp">
 						<p class="lcl-hero-slides__model-sub">Cervelo</p>
@@ -48,6 +76,9 @@ const slides = ref([
 					</div>
 				</div>
 			</SwiperSlide>
+			<div class="lcl-hero-slides__progress">
+				<span class="lcl-hero-slides__index">{{ currentIndex }}</span>
+			</div>
 		</Swiper>
 	</div>
 </template>
@@ -72,6 +103,12 @@ const slides = ref([
 		transform: translate(-50%, -50%);
 		width: vwclamp(1174);
 		height: vwclamp(579);
+	}
+	.lcl-hero-slides__bgtxt {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: vwclamp(900);
 	}
 	.lcl-hero-slides__img {
 		position: absolute;
@@ -124,6 +161,37 @@ const slides = ref([
 		font-size: vwclamp(12);
 		font-weight: 600;
 		line-height: 1.9;
+	}
+	.swiper-slide {
+		opacity: 0 !important;
+	}
+	.swiper-slide-active {
+		opacity: 1 !important;
+	}
+	.swiper-pagination {
+		position: absolute;
+		top: auto !important;
+		right: vwclamp(141) !important;
+		bottom: vwclamp(127) !important;
+		left: auto !important;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: vwclamp(6);
+		width: auto !important;
+	}
+	.swiper-pagination-bullet {
+		display: block;
+		transform: skewX(-45deg);
+		opacity: 0.3;
+		margin: 0 !important;
+		border-radius: 0 !important;
+		width: vwclamp(4);
+		height: vwclamp(15);
+		background: $c-red;
+	}
+	.swiper-pagination-bullet-active {
+		opacity: 1;
 	}
 }
 </style>
