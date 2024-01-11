@@ -17,9 +17,16 @@ const onSwiper = (_swiper) => {
 	// console.log(heroSlide.swiper);
 };
 
+const progressCircle = ref(null);
+const onAutoplayTimeLeft = (s, time, progress) => {
+	console.log(progress);
+	progressCircle.value.style.setProperty('--progress', 1 - progress);
+};
+
 const changeSwiperIndex = () => {
 	if (heroSlide.swiper !== undefined) {
-		currentIndex.value = heroSlide.swiper.activeIndex;
+		currentIndex.value = heroSlide.swiper.activeIndex + 1;
+		console.log(currentIndex.value);
 	}
 };
 
@@ -65,6 +72,7 @@ const slides = ref([
 			:loop-additional-slides="1"
 			:mousewheel="{ forceToAxis: true }"
 			:pagination="{ clickable: true }"
+			@onAutoplayTimeLeft="onAutoplayTimeLeft"
 		>
 			<SwiperSlide class="lcl-hero-slides__slide" v-for="(slide, index) in slides" :key="`slide-${index}`">
 				<div class="lcl-hero-slides__in">
@@ -81,6 +89,9 @@ const slides = ref([
 				</div>
 			</SwiperSlide>
 			<div class="lcl-hero-slides__progress">
+				<svg class="lcl-hero-slides__circle" viewBox="0 0 50 50" stroke="#DC1405" stroke-width="1px" fill="none" ref="progressCircle">
+					<circle cx="25" cy="25" r="24"></circle>
+				</svg>
 				<span class="lcl-hero-slides__index">{{ currentIndex }}</span>
 			</div>
 		</Swiper>
@@ -166,6 +177,31 @@ const slides = ref([
 		font-weight: 600;
 		line-height: 1.9;
 	}
+	.lcl-hero-slides__progress {
+		position: absolute;
+		right: vwclamp(189);
+		bottom: vwclamp(120);
+	}
+	.lcl-hero-slides__circle {
+		--progress: 0;
+		width: vwclamp(50);
+		height: vwclamp(50);
+		stroke-dashoffset: calc(150.72 * (1 - var(--progress)));
+		stroke-dasharray: 150.72;
+	}
+	.lcl-hero-slides__index {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		color: $c-red;
+		@include font-en;
+		@include fz(12);
+		font-weight: 500;
+		line-height: 1.5;
+		font-style: italic;
+	}
+	/* swiper ------------ */
 	.swiper-slide {
 		opacity: 0 !important;
 	}
@@ -175,8 +211,8 @@ const slides = ref([
 	.swiper-pagination {
 		position: absolute;
 		top: auto !important;
-		right: vwclamp(141) !important;
-		bottom: vwclamp(127) !important;
+		right: vwclamp(212) !important;
+		bottom: vwclamp(203) !important;
 		left: auto !important;
 		display: flex;
 		flex-direction: column;
