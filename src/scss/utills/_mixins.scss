@@ -14,7 +14,7 @@ font
 @mixin font-family {
 	font-family: 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', '游ゴシック', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
 }
-@mixin font-en{
+@mixin font-en {
 	font-family: 'Montserrat', sans-serif;
 }
 
@@ -64,7 +64,7 @@ $c-red: #dc1405;
 /*---------------------------------------------
 ease
 ---------------------------------------------*/
-$e-power4-inOut1: cubic-bezier(0.7, 0, 0.1, 1);
+$e-out: cubic-bezier(0.7, 0, 0.1, 1);
 
 /*------------------------------------------------
 media
