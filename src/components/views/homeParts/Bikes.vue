@@ -1,9 +1,12 @@
 <script setup>
+import { ref } from 'vue';
 import BikesHeader from './BikesHeader.vue';
+
+const categoryName = ref('road');
 </script>
 
 <template>
-	<BikesHeader></BikesHeader>
+	<BikesHeader :category="categoryName"></BikesHeader>
 </template>
 
 <style lang="scss"></style>
