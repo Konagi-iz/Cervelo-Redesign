@@ -37,7 +37,7 @@ const navChilds = ref([
 						<li class="nav-child__item" v-for="navChild in navChilds">
 							<ul class="nav-child-list">
 								<li class="nav-child-list__item nav-child-list__item--ttl">
-									<a class="nav-child-list__link" href="">{{ navChild.ttl }}</a>
+									<a class="nav-child-list__link nav-child-list__link--ttl" href="">{{ navChild.ttl }}</a>
 								</li>
 								<li class="nav-child-list__item" v-for="item in navChild.items">
 									<a class="nav-child-list__link" href="">{{ item }}</a>
@@ -82,6 +82,8 @@ const navChilds = ref([
 	.header__logo {
 		width: 90px;
 	}
+
+	/* nav ------------ */
 	.nav {
 		padding-inline: 50px;
 		height: 100%;
@@ -93,7 +95,16 @@ const navChilds = ref([
 		height: 100%;
 	}
 	.nav-list__item {
+		position: relative;
 		height: 100%;
+		&:has(.nav-child):hover {
+			@include media_hover {
+				.nav-child {
+					opacity: 1;
+					visibility: visible;
+				}
+			}
+		}
 	}
 	.nav-list__link {
 		display: flex;
@@ -105,19 +116,70 @@ const navChilds = ref([
 		@include fz(12);
 		font-weight: 600;
 		font-style: italic;
+		&:hover::after {
+			transform: scaleX(1);
+			transform-origin: left;
+		}
+		&::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			transform: scaleX(0);
+			transform-origin: right;
+			width: 100%;
+			height: 4px;
+			background: $c-white;
+			transition: transform .3s $e-inOut;
+			/*---------------- after */
+		}
 	}
+
+	/* mega drop menu ------------ */
 	.nav-child {
-		display: none;
+		position: absolute;
+		bottom: 0;
+		left: -50px;
+		transform: translateY(100%);
+		opacity: 0;
+		box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+		visibility: hidden;
+		display: flex;
+		gap: 75px;
+		padding: 50px 120px;
+		background: $c-white;
+		transition: opacity 0.4s ease, visibility 0.4s ease;
 	}
 	.nav-child__item {
+		display: flex;
+		flex-direction: column;
+	}
+	.nav-child-list__item--ttl {
+		margin-bottom: 15px;
 	}
 	.nav-child-list {
+		display: flex;
+		flex-direction: column;
+		gap: 13px;
 	}
 	.nav-child-list__item {
 	}
-	.nav-child-list__item--ttl {
-	}
 	.nav-child-list__link {
+		@include font-en;
+		@include fz(14);
+		font-weight: 500;
+		line-height: 1.3;
+		white-space: nowrap;
+		transition: color .15s ease-out;
+		&:hover {
+			color: $c-red;
+		}
+	}
+	.nav-child-list__link--ttl {
+		@include fz(16);
+		font-weight: 700;
+		line-height: 1.5;
+		font-style: italic;
 	}
 }
 </style>

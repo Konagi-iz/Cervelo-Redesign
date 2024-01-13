@@ -1,10 +1,10 @@
 <script setup>
 import { Swiper, SwiperSlide } from 'swiper/vue';
-import { Autoplay, EffectCreative, Pagination } from 'swiper/modules';
-const modules = [Autoplay, EffectCreative, Pagination];
+import { Autoplay, EffectFade, Pagination } from 'swiper/modules';
+const modules = [Autoplay, EffectFade, Pagination];
 import 'swiper/css';
 import 'swiper/css/autoplay';
-import 'swiper/css/effect-creative';
+import 'swiper/css/effect-fade';
 import 'swiper/css/pagination';
 import { ref } from 'vue';
 
@@ -76,43 +76,66 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 			@autoplayTimeLeft="onAutoplayTimeLeft"
 			ref="heroSlide"
 			:modules="modules"
-			:autoplay="{ delay: 6000 }"
-			effect="creative"
+			:autoplay="{ delay: 6000, disableOnInteraction: false, waitForTransition: false }"
+			effect="fade"
 			:loop="true"
 			:loop-additional-slides="1"
 			:pagination="{ clickable: true }"
-			:speed="300"
+			:speed="600"
 		>
 			<SwiperSlide class="lcl-hero-slides__slide" v-for="(slide, index) in slides" :key="`slide-${index}`">
-				<div class="lcl-hero-slides__in">
-					<img class="lcl-hero-slides__bgtxt" :src="`/assets/img/home/fv/bg_txt_${slide.type}.png`" alt="" />
-					<img class="lcl-hero-slides__img" :src="`/assets/img/home/fv/img_bike_0${index + 1}.png`" :alt="`${slide.model}の画像`" />
-					<div class="lcl-hero-slides__model-wrp">
-						<p class="lcl-hero-slides__model-sub">Cervelo</p>
-						<p class="lcl-hero-slides__model">{{ slide.model }}</p>
+				<a class="lcl-hero-slides__link" href="#">
+					<div class="lcl-hero-slides__bg"></div>
+					<div class="lcl-hero-slides__in">
+						<img class="lcl-hero-slides__bgtxt" :src="`/assets/img/home/fv/bg_txt_${slide.type}.png`" alt="" loading="lazy" width="900" height="579" />
+						<img
+							class="lcl-hero-slides__img"
+							:src="`/assets/img/home/fv/img_bike_0${index + 1}.png`"
+							:alt="`${slide.model}の画像`"
+							loading="lazy"
+							width="900"
+							height="579"
+						/>
+						<div class="lcl-hero-slides__model-wrp">
+							<p class="lcl-hero-slides__model-sub">Cervelo</p>
+							<p class="lcl-hero-slides__model">{{ slide.model }}</p>
+						</div>
+						<div class="lcl-hero-slides__txts">
+							<p class="lcl-hero-slides__copy" v-html="splitText(slide.copy)"></p>
+							<p class="lcl-hero-slides__txt" style="white-space: pre-wrap" v-text="slide.txt"></p>
+						</div>
 					</div>
-					<div class="lcl-hero-slides__txts">
-						<p class="lcl-hero-slides__copy" v-html="splitText(slide.copy)"></p>
-						<p class="lcl-hero-slides__txt" style="white-space: pre-wrap" v-text="slide.txt"></p>
-					</div>
-				</div>
+				</a>
 			</SwiperSlide>
 			<div class="lcl-hero-slides__progress">
 				<svg class="lcl-hero-slides__circle" viewBox="0 0 50 50" stroke="#DC1405" stroke-width="1px" fill="none" ref="progressCircle">
 					<circle cx="25" cy="25" r="24"></circle>
 				</svg>
-				<span class="lcl-hero-slides__index">{{ currentIndex }}</span>
+				<span class="lcl-hero-slides__index">{{ `0${currentIndex}` }}</span>
 			</div>
 		</Swiper>
+		<!-- .swiper -->
 		<div class="lcl-hero-foot">
-			<ul class="lcl-hero-foot__nav">
-				<li class="lcl-hero-foot__nav-item" v-for="nav in navs">
-					<a class="lcl-hero-foot__nav-link" :href="`#${nav.replace(' ', '').toLocaleLowerCase()}`">{{ nav }}</a>
+			<ul class="lcl-hero-nav">
+				<li class="lcl-hero-nav__item" v-for="nav in navs">
+					<a class="lcl-hero-nav__link" :href="`#${nav.replace(' ', '').toLocaleLowerCase()}`">{{ nav }}</a>
 				</li>
 			</ul>
-			<div class="lcl-hero-foot__scroll">
-				
+			<!-- .lcl-hero-nav -->
+			<div class="lcl-hero-scroll">
+				<svg class="lcl-hero-scroll__icon" width="12" height="28" viewBox="0 0 12 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M6 5.33965L10.9917 0.5L12 1.68281L6 7.5L2.70212e-07 1.68281L1.00825 0.5L6 5.33965Z" fill="white" />
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M6 15.3397L1.00825 10.5L0 11.6828L6 17.5L12 11.6828L10.9917 10.5L6 15.3397Z" fill="white" />
+					<path
+						fill-rule="evenodd"
+						clip-rule="evenodd"
+						d="M6 25.3397L10.9917 20.5L12 21.6828L6 27.5L2.70212e-07 21.6828L1.00825 20.5L6 25.3397Z"
+						fill="white"
+					/>
+				</svg>
+				<p class="lcl-hero-scroll__txt">SCROLL</p>
 			</div>
+			<!-- .lcl-hero-scroll -->
 		</div>
 	</div>
 </template>
@@ -128,8 +151,20 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 		height: 100%;
 	}
 	.lcl-hero-slides__slide {
+		position: relative;
 		width: 100%;
 		height: 100%;
+	}
+	.lcl-hero-slides__bg {
+		position: absolute;
+		top: 0;
+		left: 0;
+		clip-path: inset(0 0 0 0);
+		opacity: 0.9;
+		width: 100%;
+		height: 100%;
+		background: $c-red;
+		transition: clip-path 0.4s 0.7s $e-out, opacity 0.3s ease;
 	}
 	.lcl-hero-slides__in {
 		position: absolute;
@@ -143,16 +178,19 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 		position: absolute;
 		top: 0;
 		left: 0;
+		transform: translateX(-7%);
+		opacity: 0;
 		width: vwclamp(900);
+		transition: transform 0.5s $e-out, opacity 0.5s $e-out;
+		transition-delay: 1.2s;
 	}
 	.lcl-hero-slides__img {
 		position: absolute;
 		top: 0;
 		left: 0;
-		// transform: translateX(-30%);
 		opacity: 0;
-		width: pcvw(900);
-		transition: opacity 0.5s $e-out;
+		width: vwclamp(900);
+		transition: opacity 1s 0.9s ease;
 	}
 	.lcl-hero-slides__model-wrp {
 		position: absolute;
@@ -160,6 +198,9 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 		left: vwclamp(97);
 	}
 	.lcl-hero-slides__model-sub {
+		display: block;
+		transform: translateX(-10%);
+		opacity: 0;
 		color: $c-red;
 		@include font-en;
 		font-size: vwclamp(14);
@@ -167,8 +208,12 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 		letter-spacing: 0.05em;
 		line-height: 1.2;
 		font-style: italic;
+		transition: transform 0.5s $e-out, opacity 0.4s $e-out;
+		transition-delay: 1.7s;
 	}
 	.lcl-hero-slides__model {
+		opacity: 0;
+		transform-origin: left;
 		color: $c-red;
 		@include font-en;
 		font-size: vwclamp(48);
@@ -199,7 +244,7 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 			transition: transform 0.5s $e-out, opacity 0.5s $e-out;
 			@for $i from 1 through 50 {
 				&:nth-of-type(#{$i}) {
-					transition-delay: calc(0.03s * ($i - 1) + 0.7s);
+					transition-delay: calc(0.03s * ($i - 1) + 1.5s);
 				}
 			}
 		}
@@ -219,6 +264,7 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 	}
 	.lcl-hero-slides__circle {
 		--progress: 0;
+		transform: rotate(-90deg);
 		width: vwclamp(50);
 		height: vwclamp(50);
 		stroke-dashoffset: calc(150.72 * (1 - var(--progress)));
@@ -236,6 +282,7 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 		line-height: 1.5;
 		font-style: italic;
 	}
+
 	/* swiper ------------ */
 	.swiper-slide {
 		opacity: 0 !important;
@@ -246,7 +293,7 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 	.swiper-pagination {
 		position: absolute;
 		top: auto !important;
-		right: vwclamp(212) !important;
+		right: vwclamp(204) !important;
 		bottom: vwclamp(203) !important;
 		left: auto !important;
 		display: flex;
@@ -257,26 +304,37 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 	}
 	.swiper-pagination-bullet {
 		display: block;
-		transform: skewX(-45deg);
 		opacity: 0.3;
 		margin: 0 !important;
 		border-radius: 0 !important;
-		width: vwclamp(4);
+		width: vwclamp(19);
 		height: vwclamp(15);
-		background: $c-red;
+		background: url(/assets/img/home/fv/icon_pagination.svg) no-repeat left top / contain;
 	}
 	.swiper-pagination-bullet-active {
 		opacity: 1;
 	}
-	/* active ------------ */
+
+	/* swiper active ------------ */
 	.swiper-slide-active {
-		.lcl-hero-slides__img {
+		.lcl-hero-slides__bg {
+			clip-path: inset(0 0 0 100%);
+			opacity: 0.9;
+		}
+		.lcl-hero-slides__bgtxt {
 			transform: translateX(0);
 			opacity: 1;
-			animation: img-active 3s 0.1s $e-out;
+		}
+		.lcl-hero-slides__img {
+			opacity: 1;
+			animation: img-active 3s 0.9s $e-out;
+		}
+		.lcl-hero-slides__model-sub {
+			transform: translateX(0);
+			opacity: 1;
 		}
 		.lcl-hero-slides__model {
-			animation: model-active 4s $e-out;
+			animation: model-active 4s 0.9s $e-out forwards;
 		}
 		.lcl-hero-slides__copy {
 			span {
@@ -285,150 +343,13 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 			}
 		}
 		.lcl-hero-slides__txt {
-			animation: txt-active 4s 1s $e-out forwards;
+			animation: txt-active 4s 1.8s $e-out forwards;
 		}
 	}
-	@keyframes img-active {
-		0% {
-			transform: translate(-50%, 0);
-			opacity: 1;
-		}
-		1% {
-			opacity: 0;
-		}
-		2% {
-			opacity: 1;
-		}
-		3% {
-			opacity: 0;
-		}
-		4% {
-			opacity: 1;
-		}
-		5% {
-			opacity: 0;
-		}
-		19% {
-			transform: translate(0, 0);
-		}
-		20% {
-			transform: translate(0, 0);
-			opacity: 1;
-		}
-		21% {
-			transform: translate(0, 0);
-			opacity: 0;
-		}
-		22% {
-			transform: translate(0, 0);
-			opacity: 1;
-		}
-		23% {
-			transform: translate(0, 0);
-			opacity: 0;
-		}
-		24% {
-			transform: translate(0, 0);
-			opacity: 1;
-		}
-		25% {
-			transform: translate(0, 0);
-			opacity: 1;
-		}
-		100% {
-			transform: translate(0, 0);
-			opacity: 1;
-		}
-	}
-	@keyframes model-active {
-		0% {
-			transform: scale(5) translate(-50%, 20%);
-			opacity: 1;
-		}
-		1% {
-			opacity: 0;
-		}
-		2% {
-			opacity: 1;
-		}
-		3% {
-			opacity: 0;
-		}
-		4% {
-			opacity: 1;
-		}
-		5% {
-			opacity: 0;
-		}
-		19% {
-			transform: scale(5) translate(0, 20%);
-		}
-		20% {
-			transform: scale(5) translate(0, 0);
-			opacity: 1;
-		}
-		21% {
-			transform: scale(5) translate(0, 0);
-			opacity: 0;
-		}
-		22% {
-			transform: scale(5) translate(0, 0);
-			opacity: 1;
-		}
-		23% {
-			transform: scale(5) translate(0, 0);
-			opacity: 0;
-		}
-		24% {
-			transform: scale(5) translate(0, 0);
-			opacity: 1;
-		}
-		25% {
-			transform: scale(1) translate(0, 0);
-			opacity: 1;
-		}
-		100% {
-			transform: scale(1) translate(0, 0);
-			opacity: 1;
-		}
-	}
-	@keyframes txt-active {
-		0% {
-			opacity: 0;
-		}
-		1% {
-			opacity: 1;
-		}
-		2% {
-			opacity: 0;
-		}
-		3% {
-			opacity: 1;
-		}
-		4% {
-			opacity: 0;
-		}
-		5% {
-			opacity: 1;
-		}
-		6% {
-			opacity: 0;
-		}
-		7% {
-			opacity: 1;
-		}
-		100% {
-			opacity: 1;
-		}
-	}
-	/* prev ------------ */
-	.swiper-slide-prev {
-		.lcl-hero-slides__img {
-			transform: translateX(30%);
-		}
-	}
+
 	/* foot ------------ */
 	.lcl-hero-foot {
+		z-index: 1;
 		position: absolute;
 		bottom: 0;
 		left: 0;
@@ -436,7 +357,7 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 		width: 100%;
 		height: vwclamp(64);
 	}
-	.lcl-hero-foot__nav {
+	.lcl-hero-nav {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -444,15 +365,211 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 		width: vwclamp(689);
 		height: 100%;
 	}
-	.lcl-hero-foot__nav-item {
+	.lcl-hero-nav__item {
 	}
-	.lcl-hero-foot__nav-link {
+	.lcl-hero-nav__link {
+		position: relative;
+		display: inline-block;
 		color: $c-darkgray;
 		@include font-en;
 		@include fz(10);
 		font-weight: 300;
 		line-height: 1.2;
 		font-style: italic;
+		transition: transform 0.3s ease-out;
+		&:hover {
+			transform: translateY(-20%);
+		}
+		&:hover::after {
+			translate: 0 50%;
+			opacity: 1;
+		}
+		&::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 50%;
+			transform: translate(-50%, 100%);
+			opacity: 0;
+			width: vwclamp(8);
+			height: vwclamp(5);
+			background: url(/assets/img/home/fv/icon_arrow--down.svg) no-repeat left top / contain;
+			transition: translate 0.3s ease-out, opacity 0.3s ease-out;
+			/*---------------- after */
+		}
+	}
+	.lcl-hero-scroll {
+		display: flex;
+		align-items: center;
+		gap: vwclamp(50);
+		flex: 1;
+		padding-left: vwclamp(50);
+		background: $c-darkgray;
+	}
+	.lcl-hero-scroll__icon {
+		width: vwclamp(12);
+		height: vwclamp(27);
+		path {
+			&:nth-of-type(1) {
+				animation: scroll-icon--top 1s $e-out infinite;
+			}
+			&:nth-of-type(2) {
+				animation: scroll-icon--mid 1s $e-out infinite;
+			}
+			&:nth-of-type(3) {
+				animation: scroll-icon--btm 1s $e-out infinite;
+			}
+		}
+	}
+	.lcl-hero-scroll__txt {
+		color: $c-white;
+		@include font-en;
+		@include fz(10);
+		font-weight: 600;
+		font-style: italic;
+	}
+}
+
+/* keyframes ------------ */
+@keyframes img-active {
+	0% {
+		transform: translate(-50%, 0);
+		opacity: 0;
+	}
+	1% {
+		opacity: 1;
+	}
+	2% {
+		opacity: 0;
+	}
+	3% {
+		opacity: 1;
+	}
+	4% {
+		opacity: 0;
+	}
+	5% {
+		opacity: 1;
+	}
+	20% {
+		transform: translate(0, 0);
+		opacity: 1;
+	}
+	100% {
+		transform: translate(0, 0);
+		opacity: 1;
+	}
+}
+@keyframes model-active {
+	0% {
+		transform: scale(6) translate(-50%, 20%);
+		opacity: 1;
+	}
+	1% {
+		opacity: 0;
+	}
+	2% {
+		opacity: 1;
+	}
+	3% {
+		opacity: 0;
+	}
+	4% {
+		opacity: 1;
+	}
+	19% {
+		transform: scale(6) translate(0, 20%);
+		opacity: 1;
+	}
+	20% {
+		transform: scale(6) translate(0, 20%);
+		opacity: 1;
+	}
+	21% {
+		transform: scale(6) translate(0, 20%);
+		opacity: 0;
+	}
+	22% {
+		transform: scale(6) translate(0, 20%);
+		opacity: 1;
+	}
+	23% {
+		transform: scale(6) translate(0, 20%);
+		opacity: 0;
+	}
+	24% {
+		transform: scale(6) translate(0, 20%);
+		opacity: 1;
+	}
+	25% {
+		transform: scale(1) translate(0, 0);
+		opacity: 1;
+	}
+	100% {
+		transform: scale(1) translate(0, 0);
+		opacity: 1;
+	}
+}
+@keyframes txt-active {
+	0% {
+		opacity: 0;
+	}
+	1% {
+		opacity: 1;
+	}
+	2% {
+		opacity: 0;
+	}
+	3% {
+		opacity: 1;
+	}
+	4% {
+		opacity: 0;
+	}
+	5% {
+		opacity: 1;
+	}
+	6% {
+		opacity: 0;
+	}
+	7% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+@keyframes scroll-icon--top {
+	0% {
+		opacity: 0.4;
+	}
+	25% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0.4;
+	}
+}
+@keyframes scroll-icon--mid {
+	0% {
+		opacity: 0.4;
+	}
+	50% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0.4;
+	}
+}
+@keyframes scroll-icon--btm {
+	0% {
+		opacity: 0.4;
+	}
+	75% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0.4;
 	}
 }
 </style>

@@ -3,6 +3,7 @@
 	"prettier.useTabs": true,
 	"prettier.tabWidth": 2,
 	"prettier.singleQuote": true,
+	"editor.quickSuggestionsDelay": 0,
 	"liveSassCompile.settings.formats": [
 		{
 			"format": "expanded",
@@ -11,9 +12,9 @@
 		}
 	],
 	"[php]": {
-		"editor.defaultFormatter": "bmewburn.vscode-intelephense-client",
+		"editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
 	},
 	"[sass]": {
-		"editor.defaultFormatter": "sasa.vscode-sass-format",
+		"editor.defaultFormatter": "sasa.vscode-sass-format"
 	}
 }

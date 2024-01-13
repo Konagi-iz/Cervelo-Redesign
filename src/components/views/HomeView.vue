@@ -1,9 +1,15 @@
 <script setup>
 import Hero from '@/components/views/homeParts/Hero.vue';
+import News from '@/components/views/homeParts/News.vue';
+import Bikes from './homeParts/Bikes.vue';
 </script>
 
 <template>
-	<Hero></Hero>
+	<main>
+		<Hero></Hero>
+		<News></News>
+		<Bikes></Bikes>
+	</main>
 </template>
 
 <style scoped lang="scss">

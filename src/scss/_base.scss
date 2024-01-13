@@ -8,6 +8,7 @@
 }
 
 body {
+	overflow-x: hidden;
 	color: $c-black;
 	@include font-family;
 	@include fz(14);
@@ -18,4 +19,10 @@ li {
 a {
 	color: $c-black;
 	text-decoration: none;
+}
+img {
+	max-width: 100%;
+	width: auto;
+	height: auto;
+	vertical-align: bottom;
 }

@@ -4,7 +4,7 @@
 
 <template>
 	<h1>BIKES</h1>
-	<router-link :to="{name: 'home'}">VIEW HOME</router-link>
+	<router-link :to="{ name: 'home' }">VIEW HOME</router-link>
 </template>
 
 <style scoped lang="scss">

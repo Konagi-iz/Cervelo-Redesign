@@ -6,8 +6,14 @@ import { RouterView } from 'vue-router';
 </script>
 
 <template>
-	<Header></Header>
-	<router-view></router-view>
+	<div class="wrapper">
+		<Header></Header>
+		<router-view></router-view>
+	</div>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+.wrapper {
+	min-width: 1000px;
+}
+</style>
