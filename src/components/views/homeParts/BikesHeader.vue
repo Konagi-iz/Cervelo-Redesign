@@ -35,25 +35,13 @@ const props = defineProps({
 					<img class="lcl-bikes-head__loop" src="/assets/img/home/bikes/text_loop_road.svg" alt="" loading="lazy" height="108" />
 				</div>
 				<div class="lcl-bikes-head__loop-in" v-else-if="category === 'time-trial'">
-					<img
-						class="lcl-bikes-head__loop lcl-bikes-head__loop--reverse"
-						src="/assets/img/home/bikes/text_loop_time-trial.svg"
-						alt=""
-						loading="lazy"
-						height="108"
-					/>
+					<img class="lcl-bikes-head__loop" src="/assets/img/home/bikes/text_loop_time-trial.svg" alt="" loading="lazy" height="108" />
 				</div>
 				<div class="lcl-bikes-head__loop-in" v-else-if="category === 'off-road'">
 					<img class="lcl-bikes-head__loop" src="/assets/img/home/bikes/text_loop_off-road.svg" alt="" loading="lazy" height="108" />
 				</div>
 				<div class="lcl-bikes-head__loop-in" v-else>
-					<img
-						class="lcl-bikes-head__loop lcl-bikes-head__loop--reverse"
-						src="/assets/img/home/bikes/text_loop_e-bike.svg"
-						alt=""
-						loading="lazy"
-						height="108"
-					/>
+					<img class="lcl-bikes-head__loop" src="/assets/img/home/bikes/text_loop_e-bike.svg" alt="" loading="lazy" height="108" />
 				</div>
 			</Transition>
 		</div>
@@ -113,9 +101,6 @@ const props = defineProps({
 		opacity: 0;
 	}
 
-	.lcl-bikes-head__loop--reverse {
-		animation: loop-txt 20s linear infinite reverse;
-	}
 	.lcl-bikes-ttl {
 		width: 1000px;
 		padding-top: 98px;

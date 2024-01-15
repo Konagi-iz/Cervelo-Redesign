@@ -2,13 +2,14 @@
 import { ref } from 'vue';
 
 const categorys = ref(['road', 'time-trial', 'off-road', 'e-bike']);
-const emit = defineEmits('switchCategory');
-const props = defineProps({ currentCategory: String });
+const emits = defineEmits(['switchCategory']); // 'switchCategory' イベントを定義
+
+const props = defineProps(['currentCategory']);
 const currentTab = ref(props.currentCategory);
 
 const switchCategory = (cat) => {
 	currentTab.value = cat;
-	emit('switchCategory', currentTab.value);
+	emits('switchCategory', currentTab.value);
 };
 </script>
 
@@ -25,6 +26,11 @@ const switchCategory = (cat) => {
 				{{ category.replace(/-/g, ' ').toUpperCase() }}
 			</button>
 		</div>
+        <ul class="lcl-bikes-list">
+            <li class="lcl-bikes-list__item">
+                
+            </li>
+        </ul>
 	</div>
 </template>
 
