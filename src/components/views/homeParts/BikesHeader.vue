@@ -1,25 +1,7 @@
 <script setup>
-import { ref, watch } from 'vue';
-
-const isLoopReverse = (cat) => {
-	return cat === 'time-trial' || cat === 'e-bike' ? 'lcl-bikes-head__loop lcl-bikes-head__loop--reverse' : 'lcl-bikes-head__loop';
-};
-
 const props = defineProps({
 	category: String,
 });
-const cat = ref(isLoopReverse(props.category));
-
-watch(
-	() => {
-		props.category;
-	},
-	() => {
-		cat.value = isLoopReverse(props.category);
-		console.log(cat.value);
-	},
-	{ deep: true }
-);
 </script>
 
 <template>
@@ -50,16 +32,28 @@ watch(
 		<div class="lcl-bikes-head__loop-wrp">
 			<Transition name="loop">
 				<div class="lcl-bikes-head__loop-in" v-if="category === 'road'">
-					<img :class="cat" src="/assets/img/home/bikes/text_loop_road.svg" alt="" loading="lazy" height="108" />
+					<img class="lcl-bikes-head__loop" src="/assets/img/home/bikes/text_loop_road.svg" alt="" loading="lazy" height="108" />
 				</div>
 				<div class="lcl-bikes-head__loop-in" v-else-if="category === 'time-trial'">
-					<img :class="cat" src="/assets/img/home/bikes/text_loop_time-trial.svg" alt="" loading="lazy" height="108" />
+					<img
+						class="lcl-bikes-head__loop lcl-bikes-head__loop--reverse"
+						src="/assets/img/home/bikes/text_loop_time-trial.svg"
+						alt=""
+						loading="lazy"
+						height="108"
+					/>
 				</div>
 				<div class="lcl-bikes-head__loop-in" v-else-if="category === 'off-road'">
-					<img :class="cat" src="/assets/img/home/bikes/text_loop_off-road.svg" alt="" loading="lazy" height="108" />
+					<img class="lcl-bikes-head__loop" src="/assets/img/home/bikes/text_loop_off-road.svg" alt="" loading="lazy" height="108" />
 				</div>
 				<div class="lcl-bikes-head__loop-in" v-else>
-					<img :class="cat" src="/assets/img/home/bikes/text_loop_e-bike.svg" alt="" loading="lazy" height="108" />
+					<img
+						class="lcl-bikes-head__loop lcl-bikes-head__loop--reverse"
+						src="/assets/img/home/bikes/text_loop_e-bike.svg"
+						alt=""
+						loading="lazy"
+						height="108"
+					/>
 				</div>
 			</Transition>
 		</div>
@@ -103,7 +97,7 @@ watch(
 		position: absolute;
 		top: 0;
 		left: 0;
-		transition: transform .3s $e-out, opacity .3s $e-out;
+		transition: transform 0.3s $e-out, opacity 0.3s $e-out;
 	}
 	.lcl-bikes-head__loop {
 		max-width: initial;
@@ -118,7 +112,7 @@ watch(
 		transform: translateY(-25%);
 		opacity: 0;
 	}
-    
+
 	.lcl-bikes-head__loop--reverse {
 		animation: loop-txt 20s linear infinite reverse;
 	}
