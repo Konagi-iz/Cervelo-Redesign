@@ -8,10 +8,12 @@ export default defineConfig({
 		vue(),
 		UnFonts({
 			google: {
-				families: [{
-					name: 'Montserrat',
-					styles: 'ital,wght@0,400;0,500;0,600;0,700;1,200;1,400;1,500;1,600;1,700'
-				}],
+				families: [
+					{
+						name: 'Montserrat',
+						styles: 'ital,wght@0,400;0,500;0,600;0,700;1,200;1,400;1,500;1,600;1,700',
+					},
+				],
 			},
 		}),
 	],
@@ -45,7 +47,7 @@ export default defineConfig({
 	css: {
 		preprocessorOptions: {
 			scss: {
-				additionalData: '@use "./src/scss/utills/utills.scss" as *;', // グローバルなscss
+				additionalData: '@use "./src/scss/util/util.scss" as *;', // グローバルなscss
 			},
 		},
 	},
