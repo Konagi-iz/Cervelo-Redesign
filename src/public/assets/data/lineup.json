@@ -1,0 +1,263 @@
+{
+	"lineup": [
+		{
+			"type": "road",
+			"year": 2023,
+			"model": "S5",
+			"component": "R9270 Dura Ace Di2",
+			"price": 2145000
+		},
+		{
+			"type": "road",
+			"year": 2023,
+			"model": "S5",
+			"component": "Red eTap AXS",
+			"price": 2145000
+		},
+		{
+			"type": "road",
+			"year": 2023,
+			"model": "S5",
+			"component": "R8170 Ultegra Di2",
+			"price": 1575000
+		},
+		{
+			"type": "road",
+			"year": 2023,
+			"model": "S5",
+			"component": "Force eTap AXS",
+			"price": 1575000
+		},
+		{
+			"type": "road",
+			"year": 2023,
+			"model": "S5",
+			"component": "frame set",
+			"price": 715000
+		},
+		{
+			"type": "road",
+			"year": 2023,
+			"model": "R5",
+			"component": "R9270 Dura Ace",
+			"price": 1575000
+		},
+		{
+			"type": "road",
+			"year": 2023,
+			"model": "R5",
+			"component": "R8170 Ultegra",
+			"price": 1155000
+		},
+		{
+			"type": "road",
+			"year": 2023,
+			"model": "R5",
+			"component": "Force eTap AXS",
+			"price": 1155000
+		},
+		{
+			"type": "road",
+			"year": 2023,
+			"model": "R5",
+			"component": "frame set",
+			"price": 495000
+		},
+		{
+			"type": "road",
+			"year": 2023,
+			"model": "Soloist",
+			"component": "R8170 Ultegra Di2",
+			"price": 1155000
+		},
+		{
+			"type": "road",
+			"year": 2023,
+			"model": "Soloist",
+			"component": "Force eTap AXS",
+			"price": 1155000
+		},
+		{
+			"type": "road",
+			"year": 2023,
+			"model": "Soloist",
+			"component": "R7170 105 Di2",
+			"price": 715000
+		},
+		{
+			"type": "road",
+			"year": 2023,
+			"model": "Soloist",
+			"component": "Rival eTap AXS",
+			"price": 715000
+		},
+		{
+			"type": "road",
+			"year": 2023,
+			"model": "Soloist",
+			"component": "R7020 105",
+			"price": 495000
+		},
+		{
+			"type": "road",
+			"year": 2023,
+			"model": "Soloist",
+			"component": "frame set",
+			"price": 275000
+		},
+		{
+			"type": "road",
+			"year": 2023,
+			"model": "Caledonia-5",
+			"component": "R9270 Dura Ace",
+			"price": 1575000
+		},
+		{
+			"type": "road",
+			"year": 2023,
+			"model": "Caledonia-5",
+			"component": "Ultegra Di2",
+			"price": 1155000
+		},
+		{
+			"type": "road",
+			"year": 2023,
+			"model": "Caledonia-5",
+			"component": "Force eTap AXS",
+			"price": 1155000
+		},
+		{
+			"type": "road",
+			"year": 2023,
+			"model": "Caledonia-5",
+			"component": "Rival eTap AXS",
+			"price": 715000
+		},
+		{
+			"type": "road",
+			"year": 2023,
+			"model": "Caledonia-5",
+			"component": "frame set",
+			"price": 495000
+		},
+		{
+			"type": "road",
+			"year": 2023,
+			"model": "Caledonia",
+			"component": "Ultegra Di2",
+			"price": 715000
+		},
+		{
+			"type": "road",
+			"year": 2023,
+			"model": "Caledonia",
+			"component": "Rival eTap AXS",
+			"price": 715000
+		},
+		{
+			"type": "road",
+			"year": 2023,
+			"model": "Caledonia",
+			"component": "R7170 105 Di2",
+			"price": 495000
+		},
+		{
+			"type": "road",
+			"year": 2023,
+			"model": "Caledonia",
+			"component": "R7020 105",
+			"price": 385000
+		},
+		{
+			"type": "time-trial",
+			"year": 2023,
+			"model": "P5",
+			"component": "R9270 Dura Ace Di2",
+			"price": 2145000
+		},
+		{
+			"type": "time-trial",
+			"year": 2023,
+			"model": "P5",
+			"component": "Red eTap AXS",
+			"price": 2145000
+		},
+		{
+			"type": "time-trial",
+			"year": 2023,
+			"model": "P5",
+			"component": "R8170 Ultegra Di2",
+			"price": 1575000
+		},
+		{
+			"type": "time-trial",
+			"year": 2023,
+			"model": "P5",
+			"component": "Force eTap AXS",
+			"price": 1575000
+		},
+		{
+			"type": "time-trial",
+			"year": 2023,
+			"model": "P5",
+			"component": "frame set",
+			"price": 715000
+		},
+		{
+			"type": "off-road",
+			"year": 2023,
+			"model": "Aspero-5",
+			"component": "Red eTap AXS",
+			"price": 1155000
+		},
+		{
+			"type": "off-road",
+			"year": 2023,
+			"model": "Aspero-5",
+			"component": "Force eTap AXS",
+			"price": 715000
+		},
+		{
+			"type": "off-road",
+			"year": 2023,
+			"model": "Aspero-5",
+			"component": "Rival eTap AXS",
+			"price": 495000
+		},
+		{
+			"type": "off-road",
+			"year": 2023,
+			"model": "Aspero-5",
+			"component": "frame set",
+			"price": 275000
+		},
+		{
+			"type": "off-road",
+			"year": 2023,
+			"model": "Aspero",
+			"component": "Red eTap AXS",
+			"price": 715000
+		},
+		{
+			"type": "off-road",
+			"year": 2023,
+			"model": "Aspero",
+			"component": "Force eTap AXS",
+			"price": 495000
+		},
+		{
+			"type": "off-road",
+			"year": 2023,
+			"model": "Aspero",
+			"component": "Rival eTap AXS",
+			"price": 385000
+		},
+		{
+			"type": "off-road",
+			"year": 2023,
+			"model": "Aspero",
+			"component": "frame set",
+			"price": 165000
+		}
+	]
+}
