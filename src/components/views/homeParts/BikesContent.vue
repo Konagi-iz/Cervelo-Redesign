@@ -39,7 +39,7 @@ const filteredLineup = computed(() => {
 		<!-- .lcl-bikes-tab -->
 		<ul class="lcl-bikes-list">
 			<TransitionGroup name="list">
-				<li v-for="item in filteredLineup" :key="item.model + item.year" class="lcl-bikes-list__item">
+				<li v-for="item in filteredLineup" :key="item.model + item.component + item.year" class="lcl-bikes-list__item">
 					<img class="lcl-bikes-list__img" :src="`/assets/img/lineup/${item.img}`" :alt="`${item.model} `" loading="lazy" width="267" height="178" />
 					<div class="lcl-bikes-list__cnt">
 						<p class="lcl-bikes-list__year">{{ item.year }}</p>
