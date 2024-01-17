@@ -29,26 +29,7 @@ font
 
 @mixin txt-basic--bold {
 	@include txt-basic;
-	font-weight: 700;
-}
-
-@mixin ttl-display {
-	@include fz(128);
-	font-weight: 400;
-	font-style: italic;
-	line-height: 1.2;
-	@include media_narrow {
-		@include fz(52);
-	}
-}
-
-@mixin ttl-basic {
-	@include fz(72);
-	font-weight: 700;
-	line-height: 2;
-	@include media_narrow {
-		@include fz(29);
-	}
+	font-weight: 600;
 }
 
 /*---------------------------------------------

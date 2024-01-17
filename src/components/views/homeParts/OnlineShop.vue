@@ -3,7 +3,7 @@ import Button from '@/components/parts/Button.vue';
 </script>
 
 <template>
-	<section class="lcl-online">
+	<section class="lcl-online" id="online-shop">
 		<img
 			class="lcl-online__img"
 			src="/assets/img/home/onlineshop/img_01.jpg"
@@ -56,9 +56,7 @@ import Button from '@/components/parts/Button.vue';
 		font-style: italic;
 	}
 	.lcl-online-cnt__txt {
-		@include fz(14);
-		font-weight: 600;
-		line-height: 1.9;
+		@include txt-basic--bold;
 	}
 }
 </style>

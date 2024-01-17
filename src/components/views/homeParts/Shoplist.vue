@@ -3,7 +3,7 @@ import Button from '@/components/parts/Button.vue';
 </script>
 
 <template>
-	<section class="lcl-shoplist">
+	<section class="lcl-shoplist" id="shop-list">
 		<div class="lcl-shoplist-cnt">
 			<div class="lcl-shoplist-cnt__in">
 				<h2 class="lcl-shoplist-cnt__ttl">
@@ -140,9 +140,7 @@ import Button from '@/components/parts/Button.vue';
 	}
 	.lcl-bikes-cnt__txt {
 		color: $c-white;
-		@include fz(14);
-		font-weight: 600;
-		line-height: 1.9;
+		@include txt-basic--bold;
 	}
 
 	.lcl-shoplist-vis {

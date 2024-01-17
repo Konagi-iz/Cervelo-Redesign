@@ -11,7 +11,7 @@ const switchCategory = (cat) => {
 </script>
 
 <template>
-	<section class="lcl-bikes">
+	<section class="lcl-bikes" id="bikes">
 		<BikesHeader :category="currentCategory"></BikesHeader>
 		<BikesContent :currentCategory="currentCategory" @switch-category="switchCategory"></BikesContent>
 	</section>
