@@ -1,6 +1,7 @@
 <script setup>
 import ButtonInner from '@/components/parts/ButtonInner.vue';
 import { ref, computed } from 'vue';
+import axios from 'axios';
 import lineup from '@/assets/data/lineup.json';
 
 const categorys = ref(['road', 'time-trial', 'off-road', 'e-bike']);
@@ -18,7 +19,7 @@ const switchCategory = (cat) => {
 // フィルターされたラインナップを返す
 const filteredLineup = computed(() => {
 	// pickupのみを抽出
-	return lineup.lineup.filter((item) => item.pickup === true);
+	return lineup.filter((item) => item.pickup === true && item.type === currentTab.value);
 });
 </script>
 
@@ -37,15 +38,17 @@ const filteredLineup = computed(() => {
 		</div>
 		<!-- .lcl-bikes-tab -->
 		<ul class="lcl-bikes-list">
-			<li v-for="(item, index) in filteredLineup" :key="index" class="lcl-bikes-list__item">
-				<img class="lcl-bikes-list__img" src="/assets/img/lineup/img_s5.png" alt="" width="267" height="178" />
-				<div class="lcl-bikes-list__cnt">
-					<p class="lcl-bikes-list__year">{{ item.year }}</p>
-					<p class="lcl-bikes-list__model">{{ item.model }}</p>
-					<p class="lcl-bikes-list__component">{{ item.component }}</p>
-					<p class="lcl-bikes-list__price">{{ `¥ ${item.price.toLocaleString()}` }}</p>
-				</div>
-			</li>
+			<TransitionGroup name="list">
+				<li v-for="item in filteredLineup" :key="item.model + item.year" class="lcl-bikes-list__item">
+					<img class="lcl-bikes-list__img" :src="`/assets/img/lineup/${item.img}`" :alt="`${item.model} `" loading="lazy" width="267" height="178" />
+					<div class="lcl-bikes-list__cnt">
+						<p class="lcl-bikes-list__year">{{ item.year }}</p>
+						<p class="lcl-bikes-list__model">{{ item.model }}</p>
+						<p class="lcl-bikes-list__component">{{ item.component }}</p>
+						<p class="lcl-bikes-list__price">{{ `¥ ${item.price.toLocaleString()}` }}</p>
+					</div>
+				</li>
+			</TransitionGroup>
 			<li class="lcl-bikes-list__item lcl-bikes-list__item--btn">
 				<router-link class="lcl-bikes-list__link" :to="{ name: 'bikes' }">
 					<ButtonInner color="white"></ButtonInner>
@@ -131,6 +134,18 @@ const filteredLineup = computed(() => {
 	.lcl-bikes-list__item--btn {
 		background: $c-darkgray;
 	}
+
+	.list-enter-active {
+		transition: opacity 0.5s $e-out;
+	}
+	.list-enter-from,
+	.list-leave-active {
+		opacity: 0;
+	}
+	.list-leave-active {
+		position: absolute;
+	}
+
 	.lcl-bikes-list__link {
 		display: flex;
 		align-items: center;
@@ -139,8 +154,11 @@ const filteredLineup = computed(() => {
 		height: 100%;
 	}
 	.lcl-bikes-list__img {
+		box-sizing: content-box;
 		padding-top: 27px;
 		width: 267px;
+		height: 178px;
+		object-fit: cover;
 	}
 	.lcl-bikes-list__cnt {
 		margin-top: 15px;
