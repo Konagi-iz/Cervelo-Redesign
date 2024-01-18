@@ -13,11 +13,7 @@ const colorConvert = (color) => {
 </script>
 
 <template>
-	<div
-		class="btn"
-		:class="{ 'btn--border': btnStyle === 'border' }"
-		:style="`background: ${colorConvert(color[0])}; border-color: ${colorConvert(color[0])}`"
-	>
+	<div class="btn" :class="{ 'btn--border': btnStyle === 'border' }" :style="`color: ${colorConvert(color[0])}`">
 		<ButtonInner :color="color[1]" :content="content"></ButtonInner>
 	</div>
 </template>
@@ -27,9 +23,13 @@ const colorConvert = (color) => {
 	border-radius: 999px;
 	padding: 9px 24px;
 	width: fit-content;
+	background: currentColor;
+	&:hover .btn-inner__icon {
+		transform: translateX(50%);
+	}
 }
 .btn--border {
-	border: 1px solid transparent;
-	background: transparent !important;
+	border: 1px solid currentColor;
+	background: transparent;
 }
 </style>

@@ -40,17 +40,26 @@ const filteredLineup = computed(() => {
 		<ul class="lcl-bikes-list">
 			<TransitionGroup name="list">
 				<li v-for="item in filteredLineup" :key="item.model + item.component + item.year" class="lcl-bikes-list__item">
-					<img class="lcl-bikes-list__img" :src="`/assets/img/lineup/${item.img}`" :alt="`${item.model} `" loading="lazy" width="267" height="178" />
-					<div class="lcl-bikes-list__cnt">
-						<p class="lcl-bikes-list__year">{{ item.year }}</p>
-						<p class="lcl-bikes-list__model">{{ item.model }}</p>
-						<p class="lcl-bikes-list__component">{{ item.component }}</p>
-						<p class="lcl-bikes-list__price">{{ `¥ ${item.price.toLocaleString()}` }}</p>
-					</div>
+					<a class="lcl-bikes-list__link" href="">
+						<img
+							class="lcl-bikes-list__img"
+							:src="`/assets/img/lineup/${item.img}`"
+							:alt="`${item.model} `"
+							loading="lazy"
+							width="267"
+							height="178"
+						/>
+						<div class="lcl-bikes-list__cnt">
+							<p class="lcl-bikes-list__year">{{ item.year }}</p>
+							<p class="lcl-bikes-list__model">{{ item.model }}</p>
+							<p class="lcl-bikes-list__component">{{ item.component }}</p>
+							<p class="lcl-bikes-list__price">{{ `¥ ${item.price.toLocaleString()}` }}</p>
+						</div>
+					</a>
 				</li>
 			</TransitionGroup>
 			<li class="lcl-bikes-list__item lcl-bikes-list__item--btn">
-				<router-link class="lcl-bikes-list__link" :to="{ name: 'bikes' }">
+				<router-link class="lcl-bikes-list__viewall" :to="{ name: 'bikes' }">
 					<ButtonInner color="white"></ButtonInner>
 				</router-link>
 			</li>
@@ -93,7 +102,7 @@ const filteredLineup = computed(() => {
 		font-weight: 600;
 		line-height: 1.5;
 		font-style: italic;
-		transition: color 0.5s $e-out;
+		transition: color 0.2s ease;
 		&::after {
 			content: '';
 			position: absolute;
@@ -106,6 +115,9 @@ const filteredLineup = computed(() => {
 			background: $c-red;
 			transition: transform 0.5s $e-out;
 			/*---------------- after */
+		}
+		&:hover {
+			color: $c-red;
 		}
 	}
 	.lcl-bikes-tab__btn--active {
@@ -133,10 +145,58 @@ const filteredLineup = computed(() => {
 	}
 	.lcl-bikes-list__item--btn {
 		background: $c-darkgray;
+		transition: opacity 0.3s ease;
+		&:hover {
+			opacity: 0.7;
+		}
+	}
+	.lcl-bikes-list__link {
+		position: relative;
+		display: inline-block;
+		width: 100%;
+		height: 100%;
+		&::before {
+			content: '';
+			z-index: 1;
+			position: absolute;
+			top: 0;
+			left: 0;
+			opacity: 0;
+			width: 100%;
+			height: 100%;
+			background: $c-red;
+			pointer-events: none;
+			transition: opacity 0.3s ease;
+			/*---------------- after */
+		}
+		&::after {
+			z-index: 1;
+			content: 'VIEW DETAIL';
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			opacity: 0;
+			color: $c-white;
+			@include font-en;
+			@include fz(16);
+			font-weight: 600;
+			line-height: 1.2;
+			font-style: italic;
+			pointer-events: none;
+			transition: opacity 0.3s ease;
+			/*---------------- before */
+		}
+		&:hover::before {
+			opacity: 0.9;
+		}
+		&:hover::after {
+			opacity: 1;
+		}
 	}
 
 	.list-enter-active {
-		transition: opacity 0.5s $e-out;
+		transition: opacity 0.3s $e-out;
 	}
 	.list-enter-from,
 	.list-leave-active {
@@ -146,12 +206,21 @@ const filteredLineup = computed(() => {
 		position: absolute;
 	}
 
-	.lcl-bikes-list__link {
+	.lcl-bikes-list__viewall {
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		width: 100%;
 		height: 100%;
+		&:hover .btn-inner__txt {
+			color: $c-white !important;
+		}
+		&:hover .btn-inner__icon {
+			transform: translateX(50%);
+			path {
+				stroke: $c-white;
+			}
+		}
 	}
 	.lcl-bikes-list__img {
 		box-sizing: content-box;

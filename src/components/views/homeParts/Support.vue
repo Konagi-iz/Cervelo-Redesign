@@ -79,6 +79,7 @@ const navs = ref(['オーナーズ\nクラブの登録', '品質保証につい�
 	}
 	.lcl-support-nav__item {
 		position: relative;
+		transition: transform 0.4s $e-out;
 		&:nth-of-type(2) {
 			margin-right: 84px;
 		}
@@ -92,8 +93,14 @@ const navs = ref(['オーナーズ\nクラブの登録', '品質保証につい�
 			height: 100%;
 			background: $c-red;
 			mask: url(/assets/img/home/support/img_01.png) left top / contain;
-
+			transition: transform 0.4s $e-out;
 			/*---------------- after */
+		}
+		&:hover {
+			transform: translate(-10px, -10px);
+		}
+		&:hover::after {
+			transform: translate(15px, 15px);
 		}
 	}
 	.lcl-support-nav__txt {

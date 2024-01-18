@@ -3,7 +3,7 @@ import Button from '@/components/parts/Button.vue';
 </script>
 
 <template>
-	<section class="lcl-shoplist" id="shop-list">
+	<section class="lcl-shoplist" id="shoplist">
 		<div class="lcl-shoplist-cnt">
 			<div class="lcl-shoplist-cnt__in">
 				<h2 class="lcl-shoplist-cnt__ttl">

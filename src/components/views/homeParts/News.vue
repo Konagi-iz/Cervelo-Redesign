@@ -72,6 +72,10 @@ const newsList = ref([
 		align-items: center;
 		gap: 18px;
 		color: $c-white;
+		transition: transform .4s ease-out;
+		&:hover {
+			transform: translateX(2%);
+		}
 	}
 	.lcl-news-list__date {
 		width: 75px;
@@ -88,12 +92,58 @@ const newsList = ref([
 		line-height: 1.2;
 	}
 	.lcl-news__btn {
+		position: relative;
+		overflow: hidden;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		width: 262px;
 		height: 100%;
 		background: $c-white;
+		&::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			transform: translateX(calc(-100% - 52px));
+			width: 100%;
+			height: 100%;
+			background: $c-red;
+			transition: transform 0.7s $e-out;
+			/*---------------- after */
+		}
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			transform: translateX(-100%);
+			clip-path: polygon(0 0, 0% 50%, 0 100%);
+			width: 52px;
+			height: 100%;
+			background: $c-red;
+			transition: transform 0.7s $e-out, clip-path 0.7s $e-out;
+			/*---------------- before */
+		}
+		&:hover::after {
+			transform: translateX(0);
+		}
+		&:hover::before {
+			transform: translateX(262px);
+			clip-path: polygon(0 0, 100% 50%, 0 100%);
+		}
+		&:hover .btn-inner__txt {
+			color: $c-white !important;
+		}
+		&:hover .btn-inner__icon {
+			transform: translateX(50%);
+			path {
+				stroke: $c-white;
+			}
+		}
+	}
+	.btn-inner {
+		z-index: 1;
 	}
 }
 </style>

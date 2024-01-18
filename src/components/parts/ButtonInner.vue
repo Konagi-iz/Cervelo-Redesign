@@ -29,10 +29,15 @@ const colorConvert = (color) => {
 		font-weight: 600;
 		line-height: 1;
 		font-style: italic;
+		transition: color 0.4s ease;
 	}
 	.btn-inner__icon {
 		width: 7px;
 		height: 8px;
+		transition: transform 0.4s ease;
+		path {
+			transition: stroke 0.4s ease;
+		}
 	}
 }
 </style>

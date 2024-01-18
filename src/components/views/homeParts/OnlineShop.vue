@@ -3,7 +3,7 @@ import Button from '@/components/parts/Button.vue';
 </script>
 
 <template>
-	<section class="lcl-online" id="online-shop">
+	<section class="lcl-online" id="onlineshop">
 		<img
 			class="lcl-online__img"
 			src="/assets/img/home/onlineshop/img_01.jpg"

@@ -87,7 +87,14 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 				<a class="lcl-hero-slides__link" href="#">
 					<div class="lcl-hero-slides__bg"></div>
 					<div class="lcl-hero-slides__in">
-						<img class="lcl-hero-slides__bgtxt" :src="`/assets/img/home/fv/bg_txt_${slide.type}.png`" alt="" loading="lazy" width="900" height="579" />
+						<img
+							class="lcl-hero-slides__bgtxt"
+							:src="`/assets/img/home/fv/bg_txt_${slide.type}.png`"
+							alt=""
+							loading="lazy"
+							width="900"
+							height="579"
+						/>
 						<img
 							class="lcl-hero-slides__img"
 							:src="`/assets/img/home/fv/img_bike_0${index + 1}.png`"
@@ -118,14 +125,25 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 		<div class="lcl-hero-foot">
 			<ul class="lcl-hero-nav">
 				<li class="lcl-hero-nav__item" v-for="nav in navs">
-					<a class="lcl-hero-nav__link" :href="`#${nav.replace(' ', '').toLocaleLowerCase()}`">{{ nav }}</a>
+					<a class="lcl-hero-nav__link" v-scroll-to="`#${nav.replace(' ', '').toLocaleLowerCase()}`">{{ nav }}</a>
+					<!-- <a class="lcl-hero-nav__link" v-scroll-to="'bikes'">{{ nav }}</a> -->
 				</li>
 			</ul>
 			<!-- .lcl-hero-nav -->
 			<div class="lcl-hero-scroll">
 				<svg class="lcl-hero-scroll__icon" width="12" height="28" viewBox="0 0 12 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<path fill-rule="evenodd" clip-rule="evenodd" d="M6 5.33965L10.9917 0.5L12 1.68281L6 7.5L2.70212e-07 1.68281L1.00825 0.5L6 5.33965Z" fill="white" />
-					<path fill-rule="evenodd" clip-rule="evenodd" d="M6 15.3397L1.00825 10.5L0 11.6828L6 17.5L12 11.6828L10.9917 10.5L6 15.3397Z" fill="white" />
+					<path
+						fill-rule="evenodd"
+						clip-rule="evenodd"
+						d="M6 5.33965L10.9917 0.5L12 1.68281L6 7.5L2.70212e-07 1.68281L1.00825 0.5L6 5.33965Z"
+						fill="white"
+					/>
+					<path
+						fill-rule="evenodd"
+						clip-rule="evenodd"
+						d="M6 15.3397L1.00825 10.5L0 11.6828L6 17.5L12 11.6828L10.9917 10.5L6 15.3397Z"
+						fill="white"
+					/>
 					<path
 						fill-rule="evenodd"
 						clip-rule="evenodd"
@@ -376,6 +394,7 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 		font-weight: 300;
 		line-height: 1.2;
 		font-style: italic;
+		cursor: pointer;
 		transition: transform 0.3s ease-out;
 		&:hover {
 			transform: translateY(-20%);
