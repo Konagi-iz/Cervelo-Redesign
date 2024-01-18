@@ -72,9 +72,11 @@ const newsList = ref([
 		align-items: center;
 		gap: 18px;
 		color: $c-white;
-		transition: transform .4s ease-out;
-		&:hover {
-			transform: translateX(2%);
+		transition: opacity 0.3s ease;
+		@include media_hover {
+			&:hover {
+				opacity: 0.6;
+			}
 		}
 	}
 	.lcl-news-list__date {
@@ -125,20 +127,22 @@ const newsList = ref([
 			transition: transform 0.7s $e-out, clip-path 0.7s $e-out;
 			/*---------------- before */
 		}
-		&:hover::after {
-			transform: translateX(0);
-		}
-		&:hover::before {
-			transform: translateX(262px);
-			clip-path: polygon(0 0, 100% 50%, 0 100%);
-		}
-		&:hover .btn-inner__txt {
-			color: $c-white !important;
-		}
-		&:hover .btn-inner__icon {
-			transform: translateX(50%);
-			path {
-				stroke: $c-white;
+		@include media_hover {
+			&:hover::after {
+				transform: translateX(0);
+			}
+			&:hover::before {
+				transform: translateX(262px);
+				clip-path: polygon(0 0, 100% 50%, 0 100%);
+			}
+			&:hover .btn-inner__txt {
+				color: $c-white !important;
+			}
+			&:hover .btn-inner__icon {
+				transform: translateX(50%);
+				path {
+					stroke: $c-white;
+				}
 			}
 		}
 	}

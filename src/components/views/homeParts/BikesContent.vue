@@ -116,8 +116,10 @@ const filteredLineup = computed(() => {
 			transition: transform 0.5s $e-out;
 			/*---------------- after */
 		}
-		&:hover {
-			color: $c-red;
+		@include media_hover {
+			&:hover {
+				color: $c-red;
+			}
 		}
 	}
 	.lcl-bikes-tab__btn--active {
@@ -146,14 +148,17 @@ const filteredLineup = computed(() => {
 	.lcl-bikes-list__item--btn {
 		background: $c-darkgray;
 		transition: opacity 0.3s ease;
-		&:hover {
-			opacity: 0.7;
+		@include media_hover {
+			&:hover {
+				opacity: 0.7;
+			}
 		}
 	}
 	.lcl-bikes-list__link {
 		position: relative;
 		display: inline-block;
 		width: 100%;
+		transition: opacity 0.3s ease;
 		height: 100%;
 		&::before {
 			content: '';
@@ -187,16 +192,20 @@ const filteredLineup = computed(() => {
 			transition: opacity 0.3s ease;
 			/*---------------- before */
 		}
-		&:hover::before {
-			opacity: 0.9;
-		}
-		&:hover::after {
-			opacity: 1;
+		@include media_hover {
+			&:hover {
+				opacity: 0.7;
+			}
+			&:hover::before {
+				opacity: 0.5;
+			}
+			&:hover::after {
+				opacity: 1;
+			}
 		}
 	}
-
 	.list-enter-active {
-		transition: opacity 0.3s $e-out;
+		transition: opacity 0.8s $e-out;
 	}
 	.list-enter-from,
 	.list-leave-active {
@@ -212,13 +221,15 @@ const filteredLineup = computed(() => {
 		justify-content: center;
 		width: 100%;
 		height: 100%;
-		&:hover .btn-inner__txt {
-			color: $c-white !important;
-		}
-		&:hover .btn-inner__icon {
-			transform: translateX(50%);
-			path {
-				stroke: $c-white;
+		@include media_hover {
+			&:hover .btn-inner__txt {
+				color: $c-white !important;
+			}
+			&:hover .btn-inner__icon {
+				transform: translateX(50%);
+				path {
+					stroke: $c-white;
+				}
 			}
 		}
 	}

@@ -12,7 +12,7 @@ import Button from '@/components/parts/Button.vue';
 				<img src="/assets/img/home/shoplist/icon_pin.svg" alt="ピンのアイコン" width="106" height="106" />
 				<p class="lcl-bikes-cnt__txt">ご購入はお近くの取り扱い店舗から</p>
 				<router-link :to="{ name: 'shop list' }">
-					<Button :color="['white', 'red']" content="取扱店一覧"></Button>
+					<Button :color="['white', 'red', 'black']" content="取扱店一覧"></Button>
 				</router-link>
 			</div>
 			<!-- .lcl-shoplist-cnt__in -->
@@ -112,17 +112,17 @@ import Button from '@/components/parts/Button.vue';
 		justify-content: center;
 		flex-direction: column;
 		gap: 20px;
-		width: 575px;
+		width: 576px;
 		height: 100%;
 		background: $c-red;
 		&::after {
 			content: '';
 			position: absolute;
 			top: 0;
-			right: 0;
+			right: 1px;
 			transform: translateX(100%);
-			clip-path: polygon(0 0, 100% 0, 0 100%);
-			width: 95px;
+			clip-path: polygon(0 0, 0 100%, 1px 100%, 100% 0);
+			width: 96px;
 			height: 100%;
 			background: $c-red;
 			/*---------------- after */

@@ -92,7 +92,7 @@ const navs = ref(['オーナーズ\nクラブの登録', '品質保証につい�
 			width: 100%;
 			height: 100%;
 			background: $c-red;
-			mask: url(/assets/img/home/support/img_01.png) left top / contain;
+			mask: url(/assets/img/home/support/img_01.png) left top / cover;
 			transition: transform 0.4s $e-out;
 			/*---------------- after */
 		}

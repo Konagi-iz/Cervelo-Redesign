@@ -106,6 +106,14 @@ const snsList = ref(['x', 'instagram', 'facebook']);
 		padding-left: 50px;
 		width: 1000px;
 	}
+	.footer-sns__link {
+		transition: opacity 0.3s ease;
+		@include media_hover {
+			&:hover {
+				opacity: 0.6;
+			}
+		}
+	}
 
 	.footer__in {
 		margin-top: 24px;
@@ -139,8 +147,10 @@ const snsList = ref(['x', 'instagram', 'facebook']);
 		border-left: 1px solid $c-white;
 		height: 233px;
 		transition: background 0.4s ease;
-		&:hover {
-			background: $c-darkgray;
+		@include media_hover {
+			&:hover {
+				background: $c-darkgray;
+			}
 		}
 	}
 	.footer-contact__icon {
@@ -180,6 +190,7 @@ const snsList = ref(['x', 'instagram', 'facebook']);
 	}
 	.footer-nav__item {
 		position: relative;
+		width: fit-content;
 		color: $c-white;
 		@include fz(16);
 		font-weight: 600;
@@ -198,9 +209,11 @@ const snsList = ref(['x', 'instagram', 'facebook']);
 			transition: transform 0.5s $e-out;
 			/*---------------- after */
 		}
-		&:hover::after {
-			transform: scaleX(1);
-			transform-origin: left;
+		@include media_hover {
+			&:hover::after {
+				transform: scaleX(1);
+				transform-origin: left;
+			}
 		}
 	}
 	.footer-nav-child {
@@ -215,8 +228,10 @@ const snsList = ref(['x', 'instagram', 'facebook']);
 		font-weight: 500;
 		line-height: 1.2;
 		transition: opacity 0.4s ease;
-		&:hover {
-			opacity: 0.4;
+		@include media_hover {
+			&:hover {
+				opacity: 0.4;
+			}
 		}
 	}
 
@@ -229,9 +244,11 @@ const snsList = ref(['x', 'instagram', 'facebook']);
 		color: $c-white;
 		@include fz(10);
 		line-height: 1.2;
-		transition: opacity .3s ease;
-		&:hover {
-			opacity: .5;
+		transition: opacity 0.3s ease;
+		@include media_hover {
+			&:hover {
+				opacity: 0.5;
+			}
 		}
 	}
 

@@ -20,13 +20,30 @@ const navChilds = ref([
 		items: ['Rouvida'],
 	},
 ]);
+
+/* スクロールしたらヘッダーが小さくなる ------------ */
+window.addEventListener('scroll', () => {
+	headerCompact();
+});
+
+function headerCompact() {
+	const h = window.innerHeight;
+	const scroll = window.scrollY;
+	const header = document.querySelector('.header');
+	if (scroll > h) {
+		header.classList.add('header--scrolled');
+	} else {
+		header.classList.remove('header--scrolled');
+	}
+}
 </script>
 
 <template>
 	<header class="header">
 		<a class="header__logo-wrp" href="../../index.html">
 			<h1 class="header__ttl">
-				<img class="header__logo" src="/assets/img/logo.svg" alt="Cervelo" />
+				<img class="header__logo" src="/assets/img/logo.svg" alt="Cervelo" width="90" height="14" />
+				<img class="header__logo--mini" src="/assets/img/logo_mini.svg" alt="Cervelo" width="22" height="20" />
 			</h1>
 		</a>
 		<nav class="nav">
@@ -67,26 +84,40 @@ const navChilds = ref([
 	top: 0;
 	left: 0;
 	display: flex;
-	align-items: center;
 	width: fit-content;
 	height: 64px;
-	background: $c-red;
 	.header__logo-wrp {
+		position: relative;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		width: 190px;
 		height: 100%;
 		background: $c-red;
+		transition: width .5s $e-out;
 	}
 	.header__logo {
+		translate: 0 0;
 		width: 90px;
+		transition: opacity .4s $e-out, translate .4s $e-out;
+	}
+	.header__logo--mini {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		translate: 20px 0;
+		opacity: 0;
+		width: 22px;
+		transition: opacity .4s $e-out, translate .4s $e-out;
 	}
 
 	/* nav ------------ */
 	.nav {
 		padding-inline: 50px;
 		height: 100%;
+		background: $c-red;
+		transition: background .4s $e-out;
 	}
 	.nav-list {
 		display: flex;
@@ -97,12 +128,30 @@ const navChilds = ref([
 	.nav-list__item {
 		position: relative;
 		height: 100%;
+		&::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			transform: scaleY(0);
+			transform-origin: bottom;
+			width: 100%;
+			height: 4px;
+			background: $c-white;
+			transition: transform 0.3s $e-inOut;
+			/*---------------- after */
+		}
 		&:has(.nav-child):hover {
 			@include media_hover {
 				.nav-child {
 					opacity: 1;
 					visibility: visible;
 				}
+			}
+		}
+		@include media_hover {
+			&:hover::after {
+				transform: scaleY(1);
 			}
 		}
 	}
@@ -116,27 +165,12 @@ const navChilds = ref([
 		@include fz(12);
 		font-weight: 600;
 		font-style: italic;
-		&:hover::after {
-			transform: scaleX(1);
-			transform-origin: left;
-		}
-		&::after {
-			content: '';
-			position: absolute;
-			bottom: 0;
-			left: 0;
-			transform: scaleX(0);
-			transform-origin: right;
-			width: 100%;
-			height: 4px;
-			background: $c-white;
-			transition: transform .3s $e-inOut;
-			/*---------------- after */
-		}
+		transition: color .4s $e-out;
 	}
 
 	/* mega drop menu ------------ */
 	.nav-child {
+		z-index: -1;
 		position: absolute;
 		bottom: 0;
 		left: -50px;
@@ -165,14 +199,17 @@ const navChilds = ref([
 	.nav-child-list__item {
 	}
 	.nav-child-list__link {
+		display: block;
 		@include font-en;
 		@include fz(14);
 		font-weight: 500;
 		line-height: 1.3;
 		white-space: nowrap;
-		transition: color .15s ease-out;
-		&:hover {
-			color: $c-red;
+		transition: color 0.15s ease-out;
+		@include media_hover {
+			&:hover {
+				color: $c-red;
+			}
 		}
 	}
 	.nav-child-list__link--ttl {
@@ -180,6 +217,33 @@ const navChilds = ref([
 		font-weight: 700;
 		line-height: 1.5;
 		font-style: italic;
+	}
+}
+
+.header--scrolled {
+	.header__logo-wrp {
+		width: 118px;
+	}
+	.header__logo {
+		translate: -20px 0;
+		opacity: 0;
+	}
+	.header__logo--mini {
+		translate: 0 0;
+		opacity: 1;
+	}
+
+	.nav {
+		background: $c-white;
+	}
+	.nav-list__item {
+		&::after {
+			background: $c-red;
+	/*---------------- after */
+}
+	}
+	.nav-list__link {
+		color: $c-black;
 	}
 }
 </style>

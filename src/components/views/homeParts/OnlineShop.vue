@@ -17,7 +17,7 @@ import Button from '@/components/parts/Button.vue';
 				<h2 class="lcl-online-cnt__ttl">ONLINE SHOP</h2>
 				<p class="lcl-online-cnt__txt">純正アクセサリーやグッズなど</p>
 				<a href="">
-					<Button :color="['white', 'white']" btnStyle="border"></Button>
+					<Button :color="['white', 'white', 'black']" btnStyle="border"></Button>
 				</a>
 			</div>
 		</div>
@@ -27,19 +27,32 @@ import Button from '@/components/parts/Button.vue';
 <style lang="scss">
 .lcl-online {
 	display: flex;
-  margin-top: 120px;
+	margin-top: 120px;
 	margin-inline: auto;
 	width: 1000px;
 	.lcl-online__img {
 		width: 529px;
 	}
 	.lcl-online-cnt {
+		position: relative;
 		flex: 1;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		gap: 20px;
 		background: $c-darkgray;
+		&::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 1px;
+			transform: translateX(-100%);
+			clip-path: polygon(58px 0, 0 100%, 100% 100%, 100% 0);
+			width: 59px;
+			height: 100%;
+			background: $c-darkgray;
+			/*---------------- after */
+		}
 	}
 	.lcl-online-cnt__in {
 		display: flex;

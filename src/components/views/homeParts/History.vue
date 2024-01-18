@@ -52,7 +52,7 @@ import Button from '@/components/parts/Button.vue';
 					高級バイクブランド
 				</p>
 				<router-link :to="{ name: 'history' }">
-					<Button :color="['white', 'white']" btnStyle="border"></Button>
+					<Button :color="['white', 'white', 'black']" btnStyle="border"></Button>
 				</router-link>
 			</div>
 			<!-- .lcl-history-cnt -->

@@ -7,7 +7,15 @@ const props = defineProps({
 <template>
 	<div class="lcl-bikes-head">
 		<Transition name="bg">
-			<img class="lcl-bikes-head__bg" v-if="category === 'road'" src="/assets/img/home/bikes/img_bg_road.jpg" alt="" loading="lazy" width="1300" height="355" />
+			<img
+				class="lcl-bikes-head__bg"
+				v-if="category === 'road'"
+				src="/assets/img/home/bikes/img_bg_road.jpg"
+				alt=""
+				loading="lazy"
+				width="1300"
+				height="355"
+			/>
 			<img
 				class="lcl-bikes-head__bg"
 				v-else-if="category === 'time-trial'"
@@ -26,21 +34,33 @@ const props = defineProps({
 				width="1300"
 				height="355"
 			/>
-			<img class="lcl-bikes-head__bg" v-else src="/assets/img/home/bikes/img_bg_e-bike.jpg" alt="" loading="lazy" width="1300" height="355" />
+			<img
+				class="lcl-bikes-head__bg"
+				v-else
+				src="/assets/img/home/bikes/img_bg_e-bike.jpg"
+				alt=""
+				loading="lazy"
+				width="1300"
+				height="355"
+			/>
 		</Transition>
 		<!-- .lcl-bikes-head__bg -->
 		<div class="lcl-bikes-head__loop-wrp">
 			<Transition name="loop">
 				<div class="lcl-bikes-head__loop-in" v-if="category === 'road'">
 					<img class="lcl-bikes-head__loop" src="/assets/img/home/bikes/text_loop_road.svg" alt="" loading="lazy" height="108" />
+					<img class="lcl-bikes-head__loop" src="/assets/img/home/bikes/text_loop_road.svg" alt="" loading="lazy" height="108" />
 				</div>
 				<div class="lcl-bikes-head__loop-in" v-else-if="category === 'time-trial'">
+					<img class="lcl-bikes-head__loop" src="/assets/img/home/bikes/text_loop_time-trial.svg" alt="" loading="lazy" height="108" />
 					<img class="lcl-bikes-head__loop" src="/assets/img/home/bikes/text_loop_time-trial.svg" alt="" loading="lazy" height="108" />
 				</div>
 				<div class="lcl-bikes-head__loop-in" v-else-if="category === 'off-road'">
 					<img class="lcl-bikes-head__loop" src="/assets/img/home/bikes/text_loop_off-road.svg" alt="" loading="lazy" height="108" />
+					<img class="lcl-bikes-head__loop" src="/assets/img/home/bikes/text_loop_off-road.svg" alt="" loading="lazy" height="108" />
 				</div>
 				<div class="lcl-bikes-head__loop-in" v-else>
+					<img class="lcl-bikes-head__loop" src="/assets/img/home/bikes/text_loop_e-bike.svg" alt="" loading="lazy" height="108" />
 					<img class="lcl-bikes-head__loop" src="/assets/img/home/bikes/text_loop_e-bike.svg" alt="" loading="lazy" height="108" />
 				</div>
 			</Transition>
@@ -85,12 +105,14 @@ const props = defineProps({
 		position: absolute;
 		top: 0;
 		left: 0;
+		display: flex;
+		gap: 24px;
 		transition: transform 0.3s $e-out, opacity 0.3s $e-out;
 	}
 	.lcl-bikes-head__loop {
 		max-width: initial;
 		height: 100%;
-		animation: loop-txt 20s linear infinite;
+		animation: loop-txt 20s linear infinite reverse;
 	}
 	.loop-enter-from {
 		transform: translateY(25%);
@@ -124,8 +146,8 @@ const props = defineProps({
 	0% {
 		transform: translateX(0);
 	}
-	0% {
-		transform: translateX(-50%);
+	100% {
+		transform: translateX(calc(-50% - 12px));
 	}
 }
 </style>
