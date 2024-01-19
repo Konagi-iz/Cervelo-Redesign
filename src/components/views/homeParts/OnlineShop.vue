@@ -27,7 +27,7 @@ import Button from '@/components/parts/Button.vue';
 <style lang="scss">
 .lcl-online {
 	display: flex;
-	margin-top: 120px;
+	margin-top: 190px;
 	margin-inline: auto;
 	width: 1000px;
 	.lcl-online__img {

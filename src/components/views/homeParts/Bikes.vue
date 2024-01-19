@@ -19,6 +19,6 @@ const switchCategory = (cat) => {
 
 <style lang="scss">
 .lcl-bikes {
-	padding-bottom: 100px;
+	padding-bottom: 190px;
 }
 </style>

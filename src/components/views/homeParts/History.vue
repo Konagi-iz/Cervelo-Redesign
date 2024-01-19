@@ -65,7 +65,7 @@ import Button from '@/components/parts/Button.vue';
 <style lang="scss">
 .lcl-history {
 	position: relative;
-	margin-top: 120px;
+	margin-top: 190px;
 	width: 100%;
 	height: 484px;
 	background: linear-gradient(278deg, rgba(0, 0, 0, 0.95) 50.36%, rgba(0, 0, 0, 0) 100%);

@@ -30,7 +30,7 @@ const navs = ref(['オーナーズ\nクラブの登録', '品質保証につい�
 <style lang="scss">
 .lcl-support {
 	position: relative;
-	margin-top: 120px;
+	margin-top: 190px;
 	width: 1000px;
 	margin-inline: auto;
 	.lcl-support-ttl {
