@@ -363,7 +363,7 @@
 		"img": "P_R8170 Ultegra Di2_23-24.webp",
 		"type": "time-trial",
 		"year": "2023-2024",
-		"model": "P",
+		"model": "P-Series",
 		"component": "R8170 Ultegra Di2",
 		"price": 1155000,
 		"pickup": true
@@ -372,7 +372,7 @@
 		"img": "P_R8020 Ultegra_23-24.webp",
 		"type": "time-trial",
 		"year": "2023-2024",
-		"model": "P",
+		"model": "P-Series",
 		"component": "R8020 Ultegra",
 		"price": 748000,
 		"pickup": true
@@ -381,7 +381,7 @@
 		"img": "P_R7020 105_23-24.webp",
 		"type": "time-trial",
 		"year": "2023-2024",
-		"model": "P",
+		"model": "P-Series",
 		"component": "R7020 105",
 		"price": 594000,
 		"pickup": true
@@ -390,7 +390,7 @@
 		"img": "P_Frame set_23-24.webp",
 		"type": "time-trial",
 		"year": "2023-2024",
-		"model": "P",
+		"model": "P-Series",
 		"component": "Frame set",
 		"price": 462000,
 		"pickup": true

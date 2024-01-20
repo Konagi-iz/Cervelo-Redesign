@@ -5,7 +5,7 @@ const snsList = ref(['x', 'instagram', 'facebook']);
 </script>
 
 <template>
-	<footer class="footer">
+	<footer id="footer">
 		<div class="footer-sns">
 			<div class="footer-sns__in">
 				<a v-for="(item, index) in snsList" :key="index" class="footer-sns__link" href="">
@@ -61,17 +61,19 @@ const snsList = ref(['x', 'instagram', 'facebook']);
 						</div>
 					</div>
 					<!-- .footer-nav__wrp -->
-					<div class="footer-nav__wrp">
-						<router-link class="footer-nav__item" :to="{ name: 'history' }">HISTORY</router-link>
-						<router-link class="footer-nav__item" :to="{ name: 'shop list' }">SHOP LIST</router-link>
-						<a class="footer-nav__item" href="">ONLINE SHOP</a>
+					<div class="footer-nav__wrp-sp">
+						<div class="footer-nav__wrp">
+							<router-link class="footer-nav__item" :to="{ name: 'history' }">HISTORY</router-link>
+							<router-link class="footer-nav__item" :to="{ name: 'shop list' }">SHOP LIST</router-link>
+							<a class="footer-nav__item" href="">ONLINE SHOP</a>
+						</div>
+						<!-- .footer-nav__wrp -->
+						<div class="footer-nav__wrp">
+							<router-link class="footer-nav__item" :to="{ name: 'support' }">SUPPORT</router-link>
+							<router-link class="footer-nav__item" :to="{ name: 'news' }">NEWS</router-link>
+						</div>
+						<!-- .footer-nav__wrp -->
 					</div>
-					<!-- .footer-nav__wrp -->
-					<div class="footer-nav__wrp">
-						<router-link class="footer-nav__item" :to="{ name: 'support' }">SUPPORT</router-link>
-						<router-link class="footer-nav__item" :to="{ name: 'news' }">NEWS</router-link>
-					</div>
-					<!-- .footer-nav__wrp -->
 				</div>
 				<!-- .footer-nav__pages -->
 				<div class="footer-nav__common">
@@ -91,13 +93,20 @@ const snsList = ref(['x', 'instagram', 'facebook']);
 </template>
 
 <style lang="scss">
-.footer {
+#footer {
 	padding-bottom: 22px;
 	width: 100%;
 	background: #0d0d0d;
+	@include media_narrow {
+		padding-bottom: vw(12);
+	}
 	.footer-sns {
-		border-bottom: 1px solid $c-white;
+		border-bottom: 1px solid $c-gray;
 		padding-block: 50px 51px;
+		@include media_narrow {
+			border-bottom-width: vw(1);
+			padding-block: vw(40) vw(41);
+		}
 	}
 	.footer-sns__in {
 		display: flex;
@@ -105,6 +114,11 @@ const snsList = ref(['x', 'instagram', 'facebook']);
 		margin-inline: auto;
 		padding-left: 50px;
 		width: 1000px;
+		@include media_narrow {
+			gap: vw(36);
+			padding-left: vw(15);
+			width: 100%;
+		}
 	}
 	.footer-sns__link {
 		transition: opacity 0.3s ease;
@@ -114,18 +128,38 @@ const snsList = ref(['x', 'instagram', 'facebook']);
 			}
 		}
 	}
+	.footer-sns__icon {
+		@include media_narrow {
+			width: vw(24);
+			height: vw(24);
+		}
+	}
 
+	/* contact ------------ */
 	.footer__in {
 		margin-top: 24px;
-		margin-inline: auto;
-		border-right: 1px solid $c-white;
+		border-right: 1px solid $c-gray;
 		width: 1000px;
+		@include media_wide {
+			margin-inline: auto;
+		}
+		@include media_narrow {
+			margin-top: vw(20);
+			border-right-width: vw(1);
+			width: calc(100% - vw(15));
+		}
 	}
 	.footer-contact {
 		position: relative;
 		display: flex;
-		border-bottom: 1px solid $c-white;
+		border-bottom: 1px solid $c-gray;
 		padding-bottom: 24px;
+		@include media_narrow {
+			flex-direction: column;
+			border-bottom-width: vw(1);
+			padding-bottom: vw(20);
+			padding-left: vw(15);
+		}
 		&::after {
 			content: '';
 			position: absolute;
@@ -134,19 +168,41 @@ const snsList = ref(['x', 'instagram', 'facebook']);
 			transform: translateX(-100%);
 			width: calc((100vw - 100%) / 2);
 			height: 1px;
-			background: $c-white;
+			background: $c-gray;
+			@include media_narrow {
+				display: none;
+			}
 			/*---------------- after */
 		}
 	}
 	.footer-contact__link {
 		display: flex;
 		align-items: center;
-		justify-content: center;
 		gap: 24px;
-		flex: 1;
-		border-left: 1px solid $c-white;
+		border-left: 1px solid $c-gray;
 		height: 233px;
 		transition: background 0.4s ease;
+		@include media_wide {
+			justify-content: center;
+			flex: 1;
+		}
+		@include media_narrow {
+			position: relative;
+			gap: vw(24);
+			padding-left: vw(65);
+			height: vw(93);
+			&:nth-of-type(1) ::after {
+				content: '';
+				position: absolute;
+				bottom: 0;
+				left: 50%;
+				transform: translateX(-50%);
+				width: calc(100% - vw(20));
+				height: vw(1);
+				background: $c-gray;
+				/*---------------- after */
+			}
+		}
 		@include media_hover {
 			&:hover {
 				background: $c-darkgray;
@@ -155,6 +211,10 @@ const snsList = ref(['x', 'instagram', 'facebook']);
 	}
 	.footer-contact__icon {
 		width: 24px;
+		height: auto;
+		@include media_narrow {
+			width: vw(24);
+		}
 	}
 	.footer-contact__txt {
 		display: flex;
@@ -174,19 +234,40 @@ const snsList = ref(['x', 'instagram', 'facebook']);
 		line-height: 1.5;
 	}
 
+	/* nav ------------ */
 	.footer-nav {
 		display: flex;
 		gap: 416px;
 		margin-top: 97px;
+		@include media_narrow {
+			flex-direction: column;
+			gap: vw(100);
+			margin-top: vw(75);
+			padding-left: vw(15);
+		}
 	}
 	.footer-nav__pages {
 		display: flex;
 		gap: 60px;
+		@include media_narrow {
+			gap: vw(60);
+		}
+	}
+	.footer-nav__wrp-sp {
+		display: flex;
+		gap: 60px;
+		@include media_narrow {
+			flex-direction: column;
+			gap: vw(20);
+		}
 	}
 	.footer-nav__wrp {
 		display: flex;
 		flex-direction: column;
 		gap: 16px;
+		@include media_narrow {
+			gap: vw(24);
+		}
 	}
 	.footer-nav__item {
 		position: relative;
@@ -196,6 +277,10 @@ const snsList = ref(['x', 'instagram', 'facebook']);
 		font-weight: 600;
 		line-height: 1.2;
 		font-style: italic;
+		@include media_narrow {
+			@include fz(22);
+			letter-spacing: 0.05em;
+		}
 		&::after {
 			content: '';
 			position: absolute;
@@ -203,7 +288,7 @@ const snsList = ref(['x', 'instagram', 'facebook']);
 			left: 0;
 			width: 100%;
 			height: 1px;
-			background: $c-white;
+			background: $c-gray;
 			transform: scaleX(0);
 			transform-origin: right;
 			transition: transform 0.5s $e-out;
@@ -220,6 +305,9 @@ const snsList = ref(['x', 'instagram', 'facebook']);
 		display: flex;
 		flex-direction: column;
 		gap: 8px;
+		@include media_narrow {
+			gap: vw(8);
+		}
 	}
 	.footer-nav-child__item {
 		color: $c-white;
@@ -228,6 +316,9 @@ const snsList = ref(['x', 'instagram', 'facebook']);
 		font-weight: 500;
 		line-height: 1.2;
 		transition: opacity 0.4s ease;
+		@include media_narrow {
+			@include fz(14);
+		}
 		@include media_hover {
 			&:hover {
 				opacity: 0.4;
@@ -239,6 +330,9 @@ const snsList = ref(['x', 'instagram', 'facebook']);
 		display: flex;
 		flex-direction: column;
 		gap: 16px;
+		@include media_narrow {
+			gap: vw(16);
+		}
 	}
 	.footer-nav__link {
 		color: $c-white;
@@ -257,15 +351,26 @@ const snsList = ref(['x', 'instagram', 'facebook']);
 		flex-direction: column;
 		gap: 22px;
 		margin-top: 123px;
+		@include media_narrow {
+			gap: vw(10);
+			margin-top: vw(38);
+			padding-left: vw(15);
+		}
 	}
 	.footer-btm__logo {
 		width: 842px;
+		@include media_narrow {
+			width: vw(325);
+		}
 	}
 	.footer-btm__copyright {
 		color: $c-white;
 		@include font-en;
 		@include fz(12);
 		line-height: 1.2;
+		@include media_narrow {
+			@include fz(9);
+		}
 	}
 }
 </style>

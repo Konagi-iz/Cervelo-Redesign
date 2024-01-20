@@ -4,15 +4,29 @@ import Button from '@/components/parts/Button.vue';
 
 <template>
 	<section class="lcl-shoplist" id="shoplist">
-		<div class="lcl-shoplist-cnt">
-			<div class="lcl-shoplist-cnt__in">
+		<div class="lcl-shoplist__in">
+			<div class="lcl-shoplist-cnt">
 				<h2 class="lcl-shoplist-cnt__ttl">
-					<img class="lcl-shoplist-cnt__img" src="/assets/img/home/shoplist/txt_ttl.svg" alt="SHOP LIST" width="503" height="318" />
+					<img
+						class="lcl-shoplist-cnt__img"
+						src="/assets/img/home/shoplist/txt_ttl.svg"
+						alt="SHOP LIST"
+						loading="lazy"
+						width="503"
+						height="318"
+					/>
 				</h2>
-				<img src="/assets/img/home/shoplist/icon_pin.svg" alt="ピンのアイコン" width="106" height="106" />
+				<img
+					class="lcl-shoplist-cnt__icon"
+					src="/assets/img/home/shoplist/icon_pin.svg"
+					alt="ピンのアイコン"
+					loading="lazy"
+					width="106"
+					height="106"
+				/>
 				<p class="lcl-bikes-cnt__txt">ご購入はお近くの取り扱い店舗から</p>
 				<router-link :to="{ name: 'shop list' }">
-					<Button :color="['white', 'red', 'black']" content="取扱店一覧"></Button>
+					<Button :color="['white', 'red', 'black']" content="SHOP LIST"></Button>
 				</router-link>
 			</div>
 			<!-- .lcl-shoplist-cnt__in -->
@@ -83,8 +97,10 @@ import Button from '@/components/parts/Button.vue';
 <style lang="scss">
 .lcl-shoplist {
 	position: relative;
-	height: 536px;
 	background: $c-lightgray;
+	@include media_wide {
+		height: 536px;
+	}
 	&::after {
 		content: '';
 		position: absolute;
@@ -93,16 +109,26 @@ import Button from '@/components/parts/Button.vue';
 		width: calc((100% - 1300px) / 2);
 		height: 100%;
 		background: $c-red;
+		@include media_narrow {
+			display: none;
+		}
 		/*---------------- after */
 	}
 
-	.lcl-shoplist-cnt {
+	.lcl-shoplist__in {
 		position: relative;
 		margin-inline: auto;
 		width: 1300px;
-		height: 100%;
+		@include media_wide {
+			height: 100%;
+		}
+		@include media_narrow {
+			display: flex;
+			flex-direction: column-reverse;
+			width: 100%;
+		}
 	}
-	.lcl-shoplist-cnt__in {
+	.lcl-shoplist-cnt {
 		z-index: 1;
 		position: absolute;
 		top: 0;
@@ -115,16 +141,32 @@ import Button from '@/components/parts/Button.vue';
 		width: 576px;
 		height: 100%;
 		background: $c-red;
+		@include media_narrow {
+			position: relative;
+			gap: vw(16);
+			width: 100%;
+			height: vw(348);
+		}
 		&::after {
 			content: '';
 			position: absolute;
 			top: 0;
-			right: 1px;
-			transform: translateX(100%);
 			clip-path: polygon(0 0, 0 100%, 1px 100%, 100% 0);
 			width: 96px;
 			height: 100%;
 			background: $c-red;
+			@include media_wide {
+				right: 1px;
+				transform: translateX(100%);
+			}
+			@include media_narrow {
+				top: vw(1);
+				left: 0;
+				transform: translateY(-100%);
+				clip-path: polygon(0 vw(42), 0 100%, 100% 100%, 100% 0);
+				width: 100%;
+				height: vw(43);
+			}
 			/*---------------- after */
 		}
 	}
@@ -137,6 +179,15 @@ import Button from '@/components/parts/Button.vue';
 	}
 	.lcl-shoplist-cnt__img {
 		max-width: initial;
+		@include media_narrow {
+			width: vw(425);
+		}
+	}
+	.lcl-shoplist-cnt__icon {
+		@include media_narrow {
+			width: vw(106);
+			height: vw(106);
+		}
 	}
 	.lcl-bikes-cnt__txt {
 		color: $c-white;
@@ -145,16 +196,27 @@ import Button from '@/components/parts/Button.vue';
 
 	.lcl-shoplist-vis {
 		position: relative;
-		margin-left: calc(1300px - 724px);
 		width: min(724px, 100%);
 		background: url(/assets/img/bg/bg_grid.png) repeat left top / 93px;
+		@include media_wide {
+			margin-left: calc(1300px - 724px);
+		}
+		@include media_narrow {
+			padding-top: vw(43);
+			width: 100%;
+			background-size: vw(93);
+		}
 	}
 	.lcl-shoplist-vis__img {
 	}
 	.lcl-shoplist-vis__icons {
 		position: absolute;
-		top: 0;
+		bottom: 0;
 		left: 0;
+		@include media_narrow {
+			width: 100%;
+			height: auto;
+		}
 	}
 }
 </style>

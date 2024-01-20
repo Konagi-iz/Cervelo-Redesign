@@ -1,9 +1,28 @@
 <script setup>
 import 'destyle.css';
-import '@/scss/_base.scss';
+import '@/scss/base.scss';
+import '@/scss/nwclasses.scss';
 import Header from '@/components/parts/Header.vue';
 import Footer from '@/components/parts/Footer.vue';
 import { RouterView } from 'vue-router';
+
+let w = window.innerWidth;
+
+/* Change root font-size ------------ */
+function changeRootFontSize() {
+	if (w <= 677) {
+		document.documentElement.style.setProperty('--fz', (10 / 375) * w + 'px');
+	} else {
+		document.documentElement.style.setProperty('--fz', '10px');
+	}
+}
+
+changeRootFontSize();
+
+window.addEventListener('resize', () => {
+	w = window.innerWidth;
+	changeRootFontSize();
+});
 </script>
 
 <template>
@@ -16,6 +35,8 @@ import { RouterView } from 'vue-router';
 
 <style lang="scss">
 .wrapper {
-	min-width: 1024px;
+	@include media_wide {
+		min-width: 1024px;
+	}
 }
 </style>

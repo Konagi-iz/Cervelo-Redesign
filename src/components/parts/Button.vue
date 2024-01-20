@@ -2,7 +2,7 @@
 import ButtonInner from './ButtonInner.vue';
 
 const props = defineProps({
-	content: { default: 'VIEW ALL' },
+	content: { default: 'VIEW MORE' },
 	color: Array,
 	btnStyle: String,
 });
@@ -24,11 +24,14 @@ const colorConvert = (color) => {
 
 <style lang="scss">
 .btn {
-	border-radius: 999px;
-	padding: 9px 24px;
+	border-radius: 9999px;
+	padding: 12px 28px;
 	width: fit-content;
 	background: var(--color-btn);
 	transition: background 0.3s ease-out;
+	@include media_narrow {
+		padding: vw(16) vw(30);
+	}
 	@include media_hover {
 		&:hover {
 			background: var(--color-hover);
@@ -45,9 +48,12 @@ const colorConvert = (color) => {
 	}
 }
 .btn--border {
-	border: 1px solid var(--color-btn);
+	border: 2px solid var(--color-btn);
+	background: transparent;
+	@include media_narrow {
+		border-width: vw(2);
+	}
 	@include media_hover {
-		background: transparent;
 		&:hover {
 			background: var(--color-btn);
 		}

@@ -68,7 +68,7 @@ const props = defineProps({
 		<!-- .lcl-bikes-head__loop -->
 		<div class="lcl-bikes-ttl">
 			<h2 class="lcl-bikes-ttl__main">BIKES</h2>
-			<p class="lcl-bikes-ttl__sub">肉体的な試練を超えたところに、私たちを駆り立てるものがある。</p>
+			<p class="lcl-bikes-ttl__sub">肉体的な試練を<br class="dn-w" />超えたところに、<br class="dn-w" />私たちを駆り立てるものがある。</p>
 		</div>
 	</div>
 </template>
@@ -78,6 +78,9 @@ const props = defineProps({
 	position: relative;
 	width: 100%;
 	height: 355px;
+	@include media_narrow {
+		height: vw(250);
+	}
 	.lcl-bikes-head__bg {
 		z-index: -1;
 		position: absolute;
@@ -100,19 +103,26 @@ const props = defineProps({
 		overflow: hidden;
 		width: 100%;
 		height: 120px;
+		@include media_narrow {
+			top: vw(64);
+			height: vw(75);
+		}
 	}
 	.lcl-bikes-head__loop-in {
 		position: absolute;
 		top: 0;
 		left: 0;
 		display: flex;
-		gap: 24px;
+		height: 100%;
 		transition: transform 0.3s $e-out, opacity 0.3s $e-out;
+		animation: loop-txt 20s linear infinite reverse;
+		@include media_narrow {
+			animation: loop-txt 25s linear infinite reverse;
+		}
 	}
 	.lcl-bikes-head__loop {
 		max-width: initial;
 		height: 100%;
-		animation: loop-txt 20s linear infinite reverse;
 	}
 	.loop-enter-from {
 		transform: translateY(25%);
@@ -124,10 +134,20 @@ const props = defineProps({
 	}
 
 	.lcl-bikes-ttl {
+		display: flex;
+		flex-direction: column;
 		width: 1000px;
 		padding-top: 98px;
 		margin-inline: auto;
 		color: $c-white;
+		@include media_narrow {
+			align-items: center;
+			flex-direction: row;
+			gap: vw(12);
+			width: 100%;
+			padding-top: vw(78);
+			padding-left: vw(26);
+		}
 	}
 	.lcl-bikes-ttl__main {
 		@include font-en;
@@ -135,11 +155,19 @@ const props = defineProps({
 		font-weight: 600;
 		line-height: 1;
 		font-style: italic;
+		@include media_narrow {
+			@include fz(40);
+		}
 	}
 	.lcl-bikes-ttl__sub {
 		@include fz(12);
 		font-weight: 600;
 		line-height: 1.9;
+		@include media_narrow {
+			@include fz(10);
+			line-height: 1.7;
+			letter-spacing: 0.07em;
+		}
 	}
 }
 @keyframes loop-txt {
@@ -147,7 +175,7 @@ const props = defineProps({
 		transform: translateX(0);
 	}
 	100% {
-		transform: translateX(calc(-50% - 12px));
+		transform: translateX(-50%);
 	}
 }
 </style>

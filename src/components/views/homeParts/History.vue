@@ -65,10 +65,13 @@ import Button from '@/components/parts/Button.vue';
 <style lang="scss">
 .lcl-history {
 	position: relative;
-	margin-top: 190px;
 	width: 100%;
-	height: 484px;
 	background: linear-gradient(278deg, rgba(0, 0, 0, 0.95) 50.36%, rgba(0, 0, 0, 0) 100%);
+	height: 484px;
+	@include media_narrow {
+		height: vw(682);
+		background: linear-gradient(17deg, #000 50.36%, rgba(0, 0, 0, 0) 100%);
+	}
 	&::after {
 		content: '';
 		position: absolute;
@@ -78,6 +81,9 @@ import Button from '@/components/parts/Button.vue';
 		width: calc((100% - 1300px) / 2);
 		height: 100%;
 		background: $c-black;
+		@include media_narrow {
+			display: none;
+		}
 		/*---------------- after */
 	}
 	.lcl-history-loop {
@@ -93,12 +99,15 @@ import Button from '@/components/parts/Button.vue';
 		width: fit-content;
 		animation: loop 50s linear infinite;
 		&:nth-of-type(2) {
-      animation-direction: reverse;
+			animation-direction: reverse;
 		}
 	}
 	.lcl-history-loop__img {
 		max-width: initial;
 		height: 242px;
+		@include media_narrow {
+			height: vw(190);
+		}
 	}
 
 	.lcl-history__in {
@@ -107,15 +116,27 @@ import Button from '@/components/parts/Button.vue';
 		flex-direction: column;
 		gap: 42px;
 		margin-inline: auto;
-		padding-right: 29px;
+		padding-top: 141px;
 		width: 1000px;
+		@include media_wide {
+			padding-right: 29px;
+		}
+		@include media_narrow {
+			align-items: center;
+			flex-direction: column-reverse;
+			gap: vw(34);
+			padding-top: vw(340);
+			width: 100%;
+		}
 	}
 	.lcl-history-cnt {
 		display: flex;
 		flex-direction: column;
 		gap: 20px;
-		margin-top: 144px;
 		color: $c-white;
+		@include media_narrow {
+			gap: vw(20);
+		}
 	}
 	.lcl-history-cnt__ttl {
 		@include font-en;
@@ -123,12 +144,18 @@ import Button from '@/components/parts/Button.vue';
 		font-weight: 600;
 		line-height: 1.1;
 		font-style: italic;
+		@include media_narrow {
+			@include fz(58);
+		}
 	}
 	.lcl-history-cnt__txt {
 		@include txt-basic--bold;
 	}
 	.lcl-history__timeline {
 		width: 307px;
+		@include media_narrow {
+			width: vw(307);
+		}
 	}
 }
 

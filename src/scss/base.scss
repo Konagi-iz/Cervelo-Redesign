@@ -8,7 +8,6 @@
 }
 
 body {
-	overflow-x: hidden;
 	color: $c-black;
 	@include font-family;
 	@include fz(14);

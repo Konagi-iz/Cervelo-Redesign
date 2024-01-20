@@ -32,7 +32,7 @@ const newsList = ref([
 			</ul>
 		</div>
 		<router-link class="lcl-news__btn" :to="{ name: 'news' }">
-			<ButtonInner color="red"></ButtonInner>
+			<ButtonInner color="red" content="ALL NEWS"></ButtonInner>
 		</router-link>
 	</section>
 </template>
@@ -42,15 +42,30 @@ const newsList = ref([
 	display: flex;
 	align-items: center;
 	width: 100%;
-	height: 142px;
+	background: $c-red;
+	@include media_wide {
+		height: 190px;
+	}
+	@include media_narrow {
+		align-items: flex-start;
+		flex-direction: column;
+	}
 	.lcl-news__in {
 		display: flex;
 		align-items: center;
 		gap: 100px;
-		flex: 1;
-		padding-inline: 100px;
-		height: 100%;
-		background: $c-red;
+		@include media_wide {
+			flex: 1;
+			padding-inline: 100px;
+			height: 100%;
+		}
+		@include media_narrow {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: vw(20);
+			padding: vw(26) vw(15) vw(36);
+			width: 100%;
+		}
 	}
 	.lcl-news__tll {
 		color: $c-white;
@@ -59,20 +74,28 @@ const newsList = ref([
 		font-weight: 600;
 		line-height: 1.5;
 		font-style: italic;
+		@include media_narrow {
+			@include fz(24);
+		}
 	}
 	.lcl-news-list {
 		display: flex;
 		flex-direction: column;
 		gap: 8px;
+		@include media_narrow {
+			gap: vw(10);
+		}
 	}
 	.lcl-news-list__item {
 	}
 	.lcl-news-list__link {
 		display: flex;
-		align-items: center;
 		gap: 18px;
 		color: $c-white;
 		transition: opacity 0.3s ease;
+		@include media_narrow {
+			gap: vw(10);
+		}
 		@include media_hover {
 			&:hover {
 				opacity: 0.6;
@@ -84,14 +107,22 @@ const newsList = ref([
 		@include font-en;
 		@include fz(13);
 		font-weight: 600;
-		letter-spacing: 0.03;
-		line-height: 0.9;
+		letter-spacing: 0.03em;
+		line-height: 1.8;
+		@include media_narrow {
+			width: vw(73);
+			@include fz(12);
+		}
 	}
 	.lcl-news-list__txt {
+		flex: 1;
 		@include fz(13);
 		font-weight: 300;
-		letter-spacing: 0.3;
-		line-height: 1.2;
+		letter-spacing: 0.03em;
+		line-height: 1.8;
+		@include media_narrow {
+			@include fz(12);
+		}
 	}
 	.lcl-news__btn {
 		position: relative;
@@ -101,7 +132,13 @@ const newsList = ref([
 		justify-content: center;
 		width: 262px;
 		height: 100%;
-		background: $c-white;
+		background: $c-lightgray;
+		@include media_narrow {
+			justify-content: flex-start;
+			padding-left: vw(15);
+			width: vw(187);
+			height: vw(44);
+		}
 		&::after {
 			content: '';
 			position: absolute;
@@ -112,6 +149,9 @@ const newsList = ref([
 			height: 100%;
 			background: $c-red;
 			transition: transform 0.7s $e-out;
+			@include media_narrow {
+				display: none;
+			}
 			/*---------------- after */
 		}
 		&::before {
@@ -125,6 +165,9 @@ const newsList = ref([
 			height: 100%;
 			background: $c-red;
 			transition: transform 0.7s $e-out, clip-path 0.7s $e-out;
+			@include media_narrow {
+				display: none;
+			}
 			/*---------------- before */
 		}
 		@include media_hover {

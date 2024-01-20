@@ -6,39 +6,50 @@ const navs = ref(['オーナーズ\nクラブの登録', '品質保証につい�
 
 <template>
 	<section class="lcl-support" id="support">
-		<h2 class="lcl-support-ttl">
-			<span class="lcl-support-ttl__jp">サポート</span>
-			<span class="lcl-support-ttl__primary">SUPPORT</span>
-		</h2>
-		<!-- .lcl-support-ttl -->
-		<div class="lcl-support-nav">
-			<a v-for="(item, index) in navs" :key="index" class="lcl-support-nav__item" href="">
-				<p class="lcl-support-nav__txt" style="white-space: pre-wrap" v-text="item"></p>
-				<img
-					class="lcl-support-nav__img"
-					:src="`/assets/img/home/support/img_0${index + 1}.png`"
-					alt=""
-					loading="lazy"
-					width="352"
-					height="186"
-				/>
-			</a>
+		<div class="lcl-support__in">
+			<h2 class="lcl-support-ttl">
+				<span class="lcl-support-ttl__jp">サポート</span>
+				<span class="lcl-support-ttl__primary">SUPPORT</span>
+			</h2>
+			<!-- .lcl-support-ttl -->
+			<div class="lcl-support-nav">
+				<a v-for="(item, index) in navs" :key="index" class="lcl-support-nav__item" href="">
+					<img
+						class="lcl-support-nav__img"
+						:src="`/assets/img/home/support/img_0${index + 1}.png`"
+						alt=""
+						loading="lazy"
+						width="352"
+						height="186"
+					/>
+					<p class="lcl-support-nav__txt" style="white-space: pre-wrap" v-text="item"></p>
+				</a>
+			</div>
+			<!-- .lcl-support-nav -->
 		</div>
+		<!-- .lcl-support__in -->
 	</section>
 </template>
 
 <style lang="scss">
 .lcl-support {
-	position: relative;
-	margin-top: 190px;
-	width: 1000px;
-	margin-inline: auto;
+	margin-top: 180px;
+	padding-bottom: 143px;
+	background: url(/assets/img/home/support/bg_01.png) center top / cover, $c-red;
+	@include media_narrow {
+		margin-top: vw(120);
+		padding-bottom: vw(94);
+	}
+	.lcl-support__in {
+		position: relative;
+		width: 946px;
+		margin-inline: auto;
+		@include media_narrow {
+			width: vw(347);
+		}
+	}
 	.lcl-support-ttl {
-		position: absolute;
-		top: 0;
-		left: 0;
-		transform: translateY(-100%) rotate(90deg);
-		transform-origin: left bottom;
+		color: $c-white;
 	}
 	.lcl-support-ttl__jp {
 		position: relative;
@@ -50,6 +61,10 @@ const navs = ref(['オーナーズ\nクラブの登録', '品質保証につい�
 		font-weight: 600;
 		line-height: 1.1;
 		letter-spacing: 0.1;
+		@include media_narrow {
+			margin-bottom: vw(4);
+			padding-left: vw(11);
+		}
 		&::after {
 			content: '';
 			position: absolute;
@@ -58,52 +73,85 @@ const navs = ref(['オーナーズ\nクラブの登録', '品質保証につい�
 			transform: translate(100%, -50%);
 			width: 51px;
 			height: 1px;
-			background: $c-black;
+			background: currentColor;
+			@include media_narrow {
+				right: vw(-10);
+				width: vw(51);
+				height: vw(1);
+			}
 			/*---------------- after */
 		}
 	}
 	.lcl-support-ttl__primary {
-		color: $c-red;
 		@include font-en;
 		@include fz(74);
 		font-weight: 700;
 		line-height: 0.9;
 		font-style: italic;
+		@include media_narrow {
+			@include fz(62);
+		}
 	}
 
 	.lcl-support-nav {
 		display: flex;
 		justify-content: flex-end;
 		flex-wrap: wrap;
-		gap: 30px 10px;
+		gap: 40px 33px;
+		margin-top: 58px;
+		@include media_narrow {
+			gap: vw(32);
+			margin-top: vw(50);
+		}
 	}
 	.lcl-support-nav__item {
 		position: relative;
 		transition: transform 0.4s $e-out;
-		&:nth-of-type(2) {
-			margin-right: 84px;
+		&:nth-of-type(4) {
+			@include media_wide {
+				margin-right: 156px;
+			}
 		}
 		&::after {
 			content: '';
-			z-index: -1;
 			position: absolute;
 			top: -20px;
-			left: -20px;
-			width: 100%;
-			height: 100%;
-			background: $c-red;
-			mask: url(/assets/img/home/support/img_01.png) left top / cover;
+			left: -23px;
+			clip-path: polygon(40px 0, 0 100%, calc(100% - 40px) 100%, 100% 0);
+			width: 103px;
+			height: calc(100% + 40px);
+			background: $c-white;
 			transition: transform 0.4s $e-out;
+			@include media_narrow {
+				top: vw(-9);
+				left: vw(-11);
+				clip-path: polygon(vw(21) 0, 0 100%, calc(100% - vw(21)) 100%, 100% 0);
+				width: vw(75);
+				height: vw(121);
+			}
 			/*---------------- after */
 		}
 		&:hover {
-			transform: translate(-10px, -10px);
+			transform: translateX(10px);
 		}
 		&:hover::after {
-			transform: translate(15px, 15px);
+			transform: translateX(-20px);
+		}
+	}
+	.lcl-support-nav__img {
+		z-index: 1;
+		position: relative;
+		clip-path: polygon(33px 0, 0 100%, calc(100% - 33px) 100%, 100% 0);
+		width: 352px;
+		@include media_narrow {
+			clip-path: polygon(vw(17) 0, 0 100%, calc(100% - vw(17)) 100%, 100% 0);
+			width: vw(338);
+			height: vw(101);
+			object-fit: cover;
 		}
 	}
 	.lcl-support-nav__txt {
+		z-index: 1;
 		position: absolute;
 		top: 50%;
 		left: 50%;
@@ -114,9 +162,6 @@ const navs = ref(['オーナーズ\nクラブの登録', '品質保証につい�
 		font-weight: 600;
 		line-height: 1.4;
 		text-align: center;
-	}
-	.lcl-support-nav__img {
-		width: 352px;
 	}
 }
 </style>

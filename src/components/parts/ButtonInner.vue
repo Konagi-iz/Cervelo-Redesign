@@ -1,6 +1,6 @@
 <script setup>
 const props = defineProps({
-	content: { default: 'VIEW ALL' },
+	content: { default: 'VIEW MORE' },
 	color: { default: 'black' },
 });
 
@@ -23,6 +23,9 @@ const colorConvert = (color) => {
 	display: flex;
 	align-items: center;
 	gap: 10px;
+	@include media_narrow {
+		gap: vw(9);
+	}
 	.btn-inner__txt {
 		color: var(--color);
 		@include font-en;
@@ -31,11 +34,18 @@ const colorConvert = (color) => {
 		line-height: 1;
 		font-style: italic;
 		transition: color 0.4s ease;
+		@include media_narrow {
+			@include fz(13);
+		}
 	}
 	.btn-inner__icon {
 		width: 7px;
 		height: 8px;
 		transition: transform 0.4s ease;
+		@include media_narrow {
+			width: vw(7);
+			height: vw(8);
+		}
 		path {
 			stroke: var(--color);
 			transition: stroke 0.4s ease;

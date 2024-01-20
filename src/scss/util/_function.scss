@@ -15,7 +15,7 @@ functions
 }
 
 /* minpx ------------ */
-@function minpx($pixel, $min: 1000, $vw: 1300) {
+@function minpx($pixel, $min: 1024, $vw: 1300) {
 	@return math.div($pixel, $vw) * $min * 1px;
 }
 
@@ -24,6 +24,6 @@ functions
 	@return math.div($pixel, $vw) * $max * 1px;
 }
 
-@function vwclamp($pixel, $min: 1000, $max: 1900) {
+@function vwclamp($pixel, $min: 1024, $max: 1900) {
 	@return clamp(#{minpx($pixel, $min)}, #{pcvw($pixel)}, #{maxpx($pixel, $max)});
 }

@@ -60,7 +60,7 @@ const filteredLineup = computed(() => {
 			</TransitionGroup>
 			<li class="lcl-bikes-list__item lcl-bikes-list__item--btn">
 				<router-link class="lcl-bikes-list__viewall" :to="{ name: 'bikes' }">
-					<ButtonInner color="white"></ButtonInner>
+					<ButtonInner color="white" content="VIEW ALL"></ButtonInner>
 				</router-link>
 			</li>
 		</ul>
@@ -73,6 +73,9 @@ const filteredLineup = computed(() => {
 .lcl-bikes-cnt {
 	position: relative;
 	margin-top: -90px;
+	@include media_narrow {
+		margin-top: vw(-60);
+	}
 	&::after {
 		content: '';
 		position: absolute;
@@ -87,6 +90,9 @@ const filteredLineup = computed(() => {
 		display: flex;
 		margin-inline: auto;
 		width: 1000px;
+		@include media_narrow {
+			width: 100%;
+		}
 	}
 	.lcl-bikes-tab__btn {
 		position: relative;
@@ -103,6 +109,11 @@ const filteredLineup = computed(() => {
 		line-height: 1.5;
 		font-style: italic;
 		transition: color 0.2s ease;
+		@include media_narrow {
+			width: vw(86);
+			height: vw(60);
+			@include fz(12);
+		}
 		&::after {
 			content: '';
 			position: absolute;
@@ -114,6 +125,9 @@ const filteredLineup = computed(() => {
 			height: 8px;
 			background: $c-red;
 			transition: transform 0.5s $e-out;
+			@include media_narrow {
+				height: vw(4);
+			}
 			/*---------------- after */
 		}
 		@include media_hover {
@@ -138,12 +152,22 @@ const filteredLineup = computed(() => {
 		margin-top: 90px;
 		margin-inline: auto;
 		width: 1000px;
+		@include media_narrow {
+			gap: vw(9);
+			margin-top: vw(40);
+			padding-inline: vw(15);
+			width: 100%;
+		}
 	}
 	.lcl-bikes-list__item {
 		width: 320px;
 		height: 322px;
 		background: $c-lightgray;
 		text-align: center;
+		@include media_narrow {
+			width: vw(168);
+			height: vw(200);
+		}
 	}
 	.lcl-bikes-list__item--btn {
 		background: $c-darkgray;
@@ -172,6 +196,9 @@ const filteredLineup = computed(() => {
 			background: $c-red;
 			pointer-events: none;
 			transition: opacity 0.3s ease;
+			@include media_narrow {
+				display: none;
+			}
 			/*---------------- after */
 		}
 		&::after {
@@ -190,6 +217,9 @@ const filteredLineup = computed(() => {
 			font-style: italic;
 			pointer-events: none;
 			transition: opacity 0.3s ease;
+			@include media_narrow {
+				display: none;
+			}
 			/*---------------- before */
 		}
 		@include media_hover {
@@ -222,47 +252,68 @@ const filteredLineup = computed(() => {
 		width: 100%;
 		height: 100%;
 		@include media_hover {
-			&:hover .btn-inner__txt {
-				color: $c-white !important;
-			}
 			&:hover .btn-inner__icon {
 				transform: translateX(50%);
-				path {
-					stroke: $c-white;
-				}
 			}
 		}
 	}
 	.lcl-bikes-list__img {
 		box-sizing: content-box;
-		padding-top: 27px;
+		padding-top: 9px;
 		width: 267px;
 		height: 178px;
 		object-fit: cover;
+		@include media_narrow {
+			padding-top: vw(8);
+			width: vw(132);
+			height: vw(88);
+		}
 	}
 	.lcl-bikes-list__cnt {
-		margin-top: 15px;
+		margin-top: 12px;
+		@include media_narrow {
+			margin-top: vw(9);
+		}
 	}
 	.lcl-bikes-list__year {
-		@include fz(10);
+		@include fz(12);
+		font-weight: 300;
 		line-height: 1.2;
+		@include media_narrow {
+			@include fz(10);
+		}
 	}
 	.lcl-bikes-list__model {
-		margin-top: 2px;
-		@include fz(14);
+		margin-top: 5px;
+		@include fz(16);
 		font-weight: 600;
 		line-height: 1.2;
+		@include media_narrow {
+			margin-top: vw(4);
+			@include fz(14);
+		}
 	}
 	.lcl-bikes-list__component {
 		margin-top: 2px;
 		@include fz(12);
+		font-weight: 300;
 		line-height: 1.2;
+		@include media_narrow {
+			margin-top: vw(2);
+			@include fz(12);
+		}
 	}
 	.lcl-bikes-list__price {
-		margin-top: 10px;
-		@include fz(12);
+		margin-top: 20px;
+		color: $c-red;
+		@include fz(14);
+		font-weight: 600;
 		line-height: 1.5;
 		letter-spacing: 0.05;
+		@include media_narrow {
+			margin-top: vw(10);
+			@include fz(14);
+		}
 	}
 }
 </style>

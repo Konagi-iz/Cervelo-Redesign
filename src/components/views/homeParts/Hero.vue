@@ -32,25 +32,25 @@ const slides = ref([
 	{
 		type: 'road',
 		model: 'S5',
-		copy: '紛れもなく\n現代最速',
+		copy: '紛れもなく現代最速',
 		txt: 'Sシリーズを駆るライダーに共通して最も必要なこと。\nそれは、トップスピードを1秒でも長く維持し、\nそれを1mmでも遠くまで伸ばしていけるか。',
 	},
 	{
 		type: 'road',
 		model: 'R5',
-		copy: '登りの先には\n下りがある',
+		copy: '登りの先には下りがある',
 		txt: 'R5の目的はただ一つ、誰よりも早く頂上へ到達すること。\nレースは通常下りで勝つことはないが、下りで負けることもある。\nヘアピンを曲がれないクライミングバイクは、\nカフェイン抜きのコーヒーのようなものだ。',
 	},
 	{
 		type: 'road',
 		model: 'Soloist',
-		copy: 'S5の速さと\nR5の軽さを',
+		copy: 'S5の速さとR5の軽さを',
 		txt: '軽量化とエアロダイナミクス性能のバランスを取り、\nまさに「ちょうどいい」バイクを実現しました。\nこれこそ、私たちCervéloが支持できるトレードオフです。',
 	},
 	{
 		type: 'tt',
 		model: 'P5',
-		copy: 'シンプルに\nより速く',
+		copy: 'シンプルに、より速く',
 		txt: 'UCIが規定する枠内でエアロ性能に徹底的にこだわった。\nその結果、可能な限りの限界に\n挑戦したバイクが誕生した。',
 	},
 ]);
@@ -59,11 +59,7 @@ const splitText = (str) => {
 	const result = str.split('');
 	let newText = '';
 	for (let i = 0; i < result.length; i++) {
-		if (result[i] !== '\n') {
-			newText += '<span>' + result[i] + '</span>';
-		} else {
-			newText += result[i];
-		}
+		newText += '<span>' + result[i] + '</span>';
 	}
 	return newText;
 };
@@ -90,20 +86,19 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 			<SwiperSlide class="lcl-hero-slides__slide" v-for="(slide, index) in slides" :key="`slide-${index}`">
 				<a class="lcl-hero-slides__link" href="#">
 					<div class="lcl-hero-slides__bg"></div>
+					<img
+						class="lcl-hero-slides__bgtxt"
+						:src="`/assets/img/home/fv/bg_txt_${slide.type}.png`"
+						alt=""
+						width="1237"
+						height="685
+						"
+					/>
 					<div class="lcl-hero-slides__in">
-						<img
-							class="lcl-hero-slides__bgtxt"
-							:src="`/assets/img/home/fv/bg_txt_${slide.type}.png`"
-							alt=""
-							loading="lazy"
-							width="900"
-							height="579"
-						/>
 						<img
 							class="lcl-hero-slides__img"
 							:src="`/assets/img/home/fv/img_bike_0${index + 1}.png`"
 							:alt="`${slide.model}の画像`"
-							loading="lazy"
 							width="900"
 							height="579"
 						/>
@@ -127,13 +122,6 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 		</Swiper>
 		<!-- .swiper -->
 		<div class="lcl-hero-foot">
-			<ul class="lcl-hero-nav">
-				<li class="lcl-hero-nav__item" v-for="nav in navs">
-					<a class="lcl-hero-nav__link" v-scroll-to="`#${nav.replace(' ', '').toLocaleLowerCase()}`">{{ nav }}</a>
-					<!-- <a class="lcl-hero-nav__link" v-scroll-to="'bikes'">{{ nav }}</a> -->
-				</li>
-			</ul>
-			<!-- .lcl-hero-nav -->
 			<div class="lcl-hero-scroll">
 				<svg class="lcl-hero-scroll__icon" width="12" height="28" viewBox="0 0 12 28" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path
@@ -158,6 +146,13 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 				<p class="lcl-hero-scroll__txt">SCROLL</p>
 			</div>
 			<!-- .lcl-hero-scroll -->
+			<ul class="lcl-hero-nav">
+				<li class="lcl-hero-nav__item" v-for="nav in navs">
+					<a class="lcl-hero-nav__link" v-scroll-to="`#${nav.replace(' ', '').toLocaleLowerCase()}`">{{ nav }}</a>
+					<!-- <a class="lcl-hero-nav__link" v-scroll-to="'bikes'">{{ nav }}</a> -->
+				</li>
+			</ul>
+			<!-- .lcl-hero-nav -->
 		</div>
 	</div>
 </template>
@@ -166,8 +161,12 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 .lcl-hero {
 	position: relative;
 	width: 100%;
-	height: 100vh;
-	background: url('/assets/img/bg/bg_grid.png') repeat left top, $c-lightgray;
+	height: max(100vh, 730px);
+	background: url('/assets/img/bg/bg_grid.png') repeat left top / 93px, $c-lightgray;
+	@include media_narrow {
+		height: 100dvh;
+		background-size: vw(93);
+	}
 	.lcl-hero-slides {
 		width: 100%;
 		height: 100%;
@@ -188,6 +187,20 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 		background: $c-red;
 		transition: clip-path 0.4s 0.7s $e-out, opacity 0.3s ease;
 	}
+	.lcl-hero-slides__bgtxt {
+		position: absolute;
+		top: 50%;
+		left: 0;
+		transform: translate(-7%, -50%);
+		opacity: 0;
+		height: vwclamp(685);
+		transition: transform 0.5s $e-out, opacity 0.5s $e-out;
+		transition-delay: 1.2s;
+		@include media_narrow {
+			max-width: initial;
+			height: vw(437);
+		}
+	}
 	.lcl-hero-slides__in {
 		position: absolute;
 		top: 50%;
@@ -195,16 +208,10 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 		transform: translate(-50%, -50%);
 		width: vwclamp(1174);
 		height: vwclamp(579);
-	}
-	.lcl-hero-slides__bgtxt {
-		position: absolute;
-		top: 0;
-		left: 0;
-		transform: translateX(-7%);
-		opacity: 0;
-		width: vwclamp(900);
-		transition: transform 0.5s $e-out, opacity 0.5s $e-out;
-		transition-delay: 1.2s;
+		@include media_narrow {
+			width: 100%;
+			height: vw(483);
+		}
 	}
 	.lcl-hero-slides__img {
 		z-index: 1;
@@ -214,11 +221,21 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 		opacity: 0;
 		width: vwclamp(900);
 		transition: opacity 1s 0.9s ease;
+		@include media_narrow {
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 100%;
+		}
 	}
 	.lcl-hero-slides__model-wrp {
 		position: absolute;
 		top: vwclamp(89);
 		left: vwclamp(97);
+		@include media_narrow {
+			top: vw(340);
+			left: vw(15);
+		}
 	}
 	.lcl-hero-slides__model-sub {
 		display: block;
@@ -233,6 +250,9 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 		font-style: italic;
 		transition: transform 0.5s $e-out, opacity 0.4s $e-out;
 		transition-delay: 1.7s;
+		@include media_narrow {
+			@include fz(14);
+		}
 	}
 	.lcl-hero-slides__model {
 		opacity: 0;
@@ -243,6 +263,9 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 		font-weight: 700;
 		line-height: 0.9;
 		font-style: italic;
+		@include media_narrow {
+			@include fz(88);
+		}
 	}
 	.lcl-hero-slides__txts {
 		z-index: 2;
@@ -252,17 +275,25 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 		display: flex;
 		flex-direction: column;
 		align-items: flex-end;
-		gap: vwclamp(16);
+		gap: vwclamp(24);
 		text-align: right;
 		white-space: pre-wrap;
+		@include media_narrow {
+			top: 0;
+			right: vw(15);
+			gap: vw(16);
+		}
 	}
 	.lcl-hero-slides__copy {
 		transform: skewX(-10deg);
 		color: $c-red;
-		font-size: vwclamp(60);
+		font-size: vwclamp(36);
 		font-weight: 600;
 		line-height: 1.15;
 		white-space: pre-wrap;
+		@include media_narrow {
+			@include fz(28);
+		}
 		span {
 			display: inline-block;
 			transform: translateX(-200%);
@@ -281,12 +312,23 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 		color: $c-red;
 		font-size: vwclamp(12);
 		font-weight: 600;
-		line-height: 1.9;
+		line-height: 2.2;
+		@include media_narrow {
+			@include fz(10);
+		}
 	}
 	.lcl-hero-slides__progress {
 		position: absolute;
-		top: vwclamp(561);
-		right: vwclamp(63);
+		top: 50%;
+		transform: translateY(-50%);
+		@include media_wide {
+			right: vwclamp(63);
+			translate: 0 vwclamp(221);
+		}
+		@include media_narrow {
+			left: vw(15);
+			translate: 0 vw(222.5);
+		}
 	}
 	.lcl-hero-slides__circle {
 		--progress: 0;
@@ -295,6 +337,10 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 		height: vwclamp(50);
 		stroke-dashoffset: calc(150.72 * (1 - var(--progress)));
 		stroke-dasharray: 150.72;
+		@include media_narrow {
+			width: vw(36);
+			height: vw(36);
+		}
 	}
 	.lcl-hero-slides__index {
 		position: absolute;
@@ -307,6 +353,9 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 		font-weight: 500;
 		line-height: 1.5;
 		font-style: italic;
+		@include media_narrow {
+			@include fz(10);
+		}
 	}
 
 	/* swiper ------------ */
@@ -318,15 +367,24 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 	}
 	.swiper-pagination {
 		position: absolute;
-		top: vwclamp(449) !important;
-		right: vwclamp(71) !important;
+		top: 50%;
+		right: vwclamp(78) !important;
 		bottom: auto !important;
 		left: auto !important;
+		transform: translateY(-50%);
+		translate: 0 vwclamp(123);
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		gap: vwclamp(6);
 		width: auto !important;
+		@include media_narrow {
+			right: auto !important;
+			left: vw(62) !important;
+			translate: 0 vw(223.5);
+			flex-direction: row;
+			gap: vw(2);
+		}
 	}
 	.swiper-pagination-bullet {
 		display: block;
@@ -336,6 +394,10 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 		width: vwclamp(19);
 		height: vwclamp(15);
 		background: url(/assets/img/home/fv/icon_pagination.svg) no-repeat left top / contain;
+		@include media_narrow {
+			width: vw(13);
+			height: vw(10);
+		}
 	}
 	.swiper-pagination-bullet-active {
 		opacity: 1;
@@ -348,7 +410,7 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 			opacity: 0.9;
 		}
 		.lcl-hero-slides__bgtxt {
-			transform: translateX(0);
+			transform: translate(0, -50%);
 			opacity: 1;
 		}
 		.lcl-hero-slides__img {
@@ -381,7 +443,54 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 		left: 0;
 		display: flex;
 		width: 100%;
-		height: vwclamp(64);
+		@include media_wide {
+			height: vwclamp(64);
+		}
+		@include media_narrow {
+			flex-direction: column-reverse;
+		}
+	}
+	.lcl-hero-scroll {
+		display: flex;
+		align-items: center;
+		gap: vwclamp(50);
+		padding-left: vwclamp(100);
+		background: $c-red;
+		@include media_wide {
+			flex: 1;
+		}
+		@include media_narrow {
+			gap: vw(20);
+			padding-left: vw(15);
+			width: vw(187);
+			height: vw(44);
+		}
+	}
+	.lcl-hero-scroll__icon {
+		width: vwclamp(12);
+		height: vwclamp(27);
+		@include media_narrow {
+			width: vw(8);
+			height: vw(18);
+		}
+		path {
+			&:nth-of-type(1) {
+				animation: scroll-icon--top 1s $e-out infinite;
+			}
+			&:nth-of-type(2) {
+				animation: scroll-icon--mid 1s $e-out infinite;
+			}
+			&:nth-of-type(3) {
+				animation: scroll-icon--btm 1s $e-out infinite;
+			}
+		}
+	}
+	.lcl-hero-scroll__txt {
+		color: $c-white;
+		@include font-en;
+		@include fz(10);
+		font-weight: 600;
+		font-style: italic;
 	}
 	.lcl-hero-nav {
 		display: flex;
@@ -390,20 +499,28 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 		padding-inline: vwclamp(73);
 		width: vwclamp(689);
 		height: 100%;
+		@include media_narrow {
+			padding-inline: vw(15);
+			width: 100%;
+			height: vw(38);
+		}
 	}
 	.lcl-hero-nav__item {
 	}
 	.lcl-hero-nav__link {
 		position: relative;
 		display: inline-block;
-		color: $c-darkgray;
+		color: $c-red;
 		@include font-en;
 		@include fz(10);
-		font-weight: 300;
+		font-weight: 500;
 		line-height: 1.2;
 		font-style: italic;
 		cursor: pointer;
 		transition: transform 0.3s ease-out;
+		@include media_narrow {
+			@include fz(9);
+		}
 		@include media_hover {
 			&:hover {
 				transform: translateY(-20%);
@@ -427,42 +544,12 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 			/*---------------- after */
 		}
 	}
-	.lcl-hero-scroll {
-		display: flex;
-		align-items: center;
-		gap: vwclamp(50);
-		flex: 1;
-		padding-left: vwclamp(50);
-		background: $c-darkgray;
-	}
-	.lcl-hero-scroll__icon {
-		width: vwclamp(12);
-		height: vwclamp(27);
-		path {
-			&:nth-of-type(1) {
-				animation: scroll-icon--top 1s $e-out infinite;
-			}
-			&:nth-of-type(2) {
-				animation: scroll-icon--mid 1s $e-out infinite;
-			}
-			&:nth-of-type(3) {
-				animation: scroll-icon--btm 1s $e-out infinite;
-			}
-		}
-	}
-	.lcl-hero-scroll__txt {
-		color: $c-white;
-		@include font-en;
-		@include fz(10);
-		font-weight: 600;
-		font-style: italic;
-	}
 }
 
 /* keyframes ------------ */
 @keyframes img-active {
 	0% {
-		transform: translate(-50%, 0);
+		translate: -50% 0;
 		opacity: 0;
 	}
 	1% {
@@ -481,11 +568,11 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 		opacity: 1;
 	}
 	20% {
-		transform: translate(0, 0);
+		translate: 0 0;
 		opacity: 1;
 	}
 	100% {
-		transform: translate(0, 0);
+		translate: 0 0;
 		opacity: 1;
 	}
 }

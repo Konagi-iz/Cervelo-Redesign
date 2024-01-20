@@ -9,7 +9,7 @@ import History from '@/components/views/homeParts/History.vue';
 </script>
 
 <template>
-	<main>
+	<main id="main">
 		<Hero></Hero>
 		<News></News>
 		<Bikes></Bikes>
@@ -20,4 +20,8 @@ import History from '@/components/views/homeParts/History.vue';
 	</main>
 </template>
 
-<style scoped lang="scss"></style>
+<style lang="scss">
+#main {
+	overflow-x: clip;
+}
+</style>

@@ -4,19 +4,19 @@ import { ref } from 'vue';
 const navs = ref(['history', 'shop list', 'support', 'news']);
 const navChilds = ref([
 	{
-		ttl: 'ROAD',
+		category: 'ROAD',
 		items: ['R5', 'S5', 'Soloist', 'Caledonia-5', 'Caledonia'],
 	},
 	{
-		ttl: 'TIME TRIAL',
+		category: 'TIME TRIAL',
 		items: ['P5', 'P-Series'],
 	},
 	{
-		ttl: 'OFF-ROAD',
+		category: 'OFF-ROAD',
 		items: ['R5-CX', 'Áspero-5', 'Áspero', 'ZHT-5', 'ZFS-5'],
 	},
 	{
-		ttl: 'E-BIKE',
+		category: 'E-BIKE',
 		items: ['Rouvida'],
 	},
 ]);
@@ -29,7 +29,7 @@ window.addEventListener('scroll', () => {
 function headerCompact() {
 	const h = window.innerHeight;
 	const scroll = window.scrollY;
-	const header = document.querySelector('.header');
+	const header = document.getElementById('header');
 	if (scroll > h) {
 		header.classList.add('header--scrolled');
 	} else {
@@ -39,13 +39,21 @@ function headerCompact() {
 </script>
 
 <template>
-	<header class="header">
-		<a class="header__logo-wrp" href="../../index.html">
+	<header id="header">
+		<router-link class="header__logo-wrp" :to="{ name: 'home' }">
 			<h1 class="header__ttl">
 				<img class="header__logo" src="/assets/img/logo.svg" alt="Cervelo" width="90" height="14" />
 				<img class="header__logo--mini" src="/assets/img/logo_mini.svg" alt="Cervelo" width="22" height="20" />
 			</h1>
-		</a>
+		</router-link>
+		<button class="menu dn-w">
+			<span class="menu__in">
+				<span class="menu__line"></span>
+				<span class="menu__line"></span>
+				<span class="menu__line"></span>
+			</span>
+		</button>
+		<!-- .menu -->
 		<nav class="nav">
 			<ul class="nav-list">
 				<li class="nav-list__item">
@@ -54,7 +62,7 @@ function headerCompact() {
 						<li class="nav-child__item" v-for="navChild in navChilds">
 							<ul class="nav-child-list">
 								<li class="nav-child-list__item nav-child-list__item--ttl">
-									<a class="nav-child-list__link nav-child-list__link--ttl" href="">{{ navChild.ttl }}</a>
+									<a class="nav-child-list__link nav-child-list__link--ttl" href="">{{ navChild.category }}</a>
 								</li>
 								<li class="nav-child-list__item" v-for="item in navChild.items">
 									<a class="nav-child-list__link" href="">{{ item }}</a>
@@ -78,7 +86,7 @@ function headerCompact() {
 </template>
 
 <style lang="scss">
-.header {
+#header {
 	z-index: 999;
 	position: fixed;
 	top: 0;
@@ -86,6 +94,12 @@ function headerCompact() {
 	display: flex;
 	width: fit-content;
 	height: 64px;
+	@include media_narrow {
+		justify-content: space-between;
+		width: 100%;
+		height: vw(56);
+		transition: height 0.5s $e-out, background 0.5s $e-out;
+	}
 	.header__logo-wrp {
 		position: relative;
 		display: flex;
@@ -94,12 +108,18 @@ function headerCompact() {
 		width: 190px;
 		height: 100%;
 		background: $c-red;
-		transition: width .5s $e-out;
+		transition: width 0.5s $e-out;
+		@include media_narrow {
+			width: 160px;
+		}
 	}
 	.header__logo {
 		translate: 0 0;
 		width: 90px;
-		transition: opacity .4s $e-out, translate .4s $e-out;
+		transition: opacity 0.4s $e-out, translate 0.4s $e-out;
+		@include media_narrow {
+			width: vw(90);
+		}
 	}
 	.header__logo--mini {
 		position: absolute;
@@ -109,15 +129,56 @@ function headerCompact() {
 		translate: 20px 0;
 		opacity: 0;
 		width: 22px;
-		transition: opacity .4s $e-out, translate .4s $e-out;
+		transition: opacity 0.4s $e-out, translate 0.4s $e-out;
+		@include media_narrow {
+			width: vw(22);
+		}
+	}
+
+	/* menu ------------ */
+	.menu {
+		position: relative;
+		width: vw(56);
+		height: 100%;
+	}
+	.menu__in {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: vw(24);
+		height: vw(17);
+	}
+	.menu__line {
+		position: absolute;
+		height: vw(3);
+		background: $c-red;
+		&:nth-of-type(1) {
+			top: 0;
+			left: vw(0);
+			width: vw(24);
+		}
+		&:nth-of-type(2) {
+			top: vw(7);
+			left: vw(4);
+			width: vw(20);
+		}
+		&:nth-of-type(3) {
+			top: vw(14);
+			left: 0;
+			width: vw(24);
+		}
 	}
 
 	/* nav ------------ */
 	.nav {
 		padding-inline: 50px;
 		height: 100%;
-		background: $c-red;
-		transition: background .4s $e-out;
+		background: $c-darkgray;
+		transition: background 0.4s $e-out;
+		@include media_narrow {
+			display: none;
+		}
 	}
 	.nav-list {
 		display: flex;
@@ -165,7 +226,7 @@ function headerCompact() {
 		@include fz(12);
 		font-weight: 600;
 		font-style: italic;
-		transition: color .4s $e-out;
+		transition: color 0.4s $e-out;
 	}
 
 	/* mega drop menu ------------ */
@@ -220,9 +281,16 @@ function headerCompact() {
 	}
 }
 
-.header--scrolled {
+#header.header--scrolled {
+	@include media_narrow {
+		height: vw(42);
+		background: $c-white;
+	}
 	.header__logo-wrp {
 		width: 118px;
+		@include media_narrow {
+			width: vw(100);
+		}
 	}
 	.header__logo {
 		translate: -20px 0;
@@ -239,8 +307,8 @@ function headerCompact() {
 	.nav-list__item {
 		&::after {
 			background: $c-red;
-	/*---------------- after */
-}
+			/*---------------- after */
+		}
 	}
 	.nav-list__link {
 		color: $c-black;
