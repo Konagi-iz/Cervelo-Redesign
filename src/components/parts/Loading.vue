@@ -9,7 +9,7 @@ window.addEventListener('load', () => {
 </script>
 
 <template>
-	<div ref="load" class="load">
+	<div ref="load js-load" class="load">
 		<div class="load__in">
 			<div class="load__bg"></div>
 			<div class="load__bg"></div>

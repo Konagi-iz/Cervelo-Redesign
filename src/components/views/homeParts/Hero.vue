@@ -123,7 +123,7 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 			</div>
 		</Swiper>
 		<!-- .swiper -->
-		<div class="lcl-hero-foot load">
+		<div class="lcl-hero-foot js-load">
 			<div class="lcl-hero-scroll">
 				<svg class="lcl-hero-scroll__icon" width="12" height="28" viewBox="0 0 12 28" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path
