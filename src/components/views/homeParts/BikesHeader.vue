@@ -5,7 +5,7 @@ const props = defineProps({
 </script>
 
 <template>
-	<div class="lcl-bikes-head">
+	<div class="lcl-bikes-head scr-anin">
 		<Transition name="bg">
 			<img
 				class="lcl-bikes-head__bg"
@@ -18,7 +18,7 @@ const props = defineProps({
 			/>
 			<img
 				class="lcl-bikes-head__bg"
-				v-else-if="category === 'time-trial'"
+				v-else-if="category === 'time_trial'"
 				src="/assets/img/home/bikes/img_bg_time-trial.jpg"
 				alt=""
 				loading="lazy"
@@ -68,7 +68,13 @@ const props = defineProps({
 		<!-- .lcl-bikes-head__loop -->
 		<div class="lcl-bikes-ttl">
 			<h2 class="lcl-bikes-ttl__main">BIKES</h2>
-			<p class="lcl-bikes-ttl__sub">肉体的な試練を<br class="dn-w" />超えたところに、<br class="dn-w" />私たちを駆り立てるものがある。</p>
+			<p class="lcl-bikes-ttl__sub">
+				肉体的な試練を
+				<br class="dn-w" />
+				超えたところに、
+				<br class="dn-w" />
+				私たちを駆り立てるものがある。
+			</p>
 		</div>
 	</div>
 </template>
@@ -76,20 +82,30 @@ const props = defineProps({
 <style lang="scss">
 .lcl-bikes-head {
 	position: relative;
+	overflow: hidden;
 	width: 100%;
 	height: 355px;
 	@include media_narrow {
 		height: vw(250);
+	}
+	&.scr-anin--on .lcl-bikes-head__bg {
+		transform: translateY(0);
+		clip-path: inset(-1% -1% -1% -1%);
+	}
+	&.scr-anin--on .lcl-bikes-head__loop-in {
+		translate: 0 0;
 	}
 	.lcl-bikes-head__bg {
 		z-index: -1;
 		position: absolute;
 		top: 0;
 		left: 0;
+		clip-path: inset(100% -1% -1% -1%);
+		transform: translateY(100%);
 		object-fit: cover;
 		width: 100%;
 		height: 100%;
-		transition: opacity 0.5s linear;
+		transition: opacity 0.5s linear, clip-path 1.3s $e-out, transform 1.3s $e-out;
 	}
 	.bg-enter-from,
 	.bg-leave-to {
@@ -112,9 +128,10 @@ const props = defineProps({
 		position: absolute;
 		top: 0;
 		left: 0;
+		translate: 0 -100%;
 		display: flex;
 		height: 100%;
-		transition: transform 0.3s $e-out, opacity 0.3s $e-out;
+		transition: transform 0.3s $e-out, opacity 0.3s $e-out, translate 1.3s $e-out .1s ;
 		animation: loop-txt 20s linear infinite reverse;
 		@include media_narrow {
 			animation: loop-txt 25s linear infinite reverse;

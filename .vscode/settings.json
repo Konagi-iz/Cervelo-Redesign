@@ -2,6 +2,7 @@
 	"prettier.printWidth": 140,
 	"prettier.useTabs": true,
 	"prettier.singleQuote": true,
+	"prettier.htmlWhitespaceSensitivity": "ignore",
 	"editor.tabSize": 2,
 	"editor.hover.delay": 1000,
 	"editor.quickSuggestionsDelay": 1,

@@ -1,4 +1,6 @@
 <script setup>
+import IconRight from '~icons/svg/icon_right';
+
 const props = defineProps({
 	content: { default: 'VIEW MORE' },
 	color: { default: 'black' },
@@ -12,9 +14,7 @@ const colorConvert = (color) => {
 <template>
 	<div class="btn-inner" :style="`--color: ${colorConvert(color)}`">
 		<span class="btn-inner__txt">{{ content }}</span>
-		<svg class="btn-inner__icon" width="7" height="8" viewBox="0 0 7 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-			<path d="M2 1L5 4L2 7" stroke-width="1.5" />
-		</svg>
+		<IconRight></IconRight>
 	</div>
 </template>
 
@@ -38,18 +38,17 @@ const colorConvert = (color) => {
 			@include fz(13);
 		}
 	}
-	.btn-inner__icon {
-		width: 7px;
-		height: 8px;
+	.icon-right {
+		width: 14px;
+		height: auto;
 		transition: transform 0.4s ease;
 		@include media_narrow {
-			width: vw(7);
-			height: vw(8);
+			width: vw(12);
 		}
-		path {
-			stroke: var(--color);
-			transition: stroke 0.4s ease;
-		}
+	}
+	.icon-right__path {
+		stroke: var(--color);
+		transition: stroke 0.4s ease;
 	}
 }
 </style>

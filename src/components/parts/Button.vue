@@ -25,7 +25,7 @@ const colorConvert = (color) => {
 <style lang="scss">
 .btn {
 	border-radius: 9999px;
-	padding: 12px 28px;
+	padding: 14px 28px;
 	width: fit-content;
 	background: var(--color-btn);
 	transition: background 0.3s ease-out;
@@ -39,10 +39,10 @@ const colorConvert = (color) => {
 		&:hover .btn-inner__txt {
 			color: var(--color-btn);
 		}
-		&:hover .btn-inner__icon {
+		&:hover .icon-right {
 			transform: translateX(50%);
 		}
-		&:hover .btn-inner__icon path {
+		&:hover .icon-right__path {
 			stroke: var(--color-btn);
 		}
 	}
@@ -60,7 +60,7 @@ const colorConvert = (color) => {
 		&:hover .btn-inner__txt {
 			color: var(--color-hover);
 		}
-		&:hover .btn-inner__icon path {
+		&:hover .icon-right__path {
 			stroke: var(--color-hover);
 		}
 	}

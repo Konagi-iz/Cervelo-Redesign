@@ -16,18 +16,36 @@ function changeRootFontSize() {
 		document.documentElement.style.setProperty('--fz', '10px');
 	}
 }
-
 changeRootFontSize();
-
 window.addEventListener('resize', () => {
 	w = window.innerWidth;
 	changeRootFontSize();
+});
+
+/* scroll Animation ------------ */
+function scrollAnimation() {
+	const targets = document.querySelectorAll('.scr-anin');
+
+	targets.forEach((e) => {
+		window.addEventListener('scroll', () => {
+			const scroll = window.scrollY;
+			const h = window.innerHeight;
+			const pos = scroll + e.getBoundingClientRect().top;
+
+			if (scroll + h * 0.8 > pos) {
+				e.classList.add('scr-anin--on');
+			}
+		});
+	});
+}
+window.addEventListener('DOMContentLoaded', () => {
+	scrollAnimation();
 });
 </script>
 
 <template>
 	<div class="wrapper">
-		<Header></Header>
+		<Header :w="w"></Header>
 		<router-view></router-view>
 		<Footer></Footer>
 	</div>

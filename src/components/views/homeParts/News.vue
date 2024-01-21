@@ -24,14 +24,14 @@ const newsList = ref([
 			<h2 class="lcl-news__tll">NEWS</h2>
 			<ul class="lcl-news-list">
 				<li class="lcl-news-list__item" v-for="item in newsList">
-					<a href="" class="lcl-news-list__link">
+					<router-link to="" class="lcl-news-list__link">
 						<time class="lcl-news-list__date" :datetime="item.date">{{ item.date.replace(/-/g, '.') }}</time>
 						<p class="lcl-news-list__txt">{{ item.content }}</p>
-					</a>
+					</router-link>
 				</li>
 			</ul>
 		</div>
-		<router-link class="lcl-news__btn" :to="{ name: 'news' }">
+		<router-link class="lcl-news__btn scr-anin" :to="{ name: 'news' }">
 			<ButtonInner color="red" content="ALL NEWS"></ButtonInner>
 		</router-link>
 	</section>
@@ -130,10 +130,13 @@ const newsList = ref([
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		clip-path: inset(0 0 0 100%);
+		transition: clip-path 1.3s $e-out;
 		width: 262px;
 		height: 100%;
 		background: $c-lightgray;
 		@include media_narrow {
+			clip-path: inset(100% -1% -1% -1%);
 			justify-content: flex-start;
 			padding-left: vw(15);
 			width: vw(187);
@@ -181,12 +184,15 @@ const newsList = ref([
 			&:hover .btn-inner__txt {
 				color: $c-white !important;
 			}
-			&:hover .btn-inner__icon {
+			&:hover .icon-right {
 				transform: translateX(50%);
-				path {
+				.icon-right__path {
 					stroke: $c-white;
 				}
 			}
+		}
+		&.scr-anin--on {
+			clip-path: inset(-1% -1% -1% -1%);
 		}
 	}
 	.btn-inner {

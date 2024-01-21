@@ -5,15 +5,15 @@ const navs = ref(['オーナーズ\nクラブの登録', '品質保証につい�
 </script>
 
 <template>
-	<section class="lcl-support" id="support">
+	<section class="lcl-support scr-anin" id="support">
 		<div class="lcl-support__in">
 			<h2 class="lcl-support-ttl">
 				<span class="lcl-support-ttl__jp">サポート</span>
 				<span class="lcl-support-ttl__primary">SUPPORT</span>
 			</h2>
 			<!-- .lcl-support-ttl -->
-			<div class="lcl-support-nav">
-				<a v-for="(item, index) in navs" :key="index" class="lcl-support-nav__item" href="">
+			<div class="lcl-support-nav scr-anin">
+				<router-link to="" v-for="(item, index) in navs" :key="index" class="lcl-support-nav__item">
 					<img
 						class="lcl-support-nav__img"
 						:src="`/assets/img/home/support/img_0${index + 1}.png`"
@@ -23,7 +23,7 @@ const navs = ref(['オーナーズ\nクラブの登録', '品質保証につい�
 						height="186"
 					/>
 					<p class="lcl-support-nav__txt" style="white-space: pre-wrap" v-text="item"></p>
-				</a>
+				</router-link>
 			</div>
 			<!-- .lcl-support-nav -->
 		</div>
@@ -33,12 +33,17 @@ const navs = ref(['オーナーズ\nクラブの登録', '品質保証につい�
 
 <style lang="scss">
 .lcl-support {
+	clip-path: inset(-1% -1% 100% -1%);
 	margin-top: 180px;
 	padding-bottom: 143px;
 	background: url(/assets/img/home/support/bg_01.png) center top / cover, $c-red;
+	transition: clip-path 1.4s $e-out;
 	@include media_narrow {
 		margin-top: vw(120);
 		padding-bottom: vw(94);
+	}
+	&.scr-anin--on {
+		clip-path: inset(-1% -1% -1% -1%);
 	}
 	.lcl-support__in {
 		position: relative;
@@ -103,10 +108,16 @@ const navs = ref(['オーナーズ\nクラブの登録', '品質保証につい�
 			gap: vw(32);
 			margin-top: vw(50);
 		}
+		&.scr-anin--on .lcl-support-nav__item {
+			translate: 0 0;
+			opacity: 1;
+		}
 	}
 	.lcl-support-nav__item {
 		position: relative;
-		transition: transform 0.4s $e-out;
+		translate: -30% 0;
+		opacity: 0;
+		transition: transform 0.4s $e-out, translate 0.6s $e-out 0.2s, opacity 0.6s $e-out 0.2s;
 		&:nth-of-type(4) {
 			@include media_wide {
 				margin-right: 156px;

@@ -10,11 +10,12 @@ import { ref } from 'vue';
 
 const heroSlide = ref(null);
 const currentIndex = ref(1);
-const onSwiper = (_swiper) => {
-	heroSlide.swiper = _swiper;
-	// currentIndex.value = heroSlide.swiper.activeIndex;
-	// console.log(currentIndex.value);
-	// console.log(heroSlide.swiper);
+const onSwiper = (swiper) => {
+	heroSlide.swiper = swiper;
+	swiper.slideNext(0, () => {});
+	setTimeout(() => {
+		swiper.slidePrev(0, () => {});
+	}, 1900);
 };
 
 const progressCircle = ref(null);
@@ -75,8 +76,9 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 			@slideChange="changeSwiperIndex"
 			@autoplayTimeLeft="onAutoplayTimeLeft"
 			ref="heroSlide"
+			:init="false"
 			:modules="modules"
-			:autoplay="{ delay: 6000, disableOnInteraction: false, waitForTransition: false }"
+			:autoplay="{ delay: 10000, disableOnInteraction: false, waitForTransition: false }"
 			effect="fade"
 			:loop="true"
 			:loop-additional-slides="1"
@@ -103,7 +105,7 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 							height="579"
 						/>
 						<div class="lcl-hero-slides__model-wrp">
-							<p class="lcl-hero-slides__model-sub">Cervelo</p>
+							<p class="lcl-hero-slides__model-sub">Model :</p>
 							<p class="lcl-hero-slides__model">{{ slide.model }}</p>
 						</div>
 						<div class="lcl-hero-slides__txts">
@@ -121,7 +123,7 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 			</div>
 		</Swiper>
 		<!-- .swiper -->
-		<div class="lcl-hero-foot">
+		<div class="lcl-hero-foot load">
 			<div class="lcl-hero-scroll">
 				<svg class="lcl-hero-scroll__icon" width="12" height="28" viewBox="0 0 12 28" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path
@@ -149,7 +151,6 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 			<ul class="lcl-hero-nav">
 				<li class="lcl-hero-nav__item" v-for="nav in navs">
 					<a class="lcl-hero-nav__link" v-scroll-to="`#${nav.replace(' ', '').toLocaleLowerCase()}`">{{ nav }}</a>
-					<!-- <a class="lcl-hero-nav__link" v-scroll-to="'bikes'">{{ nav }}</a> -->
 				</li>
 			</ul>
 			<!-- .lcl-hero-nav -->
@@ -181,7 +182,7 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 		top: 0;
 		left: 0;
 		clip-path: inset(0 0 0 0);
-		opacity: 0.9;
+		opacity: 1;
 		width: 100%;
 		height: 100%;
 		background: $c-red;
@@ -230,7 +231,7 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 	}
 	.lcl-hero-slides__model-wrp {
 		position: absolute;
-		top: vwclamp(89);
+		top: vwclamp(64);
 		left: vwclamp(97);
 		@include media_narrow {
 			top: vw(340);
@@ -407,7 +408,7 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 	.swiper-slide-active {
 		.lcl-hero-slides__bg {
 			clip-path: inset(0 0 0 100%);
-			opacity: 0.9;
+			opacity: 1;
 		}
 		.lcl-hero-slides__bgtxt {
 			transform: translate(0, -50%);
@@ -539,7 +540,7 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 			opacity: 0;
 			width: vwclamp(8);
 			height: vwclamp(5);
-			background: url(/assets/img/home/fv/icon_arrow--down.svg) no-repeat left top / contain;
+			background: url(/assets/img/home/fv/icon_down.svg) no-repeat left top / contain;
 			transition: translate 0.3s ease-out, opacity 0.3s ease-out;
 			/*---------------- after */
 		}

@@ -1,51 +1,41 @@
 <script setup>
-import { ref } from 'vue';
+import IconMail from '~icons/svg/icon_mail';
+import IconX from '~icons/svg/icon_x';
+import IconInstagram from '~icons/svg/icon_instagram';
+import IconFacebook from '~icons/svg/icon_facebook';
+import Logo from '~icons/svg/logo';
 
-const snsList = ref(['x', 'instagram', 'facebook']);
+const snsList = [IconX, IconInstagram, IconFacebook];
 </script>
 
 <template>
 	<footer id="footer">
 		<div class="footer-sns">
 			<div class="footer-sns__in">
-				<a v-for="(item, index) in snsList" :key="index" class="footer-sns__link" href="">
-					<img class="footer-sns__icon" :src="`/assets/img/icon/icon-${item}.svg`" :alt="item" loading="lazy" width="24" height="24" />
-				</a>
+				<router-link to="" v-for="(sns, index) in snsList" :key="index" class="footer-sns__link">
+					<component :is="sns" class="footer-sns__icon"></component>
+				</router-link>
 			</div>
 			<!-- .footer-sns__in -->
 		</div>
 		<!-- .footer-sns -->
 		<div class="footer__in">
 			<div class="footer-contact">
-				<a class="footer-contact__link" href="">
-					<img
-						class="footer-contact__icon"
-						src="/assets/img/icon/icon-mail.svg"
-						alt="メールアイコン"
-						loading="lazy"
-						width="24"
-						height="24"
-					/>
+				<router-link to="" class="footer-contact__link">
+					<IconMail class="footer-contact__icon"></IconMail>
 					<p class="footer-contact__txt">
 						<span class="footer-contact__en">CONTACT</span>
 						<span class="footer-contact__jp">お問い合わせ(一般の方)</span>
 					</p>
-				</a>
+				</router-link>
 				<!-- .footer-contact__link -->
-				<a class="footer-contact__link" href="">
-					<img
-						class="footer-contact__icon"
-						src="/assets/img/icon/icon-mail.svg"
-						alt="メールアイコン"
-						loading="lazy"
-						width="24"
-						height="24"
-					/>
+				<router-link to="" class="footer-contact__link">
+					<IconMail class="footer-contact__icon"></IconMail>
 					<p class="footer-contact__txt">
 						<span class="footer-contact__en">CONTACT</span>
 						<span class="footer-contact__jp">お問い合わせ(自転車業界の方)</span>
 					</p>
-				</a>
+				</router-link>
 				<!-- .footer-contact__link -->
 			</div>
 			<!-- .footer-contact -->
@@ -54,37 +44,37 @@ const snsList = ref(['x', 'instagram', 'facebook']);
 					<div class="footer-nav__wrp">
 						<router-link class="footer-nav__item" :to="{ name: 'bikes' }">BIKES</router-link>
 						<div class="footer-nav-child">
-							<a class="footer-nav-child__item" href="">ROAD</a>
-							<a class="footer-nav-child__item" href="">TIME TRIAL</a>
-							<a class="footer-nav-child__item" href="">OFF-ROAD</a>
-							<a class="footer-nav-child__item" href="">E-BIKE</a>
+							<router-link to="" class="footer-nav-child__item">ROAD</router-link>
+							<router-link to="" class="footer-nav-child__item">TIME TRIAL</router-link>
+							<router-link to="" class="footer-nav-child__item">OFF-ROAD</router-link>
+							<router-link to="" class="footer-nav-child__item">E-BIKE</router-link>
 						</div>
 					</div>
 					<!-- .footer-nav__wrp -->
 					<div class="footer-nav__wrp-sp">
 						<div class="footer-nav__wrp">
-							<router-link class="footer-nav__item" :to="{ name: 'history' }">HISTORY</router-link>
-							<router-link class="footer-nav__item" :to="{ name: 'shop list' }">SHOP LIST</router-link>
-							<a class="footer-nav__item" href="">ONLINE SHOP</a>
+							<router-link :to="{ name: 'history' }" class="footer-nav__item">HISTORY</router-link>
+							<router-link :to="{ name: 'shop list' }" class="footer-nav__item">SHOP LIST</router-link>
+							<router-link to="" class="footer-nav__item">ONLINE SHOP</router-link>
 						</div>
 						<!-- .footer-nav__wrp -->
 						<div class="footer-nav__wrp">
-							<router-link class="footer-nav__item" :to="{ name: 'support' }">SUPPORT</router-link>
-							<router-link class="footer-nav__item" :to="{ name: 'news' }">NEWS</router-link>
+							<router-link :to="{ name: 'support' }" class="footer-nav__item">SUPPORT</router-link>
+							<router-link :to="{ name: 'news' }" class="footer-nav__item">NEWS</router-link>
 						</div>
 						<!-- .footer-nav__wrp -->
 					</div>
 				</div>
 				<!-- .footer-nav__pages -->
 				<div class="footer-nav__common">
-					<a class="footer-nav__link" href="">プライバシーポリシー</a>
-					<a class="footer-nav__link" href="">利用規約</a>
+					<router-link to="" class="footer-nav__link">プライバシーポリシー</router-link>
+					<router-link to="" class="footer-nav__link">利用規約</router-link>
 				</div>
 				<!-- .footer-nav__common -->
 			</div>
 			<!-- .footer-nav -->
 			<div class="footer-btm">
-				<img class="footer-btm__logo" src="/assets/img/logo.svg" alt="Cervelo Logo" loading="lazy" width="842" height="127" />
+				<Logo class="footer-btm__logo"></Logo>
 				<small class="footer-btm__copyright">Copyright© AZUMA Co.,Ltd. All Rights Reserved.</small>
 			</div>
 		</div>
@@ -359,6 +349,7 @@ const snsList = ref(['x', 'instagram', 'facebook']);
 	}
 	.footer-btm__logo {
 		width: 842px;
+		height: auto;
 		@include media_narrow {
 			width: vw(325);
 		}

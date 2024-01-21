@@ -2,6 +2,8 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import path from 'path';
 import UnFonts from 'unplugin-fonts/vite';
+import Icons from 'unplugin-icons/vite';
+import { FileSystemIconLoader } from 'unplugin-icons/loaders';
 
 export default defineConfig({
 	plugins: [
@@ -14,6 +16,11 @@ export default defineConfig({
 						styles: 'ital,wght@0,400;0,500;0,600;0,700;1,200;1,400;1,500;1,600;1,700',
 					},
 				],
+			},
+		}),
+		Icons({
+			customCollections: {
+				svg: FileSystemIconLoader('src/public/assets/svg'),
 			},
 		}),
 	],

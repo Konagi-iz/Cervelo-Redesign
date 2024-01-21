@@ -3,7 +3,7 @@ import Button from '@/components/parts/Button.vue';
 </script>
 
 <template>
-	<section class="lcl-history" id="history">
+	<section class="lcl-history scr-anin" id="history">
 		<div class="lcl-history-loop">
 			<div class="lcl-history-loop__item">
 				<img
@@ -66,11 +66,27 @@ import Button from '@/components/parts/Button.vue';
 .lcl-history {
 	position: relative;
 	width: 100%;
-	background: linear-gradient(278deg, rgba(0, 0, 0, 0.95) 50.36%, rgba(0, 0, 0, 0) 100%);
+	background: linear-gradient(278deg, rgba(0, 0, 0, 0.95) 25%, transparent 50%);
+	background-size: 200%;
+	background-position: 0%;
 	height: 484px;
+	transition: background-position 1.5s $e-out;
 	@include media_narrow {
 		height: vw(682);
 		background: linear-gradient(17deg, #000 50.36%, rgba(0, 0, 0, 0) 100%);
+		background: linear-gradient(17deg, rgba(0, 0, 0, 1) 25%, transparent 50%);
+		background-size: 100% 200%;
+	}
+	&::before {
+		content: '';
+		z-index: -1;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: $c-black;
+		/*---------------- before */
 	}
 	&::after {
 		content: '';
@@ -85,6 +101,16 @@ import Button from '@/components/parts/Button.vue';
 			display: none;
 		}
 		/*---------------- after */
+	}
+	&.scr-anin--on {
+		background-position: 100%;
+		@include media_narrow {
+			background-position: 0% 100%;
+		}
+	}
+	&.scr-anin--on .lcl-history__in {
+		transform: translateY(0);
+		opacity: 1;
 	}
 	.lcl-history-loop {
 		z-index: -1;
@@ -111,6 +137,8 @@ import Button from '@/components/parts/Button.vue';
 	}
 
 	.lcl-history__in {
+		transform: translateY(20%);
+		opacity: 0;
 		display: flex;
 		align-items: flex-end;
 		flex-direction: column;
@@ -118,6 +146,7 @@ import Button from '@/components/parts/Button.vue';
 		margin-inline: auto;
 		padding-top: 141px;
 		width: 1000px;
+		transition: transform 1.4s $e-out, opacity 1.4s $e-out;
 		@include media_wide {
 			padding-right: 29px;
 		}

@@ -316,7 +316,7 @@
 	},
 	{
 		"img": "P5_R9270 Dura Ace Di2_23-24.webp",
-		"type": "time-trial",
+		"type": "time_trial",
 		"year": "2023-2024",
 		"model": "P5",
 		"component": "R9270 Dura Ace Di2",
@@ -325,7 +325,7 @@
 	},
 	{
 		"img": "P5_R8170 Ultegra Di2_23-24.webp",
-		"type": "time-trial",
+		"type": "time_trial",
 		"year": "2023-2024",
 		"model": "P5",
 		"component": "R8170 Ultegra Di2",
@@ -334,7 +334,7 @@
 	},
 	{
 		"img": "P5_Force eTap AXS_23-24.webp",
-		"type": "time-trial",
+		"type": "time_trial",
 		"year": "2023-2024",
 		"model": "P5",
 		"component": "Force eTap AXS",
@@ -343,7 +343,7 @@
 	},
 	{
 		"img": "P5_Frame set_23-24.webp",
-		"type": "time-trial",
+		"type": "time_trial",
 		"year": "2023-2024",
 		"model": "P5",
 		"component": "Frame set",
@@ -352,7 +352,7 @@
 	},
 	{
 		"img": "P5_Frame set_22-24.webp",
-		"type": "time-trial",
+		"type": "time_trial",
 		"year": "2022-2024",
 		"model": "P5",
 		"component": "Frame set",
@@ -361,7 +361,7 @@
 	},
 	{
 		"img": "P_R8170 Ultegra Di2_23-24.webp",
-		"type": "time-trial",
+		"type": "time_trial",
 		"year": "2023-2024",
 		"model": "P-Series",
 		"component": "R8170 Ultegra Di2",
@@ -370,7 +370,7 @@
 	},
 	{
 		"img": "P_R8020 Ultegra_23-24.webp",
-		"type": "time-trial",
+		"type": "time_trial",
 		"year": "2023-2024",
 		"model": "P-Series",
 		"component": "R8020 Ultegra",
@@ -379,7 +379,7 @@
 	},
 	{
 		"img": "P_R7020 105_23-24.webp",
-		"type": "time-trial",
+		"type": "time_trial",
 		"year": "2023-2024",
 		"model": "P-Series",
 		"component": "R7020 105",
@@ -388,7 +388,7 @@
 	},
 	{
 		"img": "P_Frame set_23-24.webp",
-		"type": "time-trial",
+		"type": "time_trial",
 		"year": "2023-2024",
 		"model": "P-Series",
 		"component": "Frame set",

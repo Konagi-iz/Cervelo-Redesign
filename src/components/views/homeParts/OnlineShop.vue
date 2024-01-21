@@ -3,7 +3,7 @@ import Button from '@/components/parts/Button.vue';
 </script>
 
 <template>
-	<section class="lcl-online" id="onlineshop">
+	<section class="lcl-online scr-anin" id="onlineshop">
 		<div class="lcl-online__in">
 			<img
 				class="lcl-online__img"
@@ -39,35 +39,54 @@ import Button from '@/components/parts/Button.vue';
 		position: absolute;
 		top: 222px;
 		left: 0;
-		width: 100%;
+		transform: translateX(-20%);
+		clip-path: inset(-1% 100% -1% -1%);
+		width: max(877px, (100% - 423px) - ((100% - 1300px) / 2));
 		height: 402px;
 		background: $c-red;
+		transition: transform 2s $e-out, clip-path 2s $e-out;
 		@include media_narrow {
 			top: vw(269);
 			height: vw(389);
+			transition-duration: 3s;
 		}
 		/*---------------- before */
 	}
-	&::after {
-		content: '';
-		z-index: -1;
-		position: absolute;
-		top: 222px;
-		right: 0;
-		width: max(423px, (100% - 877px) - ((100% - 1300px) / 2));
-		height: 402px;
-		background: $c-white;
-		@include media_narrow {
+	@include media_narrow {
+		&::after {
+			content: '';
+			z-index: -1;
+			position: absolute;
 			top: vw(269);
+			right: 0;
+			transform: translateY(-20%);
+			clip-path: inset(-1% -1% 100% -1%);
 			width: vw(97);
 			height: vw(325);
+			background: $c-white;
+			transition: transform 1.5s $e-out, clip-path 1.5s $e-out;
 		}
 		/*---------------- after */
 	}
+	&.scr-anin--on::before {
+		transform: translateX(0);
+		clip-path: inset(-1% -1% -1% -1%);
+	}
+	&.scr-anin--on::after {
+		transform: translateY(0);
+		clip-path: inset(-1% -1% -1% -1%);
+	}
+	&.scr-anin--on .lcl-online__in {
+		transform: translateY(0);
+		clip-path: inset(-1% -1% -1% -1%);
+	}
 	.lcl-online__in {
+		transform: translateY(30%);
+		clip-path: inset(100% -1% -1% -1%);
 		display: flex;
 		margin-inline: auto;
 		width: 1000px;
+		transition: transform 1.5s $e-out, clip-path 1.5s $e-out;
 		@include media_wide {
 			height: 444px;
 		}

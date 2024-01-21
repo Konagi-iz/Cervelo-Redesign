@@ -30,7 +30,7 @@ import Button from '@/components/parts/Button.vue';
 				</router-link>
 			</div>
 			<!-- .lcl-shoplist-cnt__in -->
-			<div class="lcl-shoplist-vis">
+			<div class="lcl-shoplist-vis scr-anin">
 				<img class="lcl-shoplist-vis__img" src="/assets/img/home/shoplist/img_01.png" alt="" loading="lazy" width="724" height="536" />
 				<svg class="lcl-shoplist-vis__icons" width="724" height="536" viewBox="0 0 724 536" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<g clip-path="url(#clip0_344_152)">
@@ -97,9 +97,15 @@ import Button from '@/components/parts/Button.vue';
 <style lang="scss">
 .lcl-shoplist {
 	position: relative;
-	background: $c-lightgray;
+	margin-inline: auto;
+	width: min(100%, 1900px);
+	background: url(/assets/img/bg/bg_grid.png) repeat left top / 93px, $c-lightgray;
 	@include media_wide {
 		height: 536px;
+	}
+	@include media_narrow {
+		width: 100%;
+		background-size: vw(93);
 	}
 	&::after {
 		content: '';
@@ -197,14 +203,16 @@ import Button from '@/components/parts/Button.vue';
 	.lcl-shoplist-vis {
 		position: relative;
 		width: min(724px, 100%);
-		background: url(/assets/img/bg/bg_grid.png) repeat left top / 93px;
 		@include media_wide {
 			margin-left: calc(1300px - 724px);
 		}
 		@include media_narrow {
 			padding-top: vw(43);
 			width: 100%;
-			background-size: vw(93);
+		}
+		&.scr-anin--on .lcl-shoplist-vis__icons g {
+			transform: translateY(0);
+			opacity: 1;
 		}
 	}
 	.lcl-shoplist-vis__img {
@@ -216,6 +224,17 @@ import Button from '@/components/parts/Button.vue';
 		@include media_narrow {
 			width: 100%;
 			height: auto;
+		}
+		g {
+			transform: translateY(-5%);
+			transition: transform .8s $e-out, opacity .8s $e-out;
+			opacity: 0;
+			&:nth-of-type(2) {
+				transition-delay: 0.1s;
+			}
+			&:nth-of-type(3) {
+				transition-delay: 0.2s;
+			}
 		}
 	}
 }
