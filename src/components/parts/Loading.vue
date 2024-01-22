@@ -1,15 +1,9 @@
 <script setup>
 import LogoMini from '~icons/svg/logo_mini';
-import { ref } from 'vue';
-
-const load = ref(null);
-window.addEventListener('load', () => {
-	load.value.classList.add('load--on');
-});
 </script>
 
 <template>
-	<div ref="load js-load" class="load">
+	<div class="load js-load">
 		<div class="load__in">
 			<div class="load__bg"></div>
 			<div class="load__bg"></div>
@@ -34,7 +28,7 @@ window.addEventListener('load', () => {
 	height: 100vh;
 	background: $c-white;
 	transition: opacity 0.2s ease, visibility 0.2s ease;
-	transition-delay: 2s;
+	transition-delay: 1.6s;
 	.load__in {
 		display: flex;
 		height: 100%;
@@ -64,10 +58,10 @@ window.addEventListener('load', () => {
 		width: 66px;
 		height: auto;
 		pointer-events: none;
-		transition: clip-path 1s $e-out 1.4s;
+		transition: clip-path 1s $e-out 1s;
 	}
 }
-.load--on {
+.load.js-load--on {
 	pointer-events: none;
 	opacity: 0;
 	visibility: hidden;

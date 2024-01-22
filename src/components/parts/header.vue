@@ -83,7 +83,7 @@ function pageSwitch(page) {
 </script>
 
 <template>
-	<header id="header">
+	<header id="header" class="js-load">
 		<router-link class="header__logo-wrp" :to="{ name: 'home' }" v-scroll-to="'#main'">
 			<h1 class="header__ttl">
 				<Logo class="header__logo"></Logo>
@@ -172,14 +172,19 @@ function pageSwitch(page) {
 	position: fixed;
 	top: 0;
 	left: 0;
+	transform: translateY(-100%);
 	display: flex;
 	width: fit-content;
 	height: 64px;
+	transition: transform 1s $e-out 2.2s;
 	@include media_narrow {
 		justify-content: space-between;
 		width: 100%;
 		height: vw(56);
-		transition: height 0.5s $e-out, background 0.5s $e-out;
+		transition: transform 1s $e-out 2.2s, height 0.5s $e-out, background 0.5s $e-out;
+	}
+	&.js-load--on {
+		transform: translateY(0);
 	}
 	.header__logo-wrp {
 		z-index: 999;
@@ -589,7 +594,7 @@ function pageSwitch(page) {
 	0% {
 		transform: translateX(0);
 	}
-	0% {
+	100% {
 		transform: translateX(-50%);
 	}
 }

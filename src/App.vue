@@ -22,7 +22,7 @@ window.addEventListener('resize', () => {
 	changeRootFontSize();
 });
 
-/* scroll Animation ------------ */
+/* Scroll Animation ------------ */
 function scrollAnimation() {
 	const targets = document.querySelectorAll('.scr-anin');
 
@@ -40,6 +40,20 @@ function scrollAnimation() {
 }
 window.addEventListener('DOMContentLoaded', () => {
 	scrollAnimation();
+});
+
+/* Loading ------------ */
+function Loading() {
+	const targets = document.querySelectorAll('.js-load');
+
+	targets.forEach((e) => {
+		setTimeout(() => {
+			e.classList.add('js-load--on');
+		}, 1000);
+	});
+}
+window.addEventListener('load', () => {
+	Loading();
 });
 </script>
 

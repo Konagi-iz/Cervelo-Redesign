@@ -18,11 +18,13 @@ const onSwiper = (swiper) => {
 	}, 1900);
 };
 
+// スライドのプログレス
 const progressCircle = ref(null);
 const onAutoplayTimeLeft = (s, time, progress) => {
 	progressCircle.value.style.setProperty('--progress', 1 - progress);
 };
 
+// 現在のスライドのindexを取得
 const changeSwiperIndex = () => {
 	if (heroSlide.swiper !== undefined) {
 		currentIndex.value = heroSlide.swiper.realIndex + 1;
@@ -442,13 +444,18 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 		position: absolute;
 		bottom: 0;
 		left: 0;
+		transform: translateY(100%);
 		display: flex;
 		width: 100%;
+		transition: transform 1s $e-out 2.2s;
 		@include media_wide {
 			height: vwclamp(64);
 		}
 		@include media_narrow {
 			flex-direction: column-reverse;
+		}
+		&.js-load--on {
+			transform: translateY(0);
 		}
 	}
 	.lcl-hero-scroll {
