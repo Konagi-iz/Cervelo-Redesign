@@ -142,11 +142,13 @@ const navs = ref(['オーナーズ\nクラブの登録', '品質保証につい�
 			}
 			/*---------------- after */
 		}
-		&:hover {
-			transform: translateX(10px);
-		}
-		&:hover::after {
-			transform: translateX(-20px);
+		@include media_hover {
+			&:hover {
+				transform: translateX(10px);
+			}
+			&:hover::after {
+				transform: translateX(-20px);
+			}
 		}
 	}
 	.lcl-support-nav__img {

@@ -6,17 +6,27 @@ import 'swiper/css';
 import 'swiper/css/autoplay';
 import 'swiper/css/effect-fade';
 import 'swiper/css/pagination';
-import { ref } from 'vue';
+import { ref, watch, computed, onMounted } from 'vue';
 
 const heroSlide = ref(null);
 const currentIndex = ref(1);
 const onSwiper = (swiper) => {
 	heroSlide.swiper = swiper;
 	swiper.slideNext(0, () => {});
-	setTimeout(() => {
-		swiper.slidePrev(0, () => {});
-	}, 1900);
 };
+
+const hero = ref(null);
+onMounted(() => {
+	const observer = new MutationObserver((records) => {
+		setTimeout(() => {
+			heroSlide.swiper.slidePrev(0, () => {});
+		}, 1000);
+	});
+	observer.observe(hero.value, {
+		attributes: true,
+		attributeFilter: ['class'],
+	});
+});
 
 // スライドのプログレス
 const progressCircle = ref(null);
@@ -71,7 +81,7 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 </script>
 
 <template>
-	<div class="lcl-hero">
+	<div ref="hero" class="lcl-hero js-load">
 		<Swiper
 			class="lcl-hero-slides"
 			@swiper="onSwiper"

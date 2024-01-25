@@ -51,7 +51,7 @@ const props = defineProps({
 					<img class="lcl-bikes-head__loop" src="/assets/img/home/bikes/text_loop_road.svg" alt="" loading="lazy" height="108" />
 					<img class="lcl-bikes-head__loop" src="/assets/img/home/bikes/text_loop_road.svg" alt="" loading="lazy" height="108" />
 				</div>
-				<div class="lcl-bikes-head__loop-in" v-else-if="category === 'time-trial'">
+				<div class="lcl-bikes-head__loop-in" v-else-if="category === 'time_trial'">
 					<img class="lcl-bikes-head__loop" src="/assets/img/home/bikes/text_loop_time-trial.svg" alt="" loading="lazy" height="108" />
 					<img class="lcl-bikes-head__loop" src="/assets/img/home/bikes/text_loop_time-trial.svg" alt="" loading="lazy" height="108" />
 				</div>

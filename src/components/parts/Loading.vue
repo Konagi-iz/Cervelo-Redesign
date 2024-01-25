@@ -3,23 +3,24 @@ import LogoMini from '~icons/svg/logo_mini';
 </script>
 
 <template>
-	<div class="load js-load">
-		<div class="load__in">
-			<div class="load__bg"></div>
-			<div class="load__bg"></div>
-			<div class="load__bg"></div>
-			<div class="load__bg"></div>
-			<div class="load__bg"></div>
-			<div class="load__bg"></div>
-			<div class="load__bg"></div>
-			<div class="load__bg"></div>
+	<div class="loading js-load">
+		<p class="loading__txt">LOADING...</p>
+		<div class="loading__in">
+			<div class="loading__bg"></div>
+			<div class="loading__bg"></div>
+			<div class="loading__bg"></div>
+			<div class="loading__bg"></div>
+			<div class="loading__bg"></div>
+			<div class="loading__bg"></div>
+			<div class="loading__bg"></div>
+			<div class="loading__bg"></div>
 		</div>
-		<LogoMini class="load__logo"></LogoMini>
+		<LogoMini class="loading__logo"></LogoMini>
 	</div>
 </template>
 
 <style lang="scss">
-.load {
+.loading {
 	z-index: 2000;
 	position: fixed;
 	top: 0;
@@ -29,11 +30,24 @@ import LogoMini from '~icons/svg/logo_mini';
 	background: $c-white;
 	transition: opacity 0.2s ease, visibility 0.2s ease;
 	transition-delay: 1.6s;
-	.load__in {
+	.loading__txt {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		color: $c-red;
+		@include font-en;
+		@include fz(24);
+		font-weight: 600;
+		line-height: 1.5;
+		letter-spacing: 0.1em;
+		font-style: italic;
+	}
+	.loading__in {
 		display: flex;
 		height: 100%;
 	}
-	.load__bg {
+	.loading__bg {
 		flex: 1;
 		height: 100%;
 		background: $c-red;
@@ -49,27 +63,42 @@ import LogoMini from '~icons/svg/logo_mini';
 			transform-origin: bottom;
 		}
 	}
-	.load__logo {
+	.loading__logo {
 		position: absolute;
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
-		clip-path: inset(0 0 0 0);
+		clip-path: inset(-1% 100% -1% -1%);
 		width: 66px;
 		height: auto;
 		pointer-events: none;
 		transition: clip-path 1s $e-out 1s;
 	}
 }
-.load.js-load--on {
+/* load--on ------------ */
+.loading.js-load--on {
 	pointer-events: none;
 	opacity: 0;
 	visibility: hidden;
-	.load__bg {
+	.loading__bg {
 		transform: scaleY(1);
 	}
-	.load__logo {
-		clip-path: inset(0 0 0 100%);
+	.loading__logo {
+		animation: logo 2s $e-inOut .7s;
+	}
+}
+@keyframes logo {
+	0% {
+		clip-path: inset(-1% 100% -1% -1%);
+	}
+	25% {
+		clip-path: inset(-1% -1% -1% -1%);
+	}
+	75% {
+		clip-path: inset(-1% -1% -1% -1%);
+	}
+	100% {
+		clip-path: inset(-1% -1% -1% 100%);
 	}
 }
 </style>

@@ -49,7 +49,7 @@ function Loading() {
 	targets.forEach((e) => {
 		setTimeout(() => {
 			e.classList.add('js-load--on');
-		}, 1000);
+		}, 400);
 	});
 }
 window.addEventListener('load', () => {
