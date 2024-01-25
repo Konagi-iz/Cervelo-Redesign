@@ -4,7 +4,8 @@ import '@/scss/base.scss';
 import '@/scss/nwclasses.scss';
 import Header from '@/components/parts/Header.vue';
 import Footer from '@/components/parts/Footer.vue';
-import { RouterView } from 'vue-router';
+import { RouterView,  } from 'vue-router';
+import { ref, onMounted } from 'vue';
 
 let w = window.innerWidth;
 
@@ -55,10 +56,14 @@ function Loading() {
 window.addEventListener('load', () => {
 	Loading();
 });
+
+/* 画面遷移アニメーション ------------ */
+const load = ref(null);
 </script>
 
 <template>
 	<div class="wrapper">
+		<div ref="load" class="load"></div>
 		<Header :w="w"></Header>
 		<router-view></router-view>
 		<Footer></Footer>
@@ -70,5 +75,17 @@ window.addEventListener('load', () => {
 	@include media_wide {
 		min-width: 1024px;
 	}
+}
+
+/* load ------------ */
+.load {
+	opacity: 0;
+	width: 100%;
+	height: 100dvh;
+	background: $c-red;
+	transition: opacity 0.6s $e-out;
+}
+.load--active {
+	opacity: 1;
 }
 </style>
