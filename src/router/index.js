@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 import HomeView from '@/components/views/HomeView.vue';
+import { nextTick } from 'vue';
 
 const router = createRouter({
 	history: createWebHashHistory(),
@@ -45,8 +46,29 @@ router.beforeEach((to, from, next) => {
 	}, 600);
 });
 router.afterEach((to, from, next) => {
+	/* page switch load ------------ */
 	const load = document.querySelector('.load');
 	load.classList.remove('load--active');
+
+	/* Scroll animation ------------ */
+	function scrollAnimation() {
+		const targets = document.querySelectorAll('.scr-anin');
+		
+		targets.forEach((e) => {
+			window.addEventListener('scroll', () => {
+				const scroll = window.scrollY;
+				const h = window.innerHeight;
+				const pos = scroll + e.getBoundingClientRect().top;
+
+				if (scroll + h * 0.8 > pos) {
+					e.classList.add('scr-anin--on');
+				}
+			});
+		});
+	}
+	nextTick(() => {
+		scrollAnimation();
+	});
 });
 
 export default router;

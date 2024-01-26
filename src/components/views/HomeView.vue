@@ -17,18 +17,11 @@ function loading() {
 			e.classList.add('js-load--on');
 		}, 400);
 	});
-	console.log('loaded');
+	// console.log('loaded');
 }
-
 onMounted(() => {
 	loading();
 });
-
-const beforeRouteEnter = (to, from, next) => {
-	console.log('entered');
-	loading();
-	next();
-};
 </script>
 
 <template>

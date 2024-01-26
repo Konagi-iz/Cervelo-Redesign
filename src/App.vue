@@ -4,8 +4,8 @@ import '@/scss/base.scss';
 import '@/scss/nwclasses.scss';
 import Header from '@/components/parts/Header.vue';
 import Footer from '@/components/parts/Footer.vue';
-import { RouterView,  } from 'vue-router';
-import { ref, onMounted } from 'vue';
+import { RouterView } from 'vue-router';
+import { ref, onMounted, nextTick } from 'vue';
 
 let w = window.innerWidth;
 
@@ -22,29 +22,6 @@ window.addEventListener('resize', () => {
 	w = window.innerWidth;
 	changeRootFontSize();
 });
-
-/* Scroll Animation ------------ */
-function scrollAnimation() {
-	const targets = document.querySelectorAll('.scr-anin');
-
-	targets.forEach((e) => {
-		window.addEventListener('scroll', () => {
-			const scroll = window.scrollY;
-			const h = window.innerHeight;
-			const pos = scroll + e.getBoundingClientRect().top;
-
-			if (scroll + h * 0.8 > pos) {
-				e.classList.add('scr-anin--on');
-			}
-		});
-	});
-}
-window.addEventListener('DOMContentLoaded', () => {
-	scrollAnimation();
-});
-
-/* 画面遷移アニメーション ------------ */
-const load = ref(null);
 </script>
 
 <template>
