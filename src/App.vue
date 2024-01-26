@@ -43,20 +43,6 @@ window.addEventListener('DOMContentLoaded', () => {
 	scrollAnimation();
 });
 
-/* Loading ------------ */
-function Loading() {
-	const targets = document.querySelectorAll('.js-load');
-
-	targets.forEach((e) => {
-		setTimeout(() => {
-			e.classList.add('js-load--on');
-		}, 400);
-	});
-}
-window.addEventListener('load', () => {
-	Loading();
-});
-
 /* 画面遷移アニメーション ------------ */
 const load = ref(null);
 </script>
@@ -79,11 +65,14 @@ const load = ref(null);
 
 /* load ------------ */
 .load {
+	z-index: 1000;
+	position: fixed;
 	opacity: 0;
 	width: 100%;
 	height: 100dvh;
 	background: $c-red;
 	transition: opacity 0.6s $e-out;
+	pointer-events: none;
 }
 .load--active {
 	opacity: 1;

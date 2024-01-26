@@ -38,8 +38,15 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-console.log(to);
-next()
-})
+	const load = document.querySelector('.load');
+	load.classList.add('load--active');
+	setTimeout(() => {
+		next();
+	}, 600);
+});
+router.afterEach((to, from, next) => {
+	const load = document.querySelector('.load');
+	load.classList.remove('load--active');
+});
 
 export default router;

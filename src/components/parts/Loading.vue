@@ -84,7 +84,7 @@ import LogoMini from '~icons/svg/logo_mini';
 		transform: scaleY(1);
 	}
 	.loading__logo {
-		animation: logo 2s $e-inOut .7s;
+		animation: logo 2s $e-inOut 0.7s;
 	}
 }
 @keyframes logo {

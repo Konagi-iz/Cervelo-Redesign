@@ -5,6 +5,7 @@ import IconRight from '~icons/svg/icon_right';
 import IconLeft from '~icons/svg/icon_left';
 import Menu from '@/components/parts/Menu.vue';
 import { ref } from 'vue';
+import router from '../../router';
 
 const props = defineProps(['w']);
 
@@ -83,7 +84,7 @@ function pageSwitch(page) {
 </script>
 
 <template>
-	<header id="header" class="js-load">
+	<header id="header" :class="{ 'js-load': router.currentRoute.value.name === 'home' }">
 		<router-link class="header__logo-wrp" :to="{ name: 'home' }" v-scroll-to="'#main'">
 			<h1 class="header__ttl">
 				<Logo class="header__logo"></Logo>
@@ -172,7 +173,6 @@ function pageSwitch(page) {
 	position: fixed;
 	top: 0;
 	left: 0;
-	transform: translateY(-100%);
 	display: flex;
 	width: fit-content;
 	height: 64px;
@@ -182,6 +182,9 @@ function pageSwitch(page) {
 		width: 100%;
 		height: vw(56);
 		transition: transform 1s $e-out 2.2s, height 0.5s $e-out, background 0.5s $e-out;
+	}
+	&.js-load {
+		transform: translateY(-100%);
 	}
 	&.js-load--on {
 		transform: translateY(0);
