@@ -1,5 +1,4 @@
 <script setup>
-import Loading from '@/components/parts/Loading.vue';
 import Hero from '@/components/views/homeParts/Hero.vue';
 import News from '@/components/views/homeParts/News.vue';
 import Bikes from '@/components/views/homeParts/Bikes.vue';
@@ -17,16 +16,16 @@ function loading() {
 			e.classList.add('js-load--on');
 		}, 400);
 	});
-	// console.log('loaded');
 }
+
+/* onMounted ------------ */
 onMounted(() => {
-	loading();
+	// loading();
 });
 </script>
 
 <template>
 	<main id="main">
-		<Loading></Loading>
 		<Hero></Hero>
 		<News></News>
 		<Bikes></Bikes>

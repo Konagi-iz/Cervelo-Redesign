@@ -4,8 +4,9 @@ import LogoMini from '~icons/svg/logo_mini';
 import IconRight from '~icons/svg/icon_right';
 import IconLeft from '~icons/svg/icon_left';
 import Menu from '@/components/parts/Menu.vue';
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import router from '../../router';
+import { useRoute } from 'vue-router';
 
 const props = defineProps(['w']);
 
@@ -54,6 +55,7 @@ function menuToggle() {
 	menu.value.menu.classList.toggle('menu--active');
 	nav.value.classList.toggle('nav--active');
 	pages.value = '';
+
 	const body = document.body;
 	if (getComputedStyle(body).overflowY === 'hidden') {
 		body.style.overflowY = '';
@@ -61,6 +63,20 @@ function menuToggle() {
 		body.style.overflowY = 'hidden';
 	}
 }
+
+function menuClose() {
+	menu.value.menu.classList.remove('menu--active');
+	nav.value.classList.remove('nav--active');
+	pages.value = '';
+	const body = document.body;
+	body.style.overflowY = '';
+}
+
+// ルートが変わったらメニューを閉じる
+const route = useRoute();
+watch(route, () => {
+	menuClose();
+});
 
 /* SP版ナビゲーション ------------ */
 const pages = ref(null);

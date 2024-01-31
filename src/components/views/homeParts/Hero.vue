@@ -17,10 +17,10 @@ const onSwiper = (swiper) => {
 
 const hero = ref(null);
 onMounted(() => {
-	const observer = new MutationObserver((records) => {
+	const observer = new MutationObserver(() => {
 		setTimeout(() => {
 			heroSlide.swiper.slidePrev(0, () => {});
-		}, 1000);
+		}, 800);
 	});
 	observer.observe(hero.value, {
 		attributes: true,

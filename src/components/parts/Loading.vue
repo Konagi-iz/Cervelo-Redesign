@@ -1,5 +1,19 @@
 <script setup>
+import { ref, onMounted } from 'vue';
 import LogoMini from '~icons/svg/logo_mini';
+
+const emit = defineEmits(['isMounted']);
+const isMounted = ref(false);
+
+const mounted = () => {
+	isMounted.value = true;
+	emit('isMounted', isMounted);
+};
+
+onMounted(() => {
+	console.log('mounted');
+	mounted();
+});
 </script>
 
 <template>
@@ -42,6 +56,7 @@ import LogoMini from '~icons/svg/logo_mini';
 		line-height: 1.5;
 		letter-spacing: 0.1em;
 		font-style: italic;
+		animation: loading 0.6s infinite alternate ease-in-out;
 	}
 	.loading__in {
 		display: flex;
@@ -60,7 +75,7 @@ import LogoMini from '~icons/svg/logo_mini';
 			}
 		}
 		&:nth-of-type(odd) {
-			transform-origin: bottom;
+			// transform-origin: bottom;
 		}
 	}
 	.loading__logo {
@@ -85,6 +100,14 @@ import LogoMini from '~icons/svg/logo_mini';
 	}
 	.loading__logo {
 		animation: logo 2s $e-inOut 0.7s;
+	}
+}
+@keyframes loading {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
 	}
 }
 @keyframes logo {
