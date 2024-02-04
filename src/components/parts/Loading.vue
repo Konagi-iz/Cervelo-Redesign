@@ -3,15 +3,14 @@ import { ref, onMounted } from 'vue';
 import LogoMini from '~icons/svg/logo_mini';
 
 const emit = defineEmits(['isMounted']);
-const isMounted = ref(false);
 
+/* マウントされたことを親に伝える ------------ */
+const isMounted = ref(false);
 const mounted = () => {
 	isMounted.value = true;
 	emit('isMounted', isMounted);
 };
-
 onMounted(() => {
-	console.log('mounted');
 	mounted();
 });
 </script>

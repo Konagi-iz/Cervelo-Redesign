@@ -1,16 +1,15 @@
 <script setup>
-import Loading from '@/components/parts/Loading.vue';
 import 'destyle.css';
 import '@/scss/base.scss';
 import '@/scss/nwclasses.scss';
+import { ref, onMounted, watch, onBeforeUpdate, onBeforeMount } from 'vue';
+import { RouterView, useRoute, onBeforeRouteLeave } from 'vue-router';
+import { globalState, reload } from '@/store';
+import Loading from '@/components/parts/Loading.vue';
 import Header from '@/components/parts/Header.vue';
 import Footer from '@/components/parts/Footer.vue';
-import { RouterView } from 'vue-router';
-import { ref, onMounted, watch } from 'vue';
-import { useRoute } from 'vue-router';
 
 let w = window.innerWidth;
-
 const route = useRoute();
 
 /* Change root font-size ------------ */
@@ -38,39 +37,32 @@ function loading() {
 	// console.log('loading');
 }
 
-/* onMounted ------------ */
+/* マウントされた時に呼ばれる ------------ */
 onMounted(() => {
-	// loading();
+	loading();
 });
 
-const reloadKey = ref(0);
-function reload() {
-	return reloadKey.value++;
-}
-
+/* Loading がマウントされたら loading を実行 ------------ */
 const isMounted = ref(false);
 const mounted = (newVal) => {
 	isMounted.value = newVal;
 };
-
 watch(isMounted, () => {
 	if (isMounted) {
-		// console.log('mounted');
 		loading();
 	}
 });
 
-watch(route, () => {
-	if (route.name === 'home') {
-		reload();
-	}
-});
+/* ルートが変更されたときに呼ばれる ------------ */
+// watch(route, () => {
+// 	reload();
+// });
 </script>
 
 <template>
 	<div class="wrapper">
 		<div ref="load" class="load"></div>
-		<Loading :key="reloadKey" @isMounted="mounted"></Loading>
+		<Loading :key="globalState.reloadKey" @isMounted="mounted"></Loading>
 		<Header :w="w"></Header>
 		<router-view></router-view>
 		<Footer></Footer>

@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 import HomeView from '@/components/views/HomeView.vue';
 import { nextTick } from 'vue';
+import { reload } from '@/store';
 
 const router = createRouter({
 	history: createWebHashHistory(),
@@ -39,8 +40,15 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
+	// 画面遷移アニメーション
 	const load = document.querySelector('.load');
 	load.classList.add('load--active');
+
+	if (to.name === 'home' && from.name !== 'home' && from.name !== undefined) {
+		console.log("ナビゲーションガードが'home'に対して発動されました");
+		reload();
+	}
+
 	setTimeout(() => {
 		next();
 	}, 600);
@@ -53,7 +61,7 @@ router.afterEach((to, from, next) => {
 	/* Scroll animation ------------ */
 	function scrollAnimation() {
 		const targets = document.querySelectorAll('.scr-anin');
-		
+
 		targets.forEach((e) => {
 			window.addEventListener('scroll', () => {
 				const scroll = window.scrollY;

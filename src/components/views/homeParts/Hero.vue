@@ -1,13 +1,15 @@
 <script setup>
+import { ref, watch, computed, onMounted } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Autoplay, EffectFade, Pagination } from 'swiper/modules';
-const modules = [Autoplay, EffectFade, Pagination];
 import 'swiper/css';
 import 'swiper/css/autoplay';
 import 'swiper/css/effect-fade';
 import 'swiper/css/pagination';
-import { ref, watch, computed, onMounted } from 'vue';
 
+const modules = [Autoplay, EffectFade, Pagination];
+
+/* スライダー設定 ------------ */
 const heroSlide = ref(null);
 const currentIndex = ref(1);
 const onSwiper = (swiper) => {
@@ -15,6 +17,7 @@ const onSwiper = (swiper) => {
 	swiper.slideNext(0, () => {});
 };
 
+/* js-load--onが付与された時にスライド開始 ------------ */
 const hero = ref(null);
 onMounted(() => {
 	const observer = new MutationObserver(() => {
@@ -41,6 +44,17 @@ const changeSwiperIndex = () => {
 	}
 };
 
+/* テキストを分割 ------------ */
+const splitText = (str) => {
+	const result = str.split('');
+	let newText = '';
+	for (let i = 0; i < result.length; i++) {
+		newText += '<span>' + result[i] + '</span>';
+	}
+	return newText;
+};
+
+/* スライダー情報 ------------ */
 const slides = ref([
 	{
 		type: 'road',
@@ -68,15 +82,7 @@ const slides = ref([
 	},
 ]);
 
-const splitText = (str) => {
-	const result = str.split('');
-	let newText = '';
-	for (let i = 0; i < result.length; i++) {
-		newText += '<span>' + result[i] + '</span>';
-	}
-	return newText;
-};
-
+/* lcl-hero-nav ------------ */
 const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 </script>
 
