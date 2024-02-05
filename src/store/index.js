@@ -6,5 +6,4 @@ export const globalState = {
 
 export function reload() {
   globalState.reloadKey.value++;
-  console.log("store");
 }

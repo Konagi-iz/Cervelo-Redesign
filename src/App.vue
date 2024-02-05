@@ -29,6 +29,7 @@ window.addEventListener('resize', () => {
 /* Loading ------------ */
 function loading() {
 	const targets = document.querySelectorAll('.js-load');
+	console.log('loading');
 	targets.forEach((e) => {
 		setTimeout(() => {
 			e.classList.add('js-load--on');
@@ -38,9 +39,9 @@ function loading() {
 }
 
 /* マウントされた時に呼ばれる ------------ */
-onMounted(() => {
-	loading();
-});
+// onMounted(() => {
+// 	loading();
+// });
 
 /* Loading がマウントされたら loading を実行 ------------ */
 const isMounted = ref(false);

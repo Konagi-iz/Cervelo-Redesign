@@ -20,6 +20,7 @@ const onSwiper = (swiper) => {
 /* js-load--onが付与された時にスライド開始 ------------ */
 const hero = ref(null);
 onMounted(() => {
+	console.log('hero mounted');
 	const observer = new MutationObserver(() => {
 		setTimeout(() => {
 			heroSlide.swiper.slidePrev(0, () => {});

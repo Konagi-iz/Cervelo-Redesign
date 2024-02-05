@@ -1,12 +1,12 @@
 <script setup>
+import { ref, watch } from 'vue';
+import { useRoute } from 'vue-router';
+import Menu from '@/components/parts/Menu.vue';
 import Logo from '~icons/svg/logo';
 import LogoMini from '~icons/svg/logo_mini';
 import IconRight from '~icons/svg/icon_right';
 import IconLeft from '~icons/svg/icon_left';
-import Menu from '@/components/parts/Menu.vue';
-import { ref, watch } from 'vue';
 import router from '../../router';
-import { useRoute } from 'vue-router';
 
 const props = defineProps(['w']);
 
@@ -100,7 +100,7 @@ function pageSwitch(page) {
 </script>
 
 <template>
-	<header id="header" :class="{ 'js-load': router.currentRoute.value.name === 'home' }">
+	<header id="header" :class="{ 'js-load': router.currentRoute.value.name === 'home' || true }">
 		<router-link class="header__logo-wrp" :to="{ name: 'home' }" v-scroll-to="'#main'">
 			<h1 class="header__ttl">
 				<Logo class="header__logo"></Logo>
