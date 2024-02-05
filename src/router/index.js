@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 import HomeView from '@/components/views/HomeView.vue';
 import { nextTick } from 'vue';
-import { reload } from '@/store';
+import { globalState, reload } from '@/store';
 
 const router = createRouter({
 	history: createWebHashHistory(),
@@ -45,14 +45,18 @@ router.beforeEach((to, from, next) => {
 	load.classList.add('load--active');
 
 	if (to.name === 'home' && from.name !== 'home' && from.name !== undefined) {
-		console.log("ナビゲーションガードが'home'に対して発動されました");
 		reload();
+		console.log("ナビゲーションガードが'home'に対して発動されました");
+		// nextTick(() => {
+		// });
 	}
 
+	// next();
 	setTimeout(() => {
 		next();
 	}, 600);
 });
+
 router.afterEach((to, from, next) => {
 	/* page switch load ------------ */
 	const load = document.querySelector('.load');

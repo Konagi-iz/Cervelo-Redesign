@@ -1,22 +1,24 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
+import { globalState } from '@/store';
 import LogoMini from '~icons/svg/logo_mini';
 
-const emit = defineEmits(['isMounted']);
+const emit = defineEmits(['update:isMounted']);
 
 /* マウントされたことを親に伝える ------------ */
-const isMounted = ref(false);
-const mounted = () => {
-	isMounted.value = true;
-	emit('isMounted', isMounted);
-};
 onMounted(() => {
-	mounted();
+	emit('update:isMounted', true);
+	console.log('mounted');
+});
+
+onUnmounted(() => {
+	emit('update:isMounted', false);
+	console.log('unMounted');
 });
 </script>
 
 <template>
-	<div class="loading js-load">
+	<div :key="globalState.reloadKey" class="loading js-load">
 		<p class="loading__txt">LOADING...</p>
 		<div class="loading__in">
 			<div class="loading__bg"></div>

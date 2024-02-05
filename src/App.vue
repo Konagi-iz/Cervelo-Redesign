@@ -2,9 +2,8 @@
 import 'destyle.css';
 import '@/scss/base.scss';
 import '@/scss/nwclasses.scss';
-import { ref, onMounted, watch, onBeforeUpdate, onBeforeMount } from 'vue';
-import { RouterView, useRoute, onBeforeRouteLeave } from 'vue-router';
-import { globalState, reload } from '@/store';
+import { ref, onMounted, watch } from 'vue';
+import { RouterView, useRoute } from 'vue-router';
 import Loading from '@/components/parts/Loading.vue';
 import Header from '@/components/parts/Header.vue';
 import Footer from '@/components/parts/Footer.vue';
@@ -44,13 +43,13 @@ function loading() {
 // });
 
 /* Loading がマウントされたら loading を実行 ------------ */
-const isMounted = ref(false);
-const mounted = (newVal) => {
-	isMounted.value = newVal;
-};
-watch(isMounted, () => {
-	if (isMounted) {
-		loading();
+const isLoadingMounted = ref(false);
+
+watch(isLoadingMounted, () => {
+	if (isLoadingMounted) {
+		setTimeout(() => {
+			loading();
+		}, 700);
 	}
 });
 
@@ -63,7 +62,7 @@ watch(isMounted, () => {
 <template>
 	<div class="wrapper">
 		<div ref="load" class="load"></div>
-		<Loading :key="globalState.reloadKey" @isMounted="mounted"></Loading>
+		<Loading @update:isMounted="isLoadingMounted = $event"></Loading>
 		<Header :w="w"></Header>
 		<router-view></router-view>
 		<Footer></Footer>
