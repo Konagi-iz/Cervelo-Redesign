@@ -1,6 +1,6 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
-import { globalState } from '@/store';
+import { onMounted } from 'vue';
+import { isLoadReady } from '@/store';
 import LogoMini from '~icons/svg/logo_mini';
 
 const emit = defineEmits(['update:isMounted']);
@@ -8,22 +8,13 @@ const emit = defineEmits(['update:isMounted']);
 /* マウントされたことを親に伝える ------------ */
 onMounted(() => {
 	emit('update:isMounted', true);
-	console.log('mounted');
-});
-
-onUnmounted(() => {
-	emit('update:isMounted', false);
-	console.log('unMounted');
 });
 </script>
 
 <template>
-	<div :key="globalState.reloadKey" class="loading js-load">
+	<div class="loading" :class="{ 'js-load': isLoadReady }">
 		<p class="loading__txt">LOADING...</p>
 		<div class="loading__in">
-			<div class="loading__bg"></div>
-			<div class="loading__bg"></div>
-			<div class="loading__bg"></div>
 			<div class="loading__bg"></div>
 			<div class="loading__bg"></div>
 			<div class="loading__bg"></div>
@@ -43,8 +34,7 @@ onUnmounted(() => {
 	width: 100%;
 	height: 100vh;
 	background: $c-white;
-	transition: opacity 0.2s ease, visibility 0.2s ease;
-	transition-delay: 1.6s;
+	transition: opacity 0s ease, visibility 0s ease;
 	.loading__txt {
 		position: absolute;
 		top: 50%;
@@ -69,12 +59,7 @@ onUnmounted(() => {
 		background: $c-red;
 		transform: scaleY(0);
 		transform-origin: top;
-		transition: transform 0.8s $e-out;
-		@for $i from 1 through 8 {
-			&:nth-of-type(#{$i}) {
-				transition-delay: #{0.1 * ($i - 1)}s;
-			}
-		}
+		transition: transform 0s $e-out;
 		&:nth-of-type(odd) {
 			// transform-origin: bottom;
 		}
@@ -96,8 +81,16 @@ onUnmounted(() => {
 	pointer-events: none;
 	opacity: 0;
 	visibility: hidden;
+	transition: opacity 0.2s ease, visibility 0.2s ease;
+	transition-delay: 1.6s;
 	.loading__bg {
 		transform: scaleY(1);
+		transition: transform 0.8s $e-out;
+		@for $i from 1 through 8 {
+			&:nth-of-type(#{$i}) {
+				transition-delay: #{0.1 * ($i - 1)}s;
+			}
+		}
 	}
 	.loading__logo {
 		animation: logo 2s $e-inOut 0.7s;

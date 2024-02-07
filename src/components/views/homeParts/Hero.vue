@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch, computed, onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Autoplay, EffectFade, Pagination } from 'swiper/modules';
 import 'swiper/css';
@@ -20,7 +20,6 @@ const onSwiper = (swiper) => {
 /* js-load--onが付与された時にスライド開始 ------------ */
 const hero = ref(null);
 onMounted(() => {
-	console.log('hero mounted');
 	const observer = new MutationObserver(() => {
 		setTimeout(() => {
 			heroSlide.swiper.slidePrev(0, () => {});

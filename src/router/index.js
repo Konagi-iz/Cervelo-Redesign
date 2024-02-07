@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 import HomeView from '@/components/views/HomeView.vue';
 import { nextTick } from 'vue';
-import { globalState, reload } from '@/store';
+import { isLoadReady } from '@/store';
 
 const router = createRouter({
 	history: createWebHashHistory(),
@@ -39,28 +39,41 @@ const router = createRouter({
 	],
 });
 
-router.beforeEach((to, from, next) => {
-	// 画面遷移アニメーション
-	const load = document.querySelector('.load');
-	load.classList.add('load--active');
+// 画面遷移アニメーションの時間
+const trsDuration = 600;
 
-	if (to.name === 'home' && from.name !== 'home' && from.name !== undefined) {
-		reload();
-		console.log("ナビゲーションガードが'home'に対して発動されました");
-		// nextTick(() => {
-		// });
+/* ページ遷移 前 に行われる処理 ------------ */
+router.beforeEach((to, from, next) => {
+	// 遷移前が'home'で、遷移先が'home'でなはい時(リロード時) または 遷移前が'home'ではなく、遷移先が'home'な時
+	if (
+		(to.name === 'home' && from.name !== 'home' && from.name !== undefined) ||
+		(to.name !== 'home' && from.name === 'home' && from.name !== undefined)
+	) {
+		// 画面遷移アニメーション
+		const transition = document.querySelector('.transition');
+		transition.classList.add('transition--active');
 	}
 
-	// next();
+	// homeのLoadingアニメーションの初期化
 	setTimeout(() => {
+		if (to.name === 'home' && from.name !== 'home' && from.name !== undefined) {
+			isLoadReady.value = false;
+		}
 		next();
-	}, 600);
+	}, trsDuration);
 });
 
+/* ページ遷移 後 に行われる処理 ------------ */
 router.afterEach((to, from, next) => {
-	/* page switch load ------------ */
-	const load = document.querySelector('.load');
-	load.classList.remove('load--active');
+	/* 画面遷移アニメーション ------------ */
+	const transition = document.querySelector('.transition');
+	transition.classList.remove('transition--active');
+
+	// homeのLoadingアニメーションの初期化
+	if (to.name === 'home' && from.name !== 'home' && from.name !== undefined) {
+		isLoadReady.value = true;
+		setTimeout(() => {}, trsDuration);
+	}
 
 	/* Scroll animation ------------ */
 	function scrollAnimation() {

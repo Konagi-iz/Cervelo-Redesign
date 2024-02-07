@@ -1,7 +1,6 @@
 <script setup>
 import ButtonInner from '@/components/parts/ButtonInner.vue';
 import { ref, computed } from 'vue';
-import axios from 'axios';
 import lineup from '@/assets/data/lineup.json';
 
 const categorys = ref(['road', 'time_trial', 'off-road', 'e-bike']);

@@ -1,12 +1,12 @@
 <script setup>
 import { ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
+import { isLoadReady } from '@/store';
 import Menu from '@/components/parts/Menu.vue';
 import Logo from '~icons/svg/logo';
 import LogoMini from '~icons/svg/logo_mini';
 import IconRight from '~icons/svg/icon_right';
 import IconLeft from '~icons/svg/icon_left';
-import router from '../../router';
 
 const props = defineProps(['w']);
 
@@ -100,7 +100,7 @@ function pageSwitch(page) {
 </script>
 
 <template>
-	<header id="header" :class="{ 'js-load': router.currentRoute.value.name === 'home' || true }">
+	<header id="header" :class="{ 'js-load': isLoadReady }">
 		<router-link class="header__logo-wrp" :to="{ name: 'home' }" v-scroll-to="'#main'">
 			<h1 class="header__ttl">
 				<Logo class="header__logo"></Logo>
@@ -192,18 +192,22 @@ function pageSwitch(page) {
 	display: flex;
 	width: fit-content;
 	height: 64px;
-	transition: transform 1s $e-out 2.2s;
+	transition: transform 0s $e-out 0s;
 	@include media_narrow {
 		justify-content: space-between;
 		width: 100%;
 		height: vw(56);
-		transition: transform 1s $e-out 2.2s, height 0.5s $e-out, background 0.5s $e-out;
+		transition: transform 0s $e-out 0s, height 0.5s $e-out, background 0.5s $e-out;
 	}
 	&.js-load {
 		transform: translateY(-100%);
 	}
 	&.js-load--on {
 		transform: translateY(0);
+		transition: transform 1s $e-out 2.2s;
+		@include media_narrow {
+			transition: transform 1s $e-out 2.2s, height 0.5s $e-out, background 0.5s $e-out;
+		}
 	}
 	.header__logo-wrp {
 		z-index: 999;

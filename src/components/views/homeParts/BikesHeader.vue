@@ -100,8 +100,8 @@ const props = defineProps({
 		position: absolute;
 		top: 0;
 		left: 0;
-		clip-path: inset(-1% -1% 100% -1%);
-		transform: translateY(-20%);
+		clip-path: inset(100% -1% -1% -1%);
+		transform: translateY(20%);
 		object-fit: cover;
 		width: 100%;
 		height: 100%;
@@ -128,7 +128,7 @@ const props = defineProps({
 		position: absolute;
 		top: 0;
 		left: 0;
-		translate: 0 -100%;
+		translate: 0 100%;
 		display: flex;
 		height: 100%;
 		transition: transform 0.3s $e-out, opacity 0.3s $e-out, translate 1.3s $e-out 0.1s;
