@@ -1,5 +1,6 @@
 <script setup>
 import { onMounted, getCurrentInstance } from 'vue';
+import SubpageFv from '@/component/parts/Subpage-fv.vue'
 
 const emit = defineEmits(['childMounted']);
 
@@ -13,8 +14,7 @@ onMounted(() => {
 </script>
 
 <template>
-	<h1>BIKES</h1>
-	<router-link :to="{ name: 'home' }">VIEW HOME</router-link>
+	<SubapageFv></SubapageFv>
 </template>
 
 <style scoped lang="scss">
