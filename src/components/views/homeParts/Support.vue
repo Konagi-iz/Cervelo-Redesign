@@ -31,7 +31,7 @@ const navs = ref(['オーナーズ\nクラブの登録', '品質保証につい�
 	</section>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 .lcl-support {
 	clip-path: inset(-1% -1% 100% -1%);
 	margin-top: 180px;

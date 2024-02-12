@@ -31,8 +31,9 @@ const colorConvert = (color) => {
 		@include font-en;
 		@include fz(14);
 		font-weight: 600;
-		line-height: 1;
 		font-style: italic;
+		line-height: 1;
+		white-space: nowrap;
 		transition: color 0.4s ease;
 		@include media_narrow {
 			@include fz(13);

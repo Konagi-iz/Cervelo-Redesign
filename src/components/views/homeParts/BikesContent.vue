@@ -1,7 +1,8 @@
 <script setup>
-import ButtonInner from '@/components/parts/ButtonInner.vue';
 import { ref, computed } from 'vue';
 import lineup from '@/assets/data/lineup.json';
+import ButtonInner from '@/components/parts/ButtonInner.vue';
+import BikeCard from '@/components/parts/BikeCard.vue';
 
 const categorys = ref(['road', 'time_trial', 'off-road', 'e-bike']);
 const emits = defineEmits(['switchCategory']);
@@ -18,7 +19,7 @@ const switchCategory = (cat) => {
 // フィルターされたラインナップを返す
 const filteredLineup = computed(() => {
 	// pickupのみを抽出
-	return lineup.filter((item) => item.pickup === true && item.type === currentTab.value);
+	return lineup.filter((item) => item.pickup === true && item.type === currentTab.value.replace('_', '-'));
 });
 </script>
 
@@ -40,20 +41,15 @@ const filteredLineup = computed(() => {
 			<TransitionGroup name="list">
 				<li v-for="item in filteredLineup" :key="item.model + item.component + item.year" class="lcl-bikes-list__item">
 					<router-link to="" class="lcl-bikes-list__link">
-						<img
-							class="lcl-bikes-list__img"
-							:src="`/assets/img/lineup/${item.img}`"
-							:alt="`${item.model} `"
-							loading="lazy"
-							width="267"
-							height="178"
-						/>
-						<div class="lcl-bikes-list__cnt">
-							<p class="lcl-bikes-list__year">{{ item.year }}</p>
-							<p class="lcl-bikes-list__model">{{ item.model }}</p>
-							<p class="lcl-bikes-list__component">{{ item.component }}</p>
-							<p class="lcl-bikes-list__price">{{ `¥ ${item.price.toLocaleString()}` }}</p>
-						</div>
+						<BikeCard
+							v-bind="{
+								img: item.img,
+								year: String(item.year),
+								model: item.model,
+								component: item.component,
+								price: item.price,
+							}"
+						></BikeCard>
 					</router-link>
 				</li>
 			</TransitionGroup>
@@ -68,7 +64,7 @@ const filteredLineup = computed(() => {
 	<!-- .lcl-bikes-cnt -->
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 .lcl-bikes-cnt {
 	position: relative;
 	margin-top: -90px;
@@ -175,18 +171,17 @@ const filteredLineup = computed(() => {
 		}
 	}
 	.lcl-bikes-list__item {
+	}
+	.lcl-bikes-list__item--btn {
 		width: 320px;
 		height: 322px;
-		background: $c-lightgray;
+		background: $c-darkgray;
 		text-align: center;
+		transition: opacity 0.3s ease;
 		@include media_narrow {
 			width: vw(168);
 			height: vw(200);
 		}
-	}
-	.lcl-bikes-list__item--btn {
-		background: $c-darkgray;
-		transition: opacity 0.3s ease;
 		@include media_hover {
 			&:hover {
 				opacity: 0.7;
@@ -267,67 +262,9 @@ const filteredLineup = computed(() => {
 		width: 100%;
 		height: 100%;
 		@include media_hover {
-			&:hover .btn-inner__icon {
+			&:hover :deep(.icon-right) {
 				transform: translateX(50%);
 			}
-		}
-	}
-	.lcl-bikes-list__img {
-		box-sizing: content-box;
-		padding-top: 9px;
-		width: 267px;
-		height: 178px;
-		object-fit: cover;
-		@include media_narrow {
-			padding-top: vw(8);
-			width: vw(132);
-			height: vw(88);
-		}
-	}
-	.lcl-bikes-list__cnt {
-		margin-top: 12px;
-		@include media_narrow {
-			margin-top: vw(9);
-		}
-	}
-	.lcl-bikes-list__year {
-		@include fz(12);
-		font-weight: 300;
-		line-height: 1.2;
-		@include media_narrow {
-			@include fz(10);
-		}
-	}
-	.lcl-bikes-list__model {
-		margin-top: 5px;
-		@include fz(16);
-		font-weight: 600;
-		line-height: 1.2;
-		@include media_narrow {
-			margin-top: vw(4);
-			@include fz(14);
-		}
-	}
-	.lcl-bikes-list__component {
-		margin-top: 2px;
-		@include fz(12);
-		font-weight: 300;
-		line-height: 1.2;
-		@include media_narrow {
-			margin-top: vw(2);
-			@include fz(12);
-		}
-	}
-	.lcl-bikes-list__price {
-		margin-top: 20px;
-		color: $c-red;
-		@include fz(14);
-		font-weight: 600;
-		line-height: 1.5;
-		letter-spacing: 0.05;
-		@include media_narrow {
-			margin-top: vw(10);
-			@include fz(14);
 		}
 	}
 }

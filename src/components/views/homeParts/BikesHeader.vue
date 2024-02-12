@@ -79,7 +79,7 @@ const props = defineProps({
 	</div>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 .lcl-bikes-head {
 	position: relative;
 	overflow: hidden;

@@ -17,7 +17,7 @@ const switchCategory = (cat) => {
 	</section>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 .lcl-bikes {
 	padding-bottom: 130px;
 	@include media_narrow {

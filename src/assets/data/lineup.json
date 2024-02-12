@@ -4,6 +4,7 @@
 		"type": "road",
 		"year": "2023-2024",
 		"model": "S5 Disc",
+		"official": "S5",
 		"component": "R9270 Dura Ace Di2",
 		"price": 2145000,
 		"pickup": true
@@ -13,6 +14,7 @@
 		"type": "road",
 		"year": "2023-2024",
 		"model": "S5 Disc",
+		"official": "S5",
 		"component": "Red eTap AXS",
 		"price": 2200000,
 		"pickup": true
@@ -22,6 +24,7 @@
 		"type": "road",
 		"year": "2023-2024",
 		"model": "S5 Disc",
+		"official": "S5",
 		"component": "R8170 Ultegra Di2",
 		"price": 1606000,
 		"pickup": false
@@ -31,6 +34,7 @@
 		"type": "road",
 		"year": "2023-2024",
 		"model": "S5 Disc",
+		"official": "S5",
 		"component": "Force eTap AXS",
 		"price": 1639000,
 		"pickup": false
@@ -40,6 +44,7 @@
 		"type": "road",
 		"year": "2023-2024",
 		"model": "S5 Disc",
+		"official": "S5",
 		"component": "Frame set",
 		"price": 968000,
 		"pickup": false
@@ -49,6 +54,7 @@
 		"type": "road",
 		"year": "2023-2024",
 		"model": "R5 Disc",
+		"official": "R5",
 		"component": "R9270 Dura Ace Di2",
 		"price": 1980000,
 		"pickup": true
@@ -58,6 +64,7 @@
 		"type": "road",
 		"year": "2022-2024",
 		"model": "R5 Disc",
+		"official": "R5",
 		"component": "R9270 Dura Ace Di2",
 		"price": 1980000,
 		"pickup": false
@@ -67,6 +74,7 @@
 		"type": "road",
 		"year": "2023-2024",
 		"model": "R5 Disc",
+		"official": "R5",
 		"component": "Red eTap AXS",
 		"price": 1650000,
 		"pickup": true
@@ -76,6 +84,7 @@
 		"type": "road",
 		"year": "2023-2024",
 		"model": "R5 Disc",
+		"official": "R5",
 		"component": "R8170 Ultegra Di2",
 		"price": 1485000,
 		"pickup": false
@@ -85,6 +94,7 @@
 		"type": "road",
 		"year": "2022-2024",
 		"model": "R5 Disc",
+		"official": "R5",
 		"component": "R8170 Ultegra Di2",
 		"price": 1485000,
 		"pickup": false
@@ -94,6 +104,7 @@
 		"type": "road",
 		"year": "2023-2024",
 		"model": "R5 Disc",
+		"official": "R5",
 		"component": "Force eTap AXS",
 		"price": 1562000,
 		"pickup": false
@@ -103,6 +114,7 @@
 		"type": "road",
 		"year": "2022-2024",
 		"model": "R5 Disc",
+		"official": "R5",
 		"component": "Force eTap AXS",
 		"price": 1155000,
 		"pickup": false
@@ -112,6 +124,7 @@
 		"type": "road",
 		"year": "2023-2024",
 		"model": "R5 Disc",
+		"official": "R5",
 		"component": "Frame set",
 		"price": 858000,
 		"pickup": false
@@ -121,6 +134,7 @@
 		"type": "road",
 		"year": "2022-2024",
 		"model": "R5 Disc",
+		"official": "R5",
 		"component": "Frame set",
 		"price": 858000,
 		"pickup": false
@@ -130,6 +144,7 @@
 		"type": "road",
 		"year": "2023-2024",
 		"model": "Soloist",
+		"official": "Soloist",
 		"component": "R8170 Ultegra Di2",
 		"price": 1188000,
 		"pickup": false
@@ -139,6 +154,7 @@
 		"type": "road",
 		"year": "2023-2024",
 		"model": "Soloist",
+		"official": "Soloist",
 		"component": "Force eTap AXS",
 		"price": 1188000,
 		"pickup": true
@@ -148,6 +164,7 @@
 		"type": "road",
 		"year": "2023-2024",
 		"model": "Soloist",
+		"official": "Soloist",
 		"component": "R7170 105 Di2",
 		"price": 858000,
 		"pickup": true
@@ -157,6 +174,7 @@
 		"type": "road",
 		"year": "2023-2024",
 		"model": "Soloist",
+		"official": "Soloist",
 		"component": "Rival eTap AXS",
 		"price": 880000,
 		"pickup": false
@@ -166,6 +184,7 @@
 		"type": "road",
 		"year": "2023-2024",
 		"model": "Soloist",
+		"official": "Soloist",
 		"component": "R7020 105",
 		"price": 594000,
 		"pickup": false
@@ -175,6 +194,7 @@
 		"type": "road",
 		"year": "2023-2024",
 		"model": "Soloist",
+		"official": "Soloist",
 		"component": "Frame set",
 		"price": 484000,
 		"pickup": false
@@ -184,6 +204,7 @@
 		"type": "road",
 		"year": "2023-2024",
 		"model": "Caledonia-5",
+		"official": "Caledonia-5",
 		"component": "R9270 Dura Ace Di2",
 		"price": 1870000,
 		"pickup": false
@@ -193,6 +214,7 @@
 		"type": "road",
 		"year": "2022-2024",
 		"model": "Caledonia-5",
+		"official": "Caledonia-5",
 		"component": "R9270 Dura Ace Di2",
 		"price": 1870000,
 		"pickup": false
@@ -202,6 +224,7 @@
 		"type": "road",
 		"year": "2023-2024",
 		"model": "Caledonia-5",
+		"official": "Caledonia-5",
 		"component": "R8170 Ultegra Di2",
 		"price": 1430000,
 		"pickup": true
@@ -211,6 +234,7 @@
 		"type": "road",
 		"year": "2022-2024",
 		"model": "Caledonia-5",
+		"official": "Caledonia-5",
 		"component": "R8170 Ultegra Di2",
 		"price": 1375000,
 		"pickup": false
@@ -220,6 +244,7 @@
 		"type": "road",
 		"year": "2023-2024",
 		"model": "Caledonia-5",
+		"official": "Caledonia-5",
 		"component": "Force eTap AXS",
 		"price": 1430000,
 		"pickup": false
@@ -229,6 +254,7 @@
 		"type": "road",
 		"year": "2023-2024",
 		"model": "Caledonia-5",
+		"official": "Caledonia-5",
 		"component": "Rival eTap AXS",
 		"price": 990000,
 		"pickup": false
@@ -238,6 +264,7 @@
 		"type": "road",
 		"year": "2023-2024",
 		"model": "Caledonia-5",
+		"official": "Caledonia-5",
 		"component": "Frame set",
 		"price": 748000,
 		"pickup": false
@@ -247,6 +274,7 @@
 		"type": "road",
 		"year": "2022-2024",
 		"model": "Caledonia-5",
+		"official": "Caledonia-5",
 		"component": "Frame set",
 		"price": 748000,
 		"pickup": false
@@ -256,6 +284,7 @@
 		"type": "road",
 		"year": "2023-2024",
 		"model": "Caledonia",
+		"official": "Caledonia",
 		"component": "R8170 Ultegra Di2",
 		"price": 858000,
 		"pickup": true
@@ -265,6 +294,7 @@
 		"type": "road",
 		"year": "2022-2024",
 		"model": "Caledonia",
+		"official": "Caledonia",
 		"component": "R8170 Ultegra Di2",
 		"price": 858000,
 		"pickup": false
@@ -274,6 +304,7 @@
 		"type": "road",
 		"year": "2023-2024",
 		"model": "Caledonia",
+		"official": "Caledonia",
 		"component": "R7170 105 Di2",
 		"price": 698500,
 		"pickup": false
@@ -283,6 +314,7 @@
 		"type": "road",
 		"year": "2022-2024",
 		"model": "Caledonia",
+		"official": "Caledonia",
 		"component": "R7170 105 Di2",
 		"price": 698500,
 		"pickup": false
@@ -292,6 +324,7 @@
 		"type": "road",
 		"year": "2023-2024",
 		"model": "Caledonia",
+		"official": "Caledonia",
 		"component": "Rival eTap AXS",
 		"price": 693000,
 		"pickup": false
@@ -301,6 +334,7 @@
 		"type": "road",
 		"year": 2024,
 		"model": "Caledonia",
+		"official": "Caledonia",
 		"component": "R7170 105",
 		"price": 495000,
 		"pickup": false
@@ -310,87 +344,97 @@
 		"type": "road",
 		"year": "2023-2024",
 		"model": "Caledonia",
+		"official": "Caledonia",
 		"component": "R7020 105",
 		"price": 495000,
 		"pickup": false
 	},
 	{
 		"img": "P5_R9270 Dura Ace Di2_23-24.webp",
-		"type": "time_trial",
+		"type": "time-trial",
 		"year": "2023-2024",
 		"model": "P5",
+		"official": "P5",
 		"component": "R9270 Dura Ace Di2",
 		"price": 2145000,
 		"pickup": true
 	},
 	{
 		"img": "P5_R8170 Ultegra Di2_23-24.webp",
-		"type": "time_trial",
+		"type": "time-trial",
 		"year": "2023-2024",
 		"model": "P5",
+		"official": "P5",
 		"component": "R8170 Ultegra Di2",
 		"price": 1585000,
 		"pickup": true
 	},
 	{
 		"img": "P5_Force eTap AXS_23-24.webp",
-		"type": "time_trial",
+		"type": "time-trial",
 		"year": "2023-2024",
 		"model": "P5",
+		"official": "P5",
 		"component": "Force eTap AXS",
 		"price": 1705000,
 		"pickup": true
 	},
 	{
 		"img": "P5_Frame set_23-24.webp",
-		"type": "time_trial",
+		"type": "time-trial",
 		"year": "2023-2024",
 		"model": "P5",
+		"official": "P5",
 		"component": "Frame set",
 		"price": 990000,
 		"pickup": true
 	},
 	{
 		"img": "P5_Frame set_22-24.webp",
-		"type": "time_trial",
+		"type": "time-trial",
 		"year": "2022-2024",
 		"model": "P5",
+		"official": "P5",
 		"component": "Frame set",
 		"price": 990000,
 		"pickup": false
 	},
 	{
 		"img": "P_R8170 Ultegra Di2_23-24.webp",
-		"type": "time_trial",
+		"type": "time-trial",
 		"year": "2023-2024",
-		"model": "P-Series",
+		"model": "P",
+		"official": "P-Series",
 		"component": "R8170 Ultegra Di2",
 		"price": 1155000,
 		"pickup": true
 	},
 	{
 		"img": "P_R8020 Ultegra_23-24.webp",
-		"type": "time_trial",
+		"type": "time-trial",
 		"year": "2023-2024",
-		"model": "P-Series",
+		"model": "P",
+		"official": "P-Series",
 		"component": "R8020 Ultegra",
 		"price": 748000,
 		"pickup": true
 	},
 	{
 		"img": "P_R7020 105_23-24.webp",
-		"type": "time_trial",
+		"type": "time-trial",
 		"year": "2023-2024",
-		"model": "P-Series",
+		"model": "P",
+		"official": "P-Series",
 		"component": "R7020 105",
 		"price": 594000,
 		"pickup": true
 	},
 	{
 		"img": "P_Frame set_23-24.webp",
-		"type": "time_trial",
+		"type": "time-trial",
 		"year": "2023-2024",
-		"model": "P-Series",
+		"model": "P",
+		"official": "P-Series",
 		"component": "Frame set",
 		"price": 462000,
 		"pickup": true
@@ -400,6 +444,7 @@
 		"type": "off-road",
 		"year": "2023-2024",
 		"model": "Áspero-5",
+		"official": "Áspero-5",
 		"component": "GRX RX815 Di2",
 		"price": 946000,
 		"pickup": true
@@ -409,6 +454,7 @@
 		"type": "off-road",
 		"year": "2023-2024",
 		"model": "Áspero-5",
+		"official": "Áspero-5",
 		"component": "Red XPLR eTap AXS",
 		"price": 1155000,
 		"pickup": true
@@ -418,6 +464,7 @@
 		"type": "off-road",
 		"year": "2023-2024",
 		"model": "Áspero-5",
+		"official": "Áspero-5",
 		"component": "Force XPLR eTap AXS",
 		"price": 1188000,
 		"pickup": false
@@ -427,6 +474,7 @@
 		"type": "off-road",
 		"year": "2023-2024",
 		"model": "Áspero-5",
+		"official": "Áspero-5",
 		"component": "Frame set",
 		"price": 605000,
 		"pickup": false
@@ -436,6 +484,7 @@
 		"type": "off-road",
 		"year": "2023-2024",
 		"model": "Áspero",
+		"official": "Áspero",
 		"component": "GRX RX815 Di2",
 		"price": 825000,
 		"pickup": true
@@ -445,6 +494,7 @@
 		"type": "off-road",
 		"year": "2023-2024",
 		"model": "Áspero",
+		"official": "Áspero",
 		"component": "Force XPLR eTap AXS",
 		"price": 825000,
 		"pickup": true
@@ -454,6 +504,7 @@
 		"type": "off-road",
 		"year": "2023-2024",
 		"model": "Áspero",
+		"official": "Áspero",
 		"component": "GRX RX810",
 		"price": 759000,
 		"pickup": false
@@ -463,6 +514,7 @@
 		"type": "off-road",
 		"year": "2023-2024",
 		"model": "Áspero",
+		"official": "Áspero",
 		"component": "GRX RX600",
 		"price": 533500,
 		"pickup": false
@@ -472,6 +524,7 @@
 		"type": "off-road",
 		"year": "2023-2024",
 		"model": "Áspero",
+		"official": "Áspero",
 		"component": "Apex 1",
 		"price": 533500,
 		"pickup": false
@@ -481,6 +534,7 @@
 		"type": "off-road",
 		"year": "2023-2024",
 		"model": "Áspero",
+		"official": "Áspero",
 		"component": "Frame set",
 		"price": 429000,
 		"pickup": false
@@ -490,6 +544,7 @@
 		"type": "off-road",
 		"year": "2023-2024",
 		"model": "R5-CX",
+		"official": "R5-CX",
 		"component": "Frame set",
 		"price": 825000,
 		"pickup": true
@@ -499,6 +554,7 @@
 		"type": "off-road",
 		"year": "2023-2024",
 		"model": "ZHT-5",
+		"official": "ZHT-5",
 		"component": "GX Eagle",
 		"price": 638000,
 		"pickup": true
@@ -508,6 +564,7 @@
 		"type": "off-road",
 		"year": "2023-2024",
 		"model": "ZFS-5 100mm Fork",
+		"official": "ZFS-5",
 		"component": "XX SL AXS",
 		"price": 1705000,
 		"pickup": true
@@ -517,6 +574,7 @@
 		"type": "off-road",
 		"year": "2023-2024",
 		"model": "ZFS-5 100mm Fork",
+		"official": "ZFS-5",
 		"component": "GX AXS",
 		"price": 990000,
 		"pickup": false
@@ -526,6 +584,7 @@
 		"type": "off-road",
 		"year": "2023-2024",
 		"model": "ZFS-5 100mm Fork",
+		"official": "ZFS-5",
 		"component": "GX Eagle",
 		"price": 825000,
 		"pickup": false
@@ -535,6 +594,7 @@
 		"type": "off-road",
 		"year": "2023-2024",
 		"model": "ZFS-5 120mm Fork",
+		"official": "ZFS-5",
 		"component": "XO AXS",
 		"price": 1375000,
 		"pickup": true
@@ -544,6 +604,7 @@
 		"type": "off-road",
 		"year": "2023-2024",
 		"model": "ZFS-5 120mm Fork",
+		"official": "ZFS-5",
 		"component": "GX AXS",
 		"price": 1045000,
 		"pickup": false
@@ -553,6 +614,7 @@
 		"type": "off-road",
 		"year": "2023-2024",
 		"model": "ZFS-5 120mm Fork",
+		"official": "ZFS-5",
 		"component": "GX Eagle",
 		"price": 858000,
 		"pickup": false
@@ -562,6 +624,7 @@
 		"type": "e-bike",
 		"year": "2023-2024",
 		"model": "Rouvida",
+		"official": "Rouvida",
 		"component": "Red XPLR AXS",
 		"price": 1915000,
 		"pickup": true

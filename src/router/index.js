@@ -16,6 +16,28 @@ const router = createRouter({
 			name: 'bikes',
 			component: () => import('@/components/views/BikesView.vue'),
 		},
+		/* bikes/~ ------------ */
+		{
+			path: '/bikes/road',
+			name: 'road',
+			component: () => import('@/components/views/bikes/RoadView.vue'),
+		},
+		{
+			path: '/bikes/time-trial',
+			name: 'time-trial',
+			component: () => import('@/components/views/bikes/TimeTrialView.vue'),
+		},
+		{
+			path: '/bikes/off-road',
+			name: 'off-road',
+			component: () => import('@/components/views/bikes/OffRoadView.vue'),
+		},
+		{
+			path: '/bikes/e-bike',
+			name: 'e-bike',
+			component: () => import('@/components/views/bikes/EBikeView.vue'),
+		},
+
 		{
 			path: '/history',
 			name: 'history',
@@ -37,6 +59,11 @@ const router = createRouter({
 			component: () => import('@/components/views/NewsView.vue'),
 		},
 	],
+	scrollBehavior(to, from, savedPosition) {
+		return {
+			top: 0,
+		};
+	},
 });
 
 // 画面遷移アニメーションの時間
@@ -44,10 +71,13 @@ const trsDuration = 600;
 
 /* ページ遷移 前 に行われる処理 ------------ */
 router.beforeEach((to, from, next) => {
-	// 遷移前が'home'で、遷移先が'home'でなはい時(リロード時) または 遷移前が'home'ではなく、遷移先が'home'な時
+	// 遷移前が'home'で、遷移先が'home'でなはい時(リロード時)
+	// または、遷移前が'home'ではなく、遷移先が'home'な時
+	// または、遷移前が'home'ではなく、遷移先が'home'ではない時
 	if (
 		(to.name === 'home' && from.name !== 'home' && from.name !== undefined) ||
-		(to.name !== 'home' && from.name === 'home' && from.name !== undefined)
+		(to.name !== 'home' && from.name === 'home' && from.name !== undefined) ||
+		(to.name !== 'home' && from.name !== 'home' && from.name !== undefined)
 	) {
 		// 画面遷移アニメーション
 		const transition = document.querySelector('.transition');

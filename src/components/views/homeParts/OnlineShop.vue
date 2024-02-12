@@ -26,7 +26,7 @@ import Button from '@/components/parts/Button.vue';
 	</section>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 .lcl-online {
 	position: relative;
 	margin-top: 130px;

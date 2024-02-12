@@ -25,7 +25,7 @@ onMounted(() => {
 	</div>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 .loading {
 	z-index: 2000;
 	position: fixed;

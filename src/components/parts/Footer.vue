@@ -68,7 +68,7 @@ const snsList = [IconX, IconInstagram, IconFacebook];
 	</footer>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 #footer {
 	overflow: clip;
 	width: 100%;
@@ -77,10 +77,10 @@ const snsList = [IconX, IconInstagram, IconFacebook];
 		z-index: 1;
 		position: relative;
 		padding-block: 146px 142px;
-		background: url('/assets/img/bg/bg_grid.png') repeat left top / 93px, $c-lightgray;
+		background: url('/assets/img/common/bg_grid.png') repeat left top / 93px, $c-lightgray;
 		@include media_narrow {
 			padding-block: vw(75) vw(78);
-			background: url('/assets/img/bg/bg_grid.png') repeat left top / vw(93), $c-lightgray;
+			background: url('/assets/img/common/bg_grid.png') repeat left top / vw(93), $c-lightgray;
 		}
 	}
 	.footer-nav__in {

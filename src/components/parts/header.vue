@@ -128,7 +128,8 @@ function pageSwitch(page) {
 						<router-link :to="{ name: 'bikes' }" class="nav-ttl dn-w">BIKES</router-link>
 						<ul class="nav-child-list">
 							<li class="nav-child-list__item" v-for="navChild in navChilds">
-								<router-link to="" class="nav-child-list__link">
+								<!-- ROAD / TIME TRIAL / OFF-ROAD / E-BIKE -->
+								<router-link :to="{ name: navChild.category.toLowerCase().replace(' ', '-') }" class="nav-child-list__link">
 									<span @click="preventLink" v-on:click="pageSwitch(navChild.category)" class="nav-child-list__ttl">
 										{{ navChild.category }}
 									</span>
@@ -142,7 +143,10 @@ function pageSwitch(page) {
 										<span class="nav-back__txt">BACK</span>
 									</button>
 									<!-- .nav-back -->
-									<router-link to="" class="nav-ttl dn-w">{{ navChild.category }}</router-link>
+									<!-- SP Only ROAD / TIME TRIAL / OFF-ROAD / E-BIKE -->
+									<router-link :to="{ name: navChild.category.toLowerCase().replace(' ', '-') }" class="nav-ttl dn-w">
+										{{ navChild.category }}
+									</router-link>
 									<ul class="nav-product-list">
 										<li class="nav-product-list__item" v-for="item in navChild.items">
 											<router-link to="" class="nav-product-list__link">{{ item }}</router-link>
@@ -161,6 +165,7 @@ function pageSwitch(page) {
 				</li>
 				<!-- .nav-list__item -->
 
+				<!-- HISTORY / SHOP LIST / SUPPORT / NEWS -->
 				<li class="nav-list__item" v-for="nav in navs">
 					<router-link class="nav-list__link" :to="{ name: nav }">
 						<span class="nav-list__ttl">{{ nav.toUpperCase() }}</span>
@@ -174,8 +179,8 @@ function pageSwitch(page) {
 		<div class="nav-loop-wrp">
 			<div class="nav-loop dn-w">
 				<div class="nav-loop__in">
-					<img class="nav-loop__item" src="/assets/img/header/img_loop.svg" alt="Cervelo Cervelo" width="580" height="39" />
-					<img class="nav-loop__item" src="/assets/img/header/img_loop.svg" alt="Cervelo Cervelo" width="580" height="39" />
+					<img class="nav-loop__item" src="/assets/img/common/header/img_loop.svg" alt="Cervelo Cervelo" width="580" height="39" />
+					<img class="nav-loop__item" src="/assets/img/common/header/img_loop.svg" alt="Cervelo Cervelo" width="580" height="39" />
 				</div>
 			</div>
 		</div>
@@ -183,7 +188,7 @@ function pageSwitch(page) {
 	<!-- .header -->
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 #header {
 	z-index: 999;
 	position: fixed;

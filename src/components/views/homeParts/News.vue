@@ -37,7 +37,7 @@ const newsList = ref([
 	</section>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 .lcl-news {
 	display: flex;
 	align-items: center;
@@ -181,10 +181,10 @@ const newsList = ref([
 				transform: translateX(262px);
 				clip-path: polygon(0 0, 100% 50%, 0 100%);
 			}
-			&:hover .btn-inner__txt {
+			&:hover :deep(.btn-inner__txt) {
 				color: $c-white !important;
 			}
-			&:hover .icon-right {
+			&:hover :deep(.icon-right) {
 				transform: translateX(50%);
 				.icon-right__path {
 					stroke: $c-white;
@@ -195,7 +195,7 @@ const newsList = ref([
 			clip-path: inset(-1% -1% -1% -1%);
 		}
 	}
-	.btn-inner {
+	:deep(.btn-inner) {
 		z-index: 1;
 	}
 }

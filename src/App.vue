@@ -2,12 +2,14 @@
 import 'destyle.css';
 import '@/scss/base.scss';
 import '@/scss/nwclasses.scss';
-import { RouterView } from 'vue-router';
+import { RouterView, useRoute } from 'vue-router';
 import Loading from '@/components/parts/Loading.vue';
 import Header from '@/components/parts/Header.vue';
+import FooterShopList from '@/components/parts/FooterShopList.vue';
 import Footer from '@/components/parts/Footer.vue';
 
 let w = window.innerWidth;
+const route = useRoute();
 
 /* Change root font-size ------------ */
 function changeRootFontSize() {
@@ -45,18 +47,15 @@ const onChildMounted = () => {
 		<div class="transition"></div>
 		<Loading></Loading>
 		<Header :w="w"></Header>
-		<router-view @child-mounted="onChildMounted"></router-view>
+		<main id="main">
+			<router-view @child-mounted="onChildMounted"></router-view>
+		</main>
+		<FooterShopList v-if="route.name !== 'home'"></FooterShopList>
 		<Footer></Footer>
 	</div>
 </template>
 
 <style lang="scss">
-.wrapper {
-	@include media_wide {
-		min-width: 1024px;
-	}
-}
-
 /* load ------------ */
 .transition {
 	z-index: 3000;

@@ -25,3 +25,13 @@ img {
 	height: auto;
 	vertical-align: bottom;
 }
+
+#main {
+	overflow-x: clip;
+}
+
+.wrapper {
+	@include media_wide {
+		min-width: 1024px;
+	}
+}

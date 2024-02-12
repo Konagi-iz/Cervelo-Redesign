@@ -62,7 +62,7 @@ import Button from '@/components/parts/Button.vue';
 	</section>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 .lcl-history {
 	position: relative;
 	width: 100%;

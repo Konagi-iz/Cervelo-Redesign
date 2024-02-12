@@ -10,7 +10,7 @@ import History from '@/components/views/homeParts/History.vue';
 
 const emit = defineEmits(['childMounted']);
 
-// マウントされたら親に伝える
+/* マウントされたら親に通知 ------------ */
 onMounted(() => {
 	const instance = getCurrentInstance();
 	if (instance && instance.parent) {
@@ -20,19 +20,13 @@ onMounted(() => {
 </script>
 
 <template>
-	<main id="main">
-		<Hero></Hero>
-		<News></News>
-		<Bikes></Bikes>
-		<Shoplist></Shoplist>
-		<OnlineShop></OnlineShop>
-		<Support></Support>
-		<History></History>
-	</main>
+	<Hero></Hero>
+	<News></News>
+	<Bikes></Bikes>
+	<Shoplist></Shoplist>
+	<OnlineShop></OnlineShop>
+	<Support></Support>
+	<History></History>
 </template>
 
-<style lang="scss">
-#main {
-	overflow-x: clip;
-}
-</style>
+<style lang="scss"></style>

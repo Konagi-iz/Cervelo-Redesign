@@ -94,7 +94,7 @@ import Button from '@/components/parts/Button.vue';
 	</section>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 .lcl-shoplist {
 	position: relative;
 	margin-inline: auto;
@@ -227,7 +227,7 @@ import Button from '@/components/parts/Button.vue';
 		}
 		g {
 			transform: translateY(-5%);
-			transition: transform .8s $e-out, opacity .8s $e-out;
+			transition: transform 0.8s $e-out, opacity 0.8s $e-out;
 			opacity: 0;
 			&:nth-of-type(2) {
 				transition-delay: 0.1s;

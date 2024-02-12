@@ -70,7 +70,7 @@ const slides = ref([
 	},
 	{
 		type: 'road',
-		model: 'Soloist',
+		model: 'SOLOIST',
 		copy: 'S5の速さとR5の軽さを',
 		txt: '軽量化とエアロダイナミクス性能のバランスを取り、\nまさに「ちょうどいい」バイクを実現しました。\nこれこそ、私たちCervéloが支持できるトレードオフです。',
 	},
@@ -89,12 +89,11 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 <template>
 	<div ref="hero" class="lcl-hero js-load">
 		<Swiper
+			ref="heroSlide"
 			class="lcl-hero-slides"
 			@swiper="onSwiper"
 			@slideChange="changeSwiperIndex"
 			@autoplayTimeLeft="onAutoplayTimeLeft"
-			ref="heroSlide"
-			:init="false"
 			:modules="modules"
 			:autoplay="{ delay: 10000, disableOnInteraction: false, waitForTransition: false }"
 			effect="fade"
@@ -176,12 +175,12 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 	</div>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 .lcl-hero {
 	position: relative;
 	width: 100%;
 	height: max(100vh, 730px);
-	background: url('/assets/img/bg/bg_grid.png') repeat left top / 93px, $c-lightgray;
+	background: url('/assets/img/common/bg_grid.png') repeat left top / 93px, $c-lightgray;
 	@include media_narrow {
 		height: 100dvh;
 		background-size: vw(93);
@@ -283,7 +282,7 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 		line-height: 0.9;
 		font-style: italic;
 		@include media_narrow {
-			@include fz(88);
+			@include fz(72);
 		}
 	}
 	.lcl-hero-slides__txts {
@@ -378,13 +377,13 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 	}
 
 	/* swiper ------------ */
-	.swiper-slide {
+	:deep(.swiper-slide) {
 		opacity: 0 !important;
 	}
-	.swiper-slide-active {
+	:deep(.swiper-slide-active) {
 		opacity: 1 !important;
 	}
-	.swiper-pagination {
+	:deep(.swiper-pagination) {
 		position: absolute;
 		top: 50%;
 		right: vwclamp(78) !important;
@@ -405,7 +404,7 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 			gap: vw(2);
 		}
 	}
-	.swiper-pagination-bullet {
+	:deep(.swiper-pagination-bullet) {
 		display: block;
 		opacity: 0.3;
 		margin: 0 !important;
@@ -418,12 +417,12 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 			height: vw(10);
 		}
 	}
-	.swiper-pagination-bullet-active {
+	:deep(.swiper-pagination-bullet-active) {
 		opacity: 1;
 	}
 
 	/* swiper active ------------ */
-	.swiper-slide-active {
+	:deep(.swiper-slide-active) {
 		.lcl-hero-slides__bg {
 			clip-path: inset(0 0 0 100%);
 			opacity: 1;

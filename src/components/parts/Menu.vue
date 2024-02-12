@@ -16,7 +16,7 @@ defineExpose({ menu });
 	</button>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 .menu {
 	z-index: 999;
 	position: relative;
