@@ -312,7 +312,7 @@ const navs = ref(['BIKES', 'SHOP LIST', 'ONLINE SHOP', 'SUPPORT', 'HISTORY']);
 		@include media_narrow {
 			@include fz(28);
 		}
-		span {
+		:deep(span) {
 			display: inline-block;
 			transform: translateX(-200%);
 			opacity: 0;

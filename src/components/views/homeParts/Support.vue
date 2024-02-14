@@ -16,7 +16,7 @@ const navs = ref(['オーナーズ\nクラブの登録', '品質保証につい�
 				<router-link to="" v-for="(item, index) in navs" :key="index" class="lcl-support-nav__item">
 					<img
 						class="lcl-support-nav__img"
-						:src="`/assets/img/home/support/img_0${index + 1}.png`"
+						:src="`/assets/img/home/support/img_0${index + 1}.jpg`"
 						alt=""
 						loading="lazy"
 						width="352"

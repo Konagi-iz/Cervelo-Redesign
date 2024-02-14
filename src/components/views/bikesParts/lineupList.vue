@@ -41,6 +41,7 @@ const props = defineProps({
 					nextEl: `.lineupList-slider-btn--next.${swiperId}`,
 					prevEl: `.lineupList-slider-btn--prev.${swiperId}`,
 				}"
+				lazy-preload-prev-next="3"
 				:key="swiperId"
 				class="lineupList-slider"
 			>

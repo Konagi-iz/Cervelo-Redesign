@@ -99,7 +99,7 @@ import Button from '@/components/parts/Button.vue';
 	position: relative;
 	margin-inline: auto;
 	width: min(100%, 1900px);
-	background: url(/assets/img/bg/bg_grid.png) repeat left top / 93px, $c-lightgray;
+	background: url(/assets/img/common/bg_grid.png) repeat left top / 93px, $c-lightgray;
 	@include media_wide {
 		height: 536px;
 	}

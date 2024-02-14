@@ -41,22 +41,36 @@ const router = createRouter({
 		{
 			path: '/history',
 			name: 'history',
+			redirect: { name: '404' },
 			component: () => import('@/components/views/HistoryView.vue'),
 		},
 		{
 			path: '/shoplist',
 			name: 'shop list',
+			redirect: { name: '404' },
 			component: () => import('@/components/views/ShoplistView.vue'),
 		},
 		{
 			path: '/support',
 			name: 'support',
+			redirect: { name: '404' },
 			component: () => import('@/components/views/SupportView.vue'),
 		},
 		{
 			path: '/news',
 			name: 'news',
+			redirect: { name: '404' },
 			component: () => import('@/components/views/NewsView.vue'),
+		},
+
+		/* 存在しないパスを404にリダイレクト ------------ */
+		{ path: '/:pathMatch(.*)*', redirect: { name: '404' } },
+
+		/* 404 Not Found ------------ */
+		{
+			path: '/404',
+			name: '404',
+			component: () => import('@/components/views/404View.vue'),
 		},
 	],
 	scrollBehavior(to, from, savedPosition) {
