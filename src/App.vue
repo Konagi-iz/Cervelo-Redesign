@@ -33,7 +33,6 @@ function loading() {
 			e.classList.add('js-load--on');
 		}, 400);
 	});
-	// console.log('loading');
 }
 
 /* Loading がマウントされたら loading を実行 ------------ */
